@@ -1,0 +1,10 @@
+﻿CREATE TABLE Book
+(
+	Id	    INT IDENTITY(1,1),
+	Title	VARCHAR(255),
+	ISBN	VARCHAR(13),
+	Pages	SMALLINT,
+	Summary VARCHAR(MAX),
+	Rating	NUMERIC(2,1),
+	CONSTRAINT pk_Book_Id PRIMARY KEY (Id),
+);
