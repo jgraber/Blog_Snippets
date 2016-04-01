@@ -10,8 +10,13 @@ namespace ExifInCSharp
     {
         static void Main(string[] args)
         {
-            var metadataExtractor = new DemoMitMetadataExtractor();
-            metadataExtractor.ExtrahiereGPSInformationen(@"Images\DemoImage_1.jpg");
+            var bildPfad = @"Images\DemoImage_1.jpg";
+
+            //var metadataExtractor = new DemoMitMetadataExtractor();
+            //metadataExtractor.ExtrahiereGPSInformationen(bildPfad);
+
+            var jpegMetadata = new DemoMitJpegMetadata();
+            jpegMetadata.ExtrahiereGPSInformationen(bildPfad);
         }
     }
 }
