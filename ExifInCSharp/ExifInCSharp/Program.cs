@@ -11,6 +11,7 @@ namespace ExifInCSharp
         static void Main(string[] args)
         {
             var bildPfad = @"Images\DemoImage_1.jpg";
+            //var bildPfad = @"Images\DemoImage_no_exif.jpg";
 
             Console.WriteLine("Beispiel mit MetadataExtractor");
             var metadataExtractor = new DemoMitMetadataExtractor();

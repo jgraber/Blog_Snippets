@@ -29,8 +29,8 @@ namespace ExifInCSharp
             Console.WriteLine($"{latitude}  {longitude}");
 
             // Angabe in Grad und Graddezimale
-            var gpsData = gpsInfo.GetGeoLocation();
-            Console.WriteLine($"{gpsData.Latitude}  {gpsData.Longitude}");
+            var gpsData = gpsInfo?.GetGeoLocation();
+            Console.WriteLine($"{gpsData?.Latitude}  {gpsData?.Longitude}");
         }
     }
 }
