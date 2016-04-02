@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DemoMitDotNetImage.cs" />
     <Compile Include="DemoMitExifLib.cs" />
     <Compile Include="DemoMitExifNet.cs" />
     <Compile Include="DemoMitJpegMetadata.cs" />

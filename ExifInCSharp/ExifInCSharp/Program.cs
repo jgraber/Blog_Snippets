@@ -32,6 +32,10 @@ namespace ExifInCSharp
             Console.WriteLine("\nBeispiel mit Photo Exif");
             var photoExif = new DemoMitPhotoExif();
             photoExif.ExtrahiereGPSInformationen(bildPfad);
+
+            Console.WriteLine("\nBeispiel mit Image.PropertyItems aus .Net");
+            var dotNetImage = new DemoMitDotNetImage();
+            dotNetImage.ExtrahiereGPSInformationen(bildPfad);
         }
     }
 }
