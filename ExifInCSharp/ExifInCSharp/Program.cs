@@ -12,11 +12,17 @@ namespace ExifInCSharp
         {
             var bildPfad = @"Images\DemoImage_1.jpg";
 
-            //var metadataExtractor = new DemoMitMetadataExtractor();
-            //metadataExtractor.ExtrahiereGPSInformationen(bildPfad);
+            Console.WriteLine("Beispiel mit MetadataExtractor");
+            var metadataExtractor = new DemoMitMetadataExtractor();
+            metadataExtractor.ExtrahiereGPSInformationen(bildPfad);
 
-            var jpegMetadata = new DemoMitJpegMetadata();
-            jpegMetadata.ExtrahiereGPSInformationen(bildPfad);
+            //Console.WriteLine("\nBeispiel mit JpegMetadata");
+            //var jpegMetadata = new DemoMitJpegMetadata();
+            //jpegMetadata.ExtrahiereGPSInformationen(bildPfad);
+
+            Console.WriteLine("\nBeispiel mit ExifLib");
+            var exifLib = new DemoMitExifLib();
+            exifLib.ExtrahiereGPSInformationen(bildPfad);
         }
     }
 }
