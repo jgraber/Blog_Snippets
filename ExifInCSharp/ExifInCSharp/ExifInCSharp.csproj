@@ -77,6 +77,7 @@
     <Compile Include="DemoMitJpegMetadata.cs" />
     <Compile Include="DemoMitMetadataExtractor.cs" />
     <Compile Include="DemoMitPhotoExif.cs" />
+    <Compile Include="Koordinaten.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
