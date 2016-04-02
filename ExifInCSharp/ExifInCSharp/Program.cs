@@ -24,6 +24,10 @@ namespace ExifInCSharp
             Console.WriteLine("\nBeispiel mit ExifLib");
             var exifLib = new DemoMitExifLib();
             exifLib.ExtrahiereGPSInformationen(bildPfad);
+
+            Console.WriteLine("\nBeispiel mit Exif.Net");
+            var exifNet = new DemoMitExifNet();
+            exifNet.ExtrahiereGPSInformationen(bildPfad);
         }
     }
 }
