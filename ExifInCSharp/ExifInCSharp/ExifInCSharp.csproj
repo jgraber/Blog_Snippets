@@ -49,6 +49,10 @@
       <HintPath>..\packages\MetadataExtractor.1.3.0\lib\net45\MetadataExtractor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="photo.exif, Version=1.1.16.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\photo.exif.1.1.16.0\lib\net40\photo.exif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -72,6 +76,7 @@
     <Compile Include="DemoMitExifNet.cs" />
     <Compile Include="DemoMitJpegMetadata.cs" />
     <Compile Include="DemoMitMetadataExtractor.cs" />
+    <Compile Include="DemoMitPhotoExif.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
