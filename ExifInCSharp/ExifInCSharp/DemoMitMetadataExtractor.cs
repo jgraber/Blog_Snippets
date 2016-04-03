@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MetadataExtractor;
 using MetadataExtractor.Formats.Exif;
 
@@ -13,14 +10,6 @@ namespace ExifInCSharp
         public void ExtrahiereGPSInformationen(string filePath)
         {
             var allMetadata = ImageMetadataReader.ReadMetadata(filePath);
-            //foreach (var directory in allMetadata)
-            //{
-            //    foreach (var tag in directory.Tags)
-            //    {
-            //        //Console.WriteLine($"[{directory.Name}] {tag.Name} = {tag.Description}");
-            //    }
-            //}
-
             var gpsInfo = allMetadata.OfType<GpsDirectory>().FirstOrDefault();
 
             // Angaben in Grad, Bogenminuten und Bogensekunde
