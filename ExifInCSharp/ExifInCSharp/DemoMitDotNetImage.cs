@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Text;
 
 namespace ExifInCSharp
 {
@@ -9,9 +10,9 @@ namespace ExifInCSharp
     {
         public void ExtrahiereGPSInformationen(string filePath)
         {
-            using (var s = File.Open(filePath, FileMode.Open))
+            using (var fileStream = File.Open(filePath, FileMode.Open))
             {
-                var image = new Bitmap(s);
+                var image = new Bitmap(fileStream);
 
                 // Definition: https://msdn.microsoft.com/de-de/library/ms534416.aspx
                 var typeLatitudeRef = 0x0001;
@@ -61,7 +62,7 @@ namespace ExifInCSharp
 
 
             double coorditate = degrees + (minutes / 60d) + (seconds / 3600d);
-            string gpsRef = System.Text.Encoding.ASCII.GetString(new byte[1] { propItemRef.Value[0] }); //N, S, E, or W
+            string gpsRef = Encoding.ASCII.GetString(new byte[1] { propItemRef.Value[0] }); //N, S, E, or W
             if (gpsRef == "S" || gpsRef == "W")
                 coorditate = coorditate * -1;
             return coorditate;

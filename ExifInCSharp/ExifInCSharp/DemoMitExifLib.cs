@@ -5,8 +5,6 @@ namespace ExifInCSharp
 {
     public class DemoMitExifLib
     {
-        private readonly Koordinaten _koordinaten = new Koordinaten();
-
         public void ExtrahiereGPSInformationen(string filePath)
         {
             try
@@ -23,13 +21,13 @@ namespace ExifInCSharp
                         && reader.GetTagValue<string>(ExifTags.GPSLatitudeRef, out gpsLatRef)
                         && reader.GetTagValue<string>(ExifTags.GPSLongitudeRef, out gpsLongRef))
                     {
-                        var gpsLatDouble = gpsLatArray[0] + gpsLatArray[1] / 60 + gpsLatArray[2] / 3600;
-                        gpsLatDouble = Koordinaten.KorrekturBreite(gpsLatRef, gpsLatDouble);
+                        var latitude = gpsLatArray[0] + gpsLatArray[1] / 60 + gpsLatArray[2] / 3600;
+                        latitude = Koordinaten.KorrekturBreite(gpsLatRef, latitude);
 
-                        var gpsLongDouble = gpsLongArray[0] + gpsLongArray[1]/60 + gpsLongArray[2]/3600;
-                        gpsLongDouble = Koordinaten.KorrekturLaenge(gpsLongRef, gpsLongDouble);
+                        var longitude = gpsLongArray[0] + gpsLongArray[1]/60 + gpsLongArray[2]/3600;
+                        longitude = Koordinaten.KorrekturLaenge(gpsLongRef, longitude);
                         
-                        Console.WriteLine($"{gpsLatDouble}  {gpsLongDouble}");
+                        Console.WriteLine($"{latitude}  {longitude}");
                     }
                 }
             }
