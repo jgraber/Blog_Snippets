@@ -16,5 +16,14 @@ namespace HumanizrDemo
 
             Assert.AreEqual("Dies…", result);
         }
+
+        [TestMethod]
+        public void Zeit_Vor2Minuten_WirdAlsTextDargestellt()
+        {
+            var erstelltAm = TimeSpan.FromMinutes(2);
+            var result = erstelltAm.Humanize();
+
+            Assert.AreEqual("2 Minuten", result);
+        }
     }
 }
