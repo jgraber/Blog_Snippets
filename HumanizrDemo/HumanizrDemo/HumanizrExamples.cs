@@ -25,5 +25,14 @@ namespace HumanizrDemo
 
             Assert.AreEqual("2 Minuten", result);
         }
+
+        [TestMethod]
+        public void Zeit_Vor2Tagen3Minuten_ZeigtTageAlsText()
+        {
+            var erstelltAm = TimeSpan.FromDays(2).Add(TimeSpan.FromMinutes(3));
+            var result = erstelltAm.Humanize();
+
+            Assert.AreEqual("2 Tage", result);
+        }
     }
 }
