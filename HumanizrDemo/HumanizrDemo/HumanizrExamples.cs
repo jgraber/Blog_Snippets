@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Humanizer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -33,6 +34,16 @@ namespace HumanizrDemo
             var result = erstelltAm.Humanize();
 
             Assert.AreEqual("2 Tage", result);
+        }
+
+        [TestMethod]
+        public void Zeit_Vor2Tagen3MinutenUndEnAlsCulture_ZeigtTageAlsEnglischenText()
+        {
+            var erstelltAm = TimeSpan.FromDays(2).Add(TimeSpan.FromMinutes(3));
+            var en = new CultureInfo("en");
+            var result = erstelltAm.Humanize(culture: en);
+
+            Assert.AreEqual("2 days", result);
         }
     }
 }
