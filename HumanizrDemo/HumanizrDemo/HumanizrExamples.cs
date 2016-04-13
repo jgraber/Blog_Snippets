@@ -55,5 +55,15 @@ namespace HumanizrDemo
             Assert.AreEqual("gestern", result);
 
         }
+
+        [TestMethod]
+        public void DateTime_Vor72Stunden_WirdAlsVor3TagenAngezeigt()
+        {
+            var erstelltAm = DateTime.UtcNow.AddHours(-72);
+            var result = erstelltAm.Humanize();
+
+            Assert.AreEqual("vor 3 Tagen", result);
+
+        }
     }
 }
