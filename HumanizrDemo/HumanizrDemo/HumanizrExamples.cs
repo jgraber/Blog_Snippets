@@ -45,5 +45,15 @@ namespace HumanizrDemo
 
             Assert.AreEqual("2 days", result);
         }
+
+        [TestMethod]
+        public void DateTime_Vor24Stunden_WirdAlsGesternAngezeigt()
+        {
+            var erstelltAm = DateTime.UtcNow.AddHours(-24);
+            var result = erstelltAm.Humanize();
+
+            Assert.AreEqual("gestern", result);
+
+        }
     }
 }
