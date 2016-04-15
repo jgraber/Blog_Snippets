@@ -65,5 +65,21 @@ namespace HumanizrDemo
             Assert.AreEqual("vor 3 Tagen", result);
 
         }
+
+        [TestMethod]
+        public void RoemischeZahlen_AusArabischen_WerdenUmgewandelt()
+        {
+            Assert.AreEqual("I", 1.ToRoman());
+            Assert.AreEqual("II", 2.ToRoman());
+            Assert.AreEqual("III", 3.ToRoman());
+            Assert.AreEqual("IV", 4.ToRoman());
+            Assert.AreEqual("V", 5.ToRoman());
+            Assert.AreEqual("VI", 6.ToRoman());
+            Assert.AreEqual("VII", 7.ToRoman());
+            Assert.AreEqual("VIII", 8.ToRoman());
+            Assert.AreEqual("IX", 9.ToRoman());
+            Assert.AreEqual("X", 10.ToRoman());
+        }
+
     }
 }
