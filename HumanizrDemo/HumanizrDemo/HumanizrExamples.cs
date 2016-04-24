@@ -81,5 +81,19 @@ namespace HumanizrDemo
             Assert.AreEqual("X", 10.ToRoman());
         }
 
+        [TestMethod]
+        public void RoemischeZahlen_RoemischenZahlen_UmwandelnInArabische()
+        {
+            Assert.AreEqual(1, "I".FromRoman());
+            Assert.AreEqual(2, "II".FromRoman());
+            Assert.AreEqual(3, "III".FromRoman());
+            Assert.AreEqual(4, "IV".FromRoman());
+            Assert.AreEqual(5, "V".FromRoman());
+            Assert.AreEqual(6, "VI".FromRoman());
+            Assert.AreEqual(7, "VII".FromRoman());
+            Assert.AreEqual(8, "VIII".FromRoman());
+            Assert.AreEqual(9, "IX".FromRoman());
+            Assert.AreEqual(10, "X".FromRoman());
+        }
     }
 }
