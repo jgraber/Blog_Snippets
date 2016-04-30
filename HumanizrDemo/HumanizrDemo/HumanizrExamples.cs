@@ -95,5 +95,13 @@ namespace HumanizrDemo
             Assert.AreEqual(9, "IX".FromRoman());
             Assert.AreEqual(10, "X".FromRoman());
         }
+
+        [TestMethod]
+        public void Dateigroesse_Wird_Benutzerfreundlich_angezeigt()
+        {
+            var filesize = (10).Megabytes();
+
+            Assert.AreEqual(10240, filesize.Kilobytes);
+        }
     }
 }
