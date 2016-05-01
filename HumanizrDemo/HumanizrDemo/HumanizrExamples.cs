@@ -97,11 +97,19 @@ namespace HumanizrDemo
         }
 
         [TestMethod]
-        public void Dateigroesse_Wird_Benutzerfreundlich_angezeigt()
+        public void Dateigroesse_Laesst_sich_einfach_umrechnen()
         {
             var filesize = (10).Megabytes();
 
             Assert.AreEqual(10240, filesize.Kilobytes);
+        }
+
+        [TestMethod]
+        public void Dateigroesse_Wird_Benutzerfreundlich_angezeigt()
+        {
+            var filesize = (100300000).Bytes();
+
+            Assert.AreEqual(95.65, filesize.Megabytes, 0.01);
         }
     }
 }
