@@ -10,7 +10,7 @@ namespace OzCodeExamples
     {
         static void Main(string[] args)
         {
-            var demo = new Demo();
+            var demo = new Demo(5);
             //var result = demo.GetFromDB();
             //demo.DoAThing();
 
@@ -49,6 +49,13 @@ namespace OzCodeExamples
 
     class Demo
     {
+        private int startValue;
+
+        public Demo(int start)
+        {
+            startValue = start;
+        }
+
 
         public List<ComplexObject> GetFromDB()
         {
