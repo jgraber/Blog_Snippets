@@ -7,6 +7,7 @@ namespace Reports.Core.Tests
     public class PivotTest
     {
         [Test]
+        [Ignore("pending")]
         public void Draw_without_data_throws_exception()
         {
         }
