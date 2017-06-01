@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Reports.Core.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class PivotTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Test]
+        public void Draw_without_data_throws_exception()
         {
         }
     }

@@ -1,31 +1,31 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Reports.Import.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ExcelImporterTest
     {
-        [TestMethod]
+        [Test]
         public void Import_non_existing_file_throws_exception()
         {
             Assert.Fail("Exception missing");
         }
 
-        [TestMethod]
+        [Test]
         public void Import_empty_file_throws_exception()
         {
             Assert.Fail("Exception missing");
         }
 
-        [TestMethod]
-        [Ignore]
+        [Test]
+        [Ignore("check")]
         public void Import_file_wit_single_record_returns_1_row()
         {
             Assert.Inconclusive("pending");
         }
 
-        [TestMethod]
+        [Test]
         public void Import_file_wit_multiple_record_returns_all_rows()
         {
             Assert.Inconclusive("pending");

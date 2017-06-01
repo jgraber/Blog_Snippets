@@ -1,27 +1,27 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Reports.Helper.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class RoundNumbersTest
     {
-        [TestMethod]
+        [Test]
         public void Round_returns_0dot1_as_0()
         {
         }
 
-        [TestMethod]
+        [Test]
         public void Round_returns_0dot3_as_0()
         {
         }
 
-        [TestMethod]
+        [Test]
         public void Round_returns_0dot49_as_0()
         {
         }
 
-        [TestMethod]
+        [Test]
         public void Round_returns_0dot5_as_1()
         {
         }
