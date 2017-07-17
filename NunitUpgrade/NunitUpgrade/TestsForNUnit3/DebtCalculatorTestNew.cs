@@ -6,12 +6,16 @@ using NUnit.Framework;
 
 namespace TestsForNUnit3
 {
+    /// <summary>
+    /// NUnit 3.7.x tests
+    /// </summary>
     [TestFixture]
-    class DebtCalculatorTestOld : AssertionHelper
+    public class DebtCalculatorTestNew
     {
+
         private DebtCalculator _testee;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             _testee = new DebtCalculator();
@@ -19,36 +23,38 @@ namespace TestsForNUnit3
 
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Calculation_can_only_be_called_with_valid_CalculatorMethods()
         {
             var nonExistingMethod = (CalculatorMethod)111;
-            _testee.ByMethod(nonExistingMethod);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => _testee.ByMethod(nonExistingMethod));
         }
 
 
         [Test]
-        [ExpectedException(typeof(MyException), ExpectedMessage = "Invalid calulation method")]
         public void Extended_calculation_isnt_allowed()
         {
-            _testee.ByMethod(CalculatorMethod.Extended);
+            Assert.That(() => _testee.ByMethod(CalculatorMethod.Extended),
+                Throws.TypeOf<MyException>()
+                    .With.Message.EqualTo("Invalid calulation method"));
         }
 
 
         [Test]
         public void Data_can_be_loaded_from_file_system()
         {
-            var sourcePath = @".\TestData\2017.txt";
-            var targetPath = @".\TestResult\2017_calculated.txt";
+            var sourcePath = TestContext.CurrentContext.TestDirectory + @"\TestData\2017.txt";
+            var targetPath = TestContext.CurrentContext.TestDirectory + @"\TestResult\2017_calculated.txt";
 
             var result = _testee.BatchProcessing(sourcePath, targetPath);
 
-            Expect(result, Is.StringStarting("Success"));
+            Assert.That(result, Does.StartWith("Success"));
+            //Expect(result, Does.StartWith("Success"));
             Assert.IsTrue(File.Exists(targetPath));
         }
 
 
-        [Ignore]
+        [Ignore("reason why this test is ignored")]
         [Test]
         public void Something()
         {
