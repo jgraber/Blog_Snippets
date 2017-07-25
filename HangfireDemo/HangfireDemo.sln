@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangfireDemo", "HangfireDemo\HangfireDemo.csproj", "{127DCD6C-D450-45C7-B700-5802F74923C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobProcessor", "JobProcessor\JobProcessor.csproj", "{79044E45-F7C5-41CA-A84E-C54FB680AA2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{127DCD6C-D450-45C7-B700-5802F74923C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{127DCD6C-D450-45C7-B700-5802F74923C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{127DCD6C-D450-45C7-B700-5802F74923C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79044E45-F7C5-41CA-A84E-C54FB680AA2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79044E45-F7C5-41CA-A84E-C54FB680AA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79044E45-F7C5-41CA-A84E-C54FB680AA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79044E45-F7C5-41CA-A84E-C54FB680AA2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
