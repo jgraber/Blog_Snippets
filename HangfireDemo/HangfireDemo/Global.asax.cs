@@ -8,6 +8,8 @@ using System.Web.Routing;
 
 namespace HangfireDemo
 {
+    using System.Threading;
+
     using Hangfire;
 
     using Serilog;
@@ -52,7 +54,8 @@ namespace HangfireDemo
                 MiniProfiler.Start();
             }
 
-            BackgroundJob.Enqueue(() => Log.Information("Hello, world! {time}", DateTime.Now));
+            BackgroundJob.Enqueue(
+                () => Thread.Sleep(4000)); 
         }
 
         protected void Application_EndRequest()
