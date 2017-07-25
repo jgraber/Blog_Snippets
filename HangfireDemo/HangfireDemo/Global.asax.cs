@@ -42,5 +42,10 @@ namespace HangfireDemo
         {
             MiniProfiler.Stop();
         }
+
+        private bool IsUserAllowedToSeeMiniProfilerUI(HttpRequest httpRequest)
+        {
+            return true;
+        }
     }
 }
