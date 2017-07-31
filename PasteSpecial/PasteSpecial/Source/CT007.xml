@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CT007>
+    <TitleIsMandatory>True</TitleIsMandatory>
+    <FileIsMandatory>False</FileIsMandatory>
+    <PlaceIsMandatory>True</PlaceIsMandatory>
+    <CreditsIsMandatory>False</CreditsIsMandatory>
+    <DateIsMandatory>True</DateIsMandatory>
+    <TitleDisplay>True</TitleDisplay>
+    <FileDisplay>True</FileDisplay>
+    <PlaceDisplay>True</PlaceDisplay>
+    <CreditsDisplay>True</CreditsDisplay>
+    <DateDisplay>True</DateDisplay>
+</CT007>
