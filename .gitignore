@@ -197,3 +197,4 @@ FakesAssemblies/
 
 # SonarQube
 .scannerwork
+!LocConsoleApp/.scannerwork/
