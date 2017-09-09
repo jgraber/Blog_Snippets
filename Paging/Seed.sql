@@ -9,6 +9,7 @@ CREATE TABLE [Users] (
     [FirstName] VARCHAR(255) NULL,
     [LastName] VARCHAR(255) NULL,
     [Email] VARCHAR(255) NULL,
+    [Subscribed] bit NULL Default(1)
     PRIMARY KEY ([Id])
 );
 GO
