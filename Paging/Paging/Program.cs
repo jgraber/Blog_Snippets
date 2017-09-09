@@ -17,7 +17,7 @@ namespace Paging
         static void Main(string[] args)
         {
 
-            var connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["PagingDb"].ConnectionString;
             var conn = new SqlConnection(connectionString);
 
             var selectQuery = @"SELECT [Id]
@@ -34,6 +34,9 @@ namespace Paging
             ReadWithSqlCommand(connectionString, selectQuery);
             Console.WriteLine("----------------");
             ReadWithDapper(conn, selectQuery);
+
+            var email = ConfigurationManager.AppSettings["senderemail"];
+            Console.WriteLine(email);
         }
 
         private static void ReadWithSqlCommand(string connectionString, string selectQuery)
