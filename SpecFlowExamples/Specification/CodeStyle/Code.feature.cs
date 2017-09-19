@@ -70,7 +70,7 @@ namespace Specification.CodeStyle
 #line 4
 this.ScenarioSetup(scenarioInfo);
 #line 5
-testRunner.Given("I navigate to http://localhost:9999/Person/Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I navigate to http://localhost:8920/Person/Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
  testRunner.And("I enter Sherlock into the input with an ID of FirstName", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
@@ -78,7 +78,7 @@ testRunner.Given("I navigate to http://localhost:9999/Person/Create", ((string)(
 #line 8
 testRunner.When("I click the element with a CSS selector of .btn.btn-primary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-testRunner.Then("the div with a ID of alert alert-success should contain the text Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the div with an Id of successMessage should contain the text Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -148,7 +148,7 @@ testRunner.Then("the div with a ID of alert alert-success should contain the tex
 #line 4
 this.ScenarioSetup(scenarioInfo);
 #line 5
-testRunner.Given("I navigate to http://localhost:9999/Person/Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I navigate to http://localhost:8920/Person/Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
  testRunner.And("I enter Sherlock into the input with an ID of FirstName", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
@@ -156,7 +156,7 @@ testRunner.Given("I navigate to http://localhost:9999/Person/Create", ((string)(
 #line 8
 testRunner.When("I click the element with a CSS selector of .btn.btn-primary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-testRunner.Then("the div with a ID of alert alert-success should contain the text Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the div with an Id of successMessage should contain the text Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
