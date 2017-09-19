@@ -70,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Code.feature</DependentUpon>
     </Compile>
+    <Compile Include="ImperativeStyle\Imperative.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Imperative.feature</DependentUpon>
+    </Compile>
+    <Compile Include="ImperativeStyle\ImperativeSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +86,10 @@
     </None>
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ImperativeStyle\Imperative.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Imperative.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="runtests.cmd" />

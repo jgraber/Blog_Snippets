@@ -10,27 +10,27 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Specification.CodeStyle
+namespace Specification.ImperativeStyle
 {
     using TechTalk.SpecFlow;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Code", SourceFile="CodeStyle\\Code.feature", SourceLine=0)]
-    public partial class CodeFeature
+    [TechTalk.SpecRun.FeatureAttribute("Imperative", SourceFile="ImperativeStyle\\Imperative.feature", SourceLine=0)]
+    public partial class ImperativeFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Code.feature"
+#line 1 "Imperative.feature"
 #line hidden
         
         [TechTalk.SpecRun.FeatureInitialize()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Code", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Imperative", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -61,24 +61,24 @@ namespace Specification.CodeStyle
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Code Example", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("Imperative Example", new string[] {
                 "mytag"}, SourceLine=3)]
-        public virtual void CodeExample()
+        public virtual void ImperativeExample()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Code Example", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Imperative Example", new string[] {
                         "mytag"});
 #line 4
 this.ScenarioSetup(scenarioInfo);
 #line 5
-testRunner.Given("I navigate to http://localhost:8920/Person/Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I am on the application start screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I enter Sherlock into the input with an ID of FirstName", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter a first name of Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
- testRunner.And("I enter Holmes into the input with an ID of LastName", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter a last name of Holmes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8
-testRunner.When("I click the element with a CSS selector of .btn.btn-primary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When("I submit my form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-testRunner.Then("the div with an Id of successMessage should contain the text Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("I should see the application complete confirmation for Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -93,20 +93,20 @@ testRunner.Then("the div with an Id of successMessage should contain the text Sh
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.2.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Code")]
-    public partial class CodeFeature_NUnit
+    [NUnit.Framework.DescriptionAttribute("Imperative")]
+    public partial class ImperativeFeature_NUnit
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Code.feature"
+#line 1 "Imperative.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Code", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Imperative", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -139,24 +139,24 @@ testRunner.Then("the div with an Id of successMessage should contain the text Sh
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Code Example")]
+        [NUnit.Framework.DescriptionAttribute("Imperative Example")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void CodeExample()
+        public virtual void ImperativeExample()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Code Example", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Imperative Example", new string[] {
                         "mytag"});
 #line 4
 this.ScenarioSetup(scenarioInfo);
 #line 5
-testRunner.Given("I navigate to http://localhost:8920/Person/Create", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("I am on the application start screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.And("I enter Sherlock into the input with an ID of FirstName", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter a first name of Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 7
- testRunner.And("I enter Holmes into the input with an ID of LastName", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I enter a last name of Holmes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8
-testRunner.When("I click the element with a CSS selector of .btn.btn-primary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.When("I submit my form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-testRunner.Then("the div with an Id of successMessage should contain the text Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("I should see the application complete confirmation for Sherlock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

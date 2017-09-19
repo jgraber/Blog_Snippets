@@ -1,7 +1,7 @@
 ﻿Feature: Code
 
 @mytag
-Scenario: Add a person
+Scenario: Code Example
 Given I navigate to http://localhost:8920/Person/Create
  And I enter Sherlock into the input with an ID of FirstName
  And I enter Holmes into the input with an ID of LastName
