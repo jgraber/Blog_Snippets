@@ -1,33 +1,37 @@
 ﻿namespace Specification.CodeStyle
 {
+    using System;
+
     using TechTalk.SpecFlow;
 
     [Binding]
     public class CodeSteps
     {
         [Given(@"I navigate to (.*)")]
-        public void GivenINavigateToHttpLocalhostPersonCreate(int p0)
+        public void GivenINavigateToHttpLocalhostPersonCreate(string url)
         {
-            ScenarioContext.Current.Pending();
+            Console.WriteLine(url);
         }
         
         [Given(@"I enter (.*) into the input with an ID of (.*)")]
         public void GivenIEnterSherlockIntoTheInputWithAnIDOfFirstName(string name, string field)
         {
-            ScenarioContext.Current.Pending();
+            Console.WriteLine(name);
+            Console.WriteLine(field);
         }
         
         
         [When(@"I click the element with a CSS selector of (.*)")]
         public void WhenIClickTheElementWithACSSSelectorOf_Btn_Btn_Primary(string selector)
         {
-            ScenarioContext.Current.Pending();
+            Console.WriteLine(selector);
         }
         
         [Then(@"the div with a ID of (.*) should contain the text (.*)")]
-        public void ThenTheDivWithAIDOfAlertAlert_SuccessShouldContainTheTextSherlock(string selector, string text)
+        public void ThenTheDivWithAIDOfAlertAlert_SuccessShouldContainTheTextSherlock(string p0, string p1)
         {
-            ScenarioContext.Current.Pending();
+            Console.WriteLine(p0);
+            Console.WriteLine(p1);
         }
     }
 }
