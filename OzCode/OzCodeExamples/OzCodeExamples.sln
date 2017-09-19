@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OzCodeExamples", "OzCodeExamples.csproj", "{D6A6B084-0635-44D3-A59E-10BF65FF790E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OzCode.Tests", "..\OzCode.Tests\OzCode.Tests.csproj", "{F6869790-60B0-48A1-9D13-D60CB1A10101}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{D6A6B084-0635-44D3-A59E-10BF65FF790E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A6B084-0635-44D3-A59E-10BF65FF790E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6A6B084-0635-44D3-A59E-10BF65FF790E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6869790-60B0-48A1-9D13-D60CB1A10101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6869790-60B0-48A1-9D13-D60CB1A10101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6869790-60B0-48A1-9D13-D60CB1A10101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6869790-60B0-48A1-9D13-D60CB1A10101}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9E14BBC-29BE-4A70-A3D1-86A8AE87E36E}
 	EndGlobalSection
 EndGlobal

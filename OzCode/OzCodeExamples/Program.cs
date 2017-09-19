@@ -31,6 +31,62 @@ namespace OzCodeExamples
                 Console.WriteLine("not found");
             }
 
+            RegressionTestDemo();
+        }
+
+        private static void RegressionTestDemo()
+        {
+            var batchData = ReadDataFromService();
+
+            var calculator = new BatchCalculator();
+            var result = calculator.DoMassCalculation(batchData);
+
+            SaveCalculation(result);
+        }
+
+        private static void SaveCalculation(CalculatorResult result)
+        {
+           
+        }
+
+        private static BatchData  ReadDataFromService()
+        {
+            var data = new BatchData();
+            data.Invoices = new List<Invoices>
+                                  {
+                                      new Invoices()
+                                          {
+                                              CustomerId = 234,
+                                              Id = 1,
+                                              OrderId = 758,
+                                              TotalPrice = 4758.90
+                                          },
+                                      new Invoices()
+                                          {
+                                              CustomerId = 578,
+                                              Id = 2,
+                                              OrderId = 859,
+                                              TotalPrice = 86.75
+                                          },
+                                      new Invoices()
+                                          {
+                                              CustomerId = 198,
+                                              Id = 3,
+                                              OrderId = 578,
+                                              TotalPrice = 235.00
+                                          },
+                                      new Invoices()
+                                          {
+                                              CustomerId = 342,
+                                              Id = 4,
+                                              OrderId = 505,
+                                              TotalPrice = 41.20
+                                          }
+                                  };
+            data.BillingDate = DateTime.Now;
+            data.JobNumber = "ST8590";
+
+            return data;
         }
     }
 
