@@ -1,11 +1,10 @@
 ﻿Feature: Code
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
 
 @mytag
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+Scenario: Add a person
+Given I navigate to http://localhost:9999/Person/Create
+ And I enter Sherlock into the input with an ID of FirstName
+ And I enter Holmes into the input with an ID of LastName
+When I click the element with a CSS selector of .btn.btn-primary
+Then the div with a ID of alert alert-success should contain the text Sherlock
+
