@@ -39,6 +39,15 @@ namespace TestsForNUnit3
                     .With.Message.EqualTo("Invalid calulation method"));
         }
 
+        [Test]
+        public void Extended_calculation_isnt_allowed_CheckInstanceOf()
+        {
+
+            Assert.Throws(
+                    Is.InstanceOf(typeof(MyException)).With.Message.StartWith("Invalid cal"), 
+                    () => _testee.ByMethod(CalculatorMethod.Extended));
+        }
+
 
         [Test]
         public void Data_can_be_loaded_from_file_system()
