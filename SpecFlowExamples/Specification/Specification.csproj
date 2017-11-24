@@ -70,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Code.feature</DependentUpon>
     </Compile>
+    <Compile Include="DeclarativeStyle\Declarative.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Declarative.feature</DependentUpon>
+    </Compile>
+    <Compile Include="DeclarativeStyle\DeclarativeSteps.cs" />
     <Compile Include="ImperativeStyle\Imperative.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +89,10 @@
     <None Include="CodeStyle\Code.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Code.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DeclarativeStyle\Declarative.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Declarative.feature.cs</LastGenOutput>
     </None>
     <None Include="Default.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
