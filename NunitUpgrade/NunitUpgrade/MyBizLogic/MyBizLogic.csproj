@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CalculatorMethod.cs" />
     <Compile Include="DebtCalculator.cs" />
+    <Compile Include="IDebtCalculator.cs" />
     <Compile Include="MyException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

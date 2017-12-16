@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBizLogic
 {
-    public class DebtCalculator
+    public class DebtCalculator : IDebtCalculator
     {
         public double ByMethod(CalculatorMethod method)
         {
