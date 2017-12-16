@@ -8,6 +8,12 @@ namespace HumanizrDemo
     [TestClass]
     public class HumanizrExamples
     {
+        [TestInitialize]
+        public void SetUp()
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-CH");
+        }
+
         [TestMethod]
         public void Text_KuerzenAufBestimmteLaenge_RestMitPunktenAngedeutet()
         {
