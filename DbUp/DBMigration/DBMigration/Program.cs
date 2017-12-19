@@ -19,6 +19,7 @@ namespace DBMigration
                 DeployChanges.To
                     .SqlDatabase(connectionString)
                     .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+                    .WithTransactionPerScript()
                     .LogToConsole()
                     .Build();
 
