@@ -1,0 +1,1 @@
+﻿This is my Readme file to check if I can read it within a test
