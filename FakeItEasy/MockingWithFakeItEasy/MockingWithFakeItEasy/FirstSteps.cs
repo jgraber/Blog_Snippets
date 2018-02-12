@@ -73,29 +73,21 @@ namespace MockingWithFakeItEasy
             Assert.Equal(1, jobs.First().Id);
             Assert.Equal(2, jobs.Last().Id);
         }
-        
     }
 
     public interface IExecuteWork
     {
         bool IsRunning();
-
         int JobsQueued();
-
         DateTime StarTime();
-
         string CurrentUser();
-
         double MoneySpend();
-
         Job CurrentJob();
-
         void Add(Job job);
     }
 
     public class Job
     {
         public int Id { get; set; }
-
     }
 }
