@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 namespace TestingWithXUnit
 {
     using Xunit;
+
+    [CollectionDefinition("Database collection")]
+    public class DatabaseCollection : ICollectionFixture<MyDbSetupCode>
+    {
+        // A class with no code, only used to define the collection
+    }
+
     [Collection("Database collection")]
     public class CleanupAfterCollection
     {
@@ -31,11 +38,5 @@ namespace TestingWithXUnit
         public void C() { }
     }
 
-    [CollectionDefinition("Database collection")]
-    public class DatabaseCollection : ICollectionFixture<MyDbSetupCode>
-    {
-        // This class has no code, and is never created. Its purpose is simply
-        // to be the place to apply [CollectionDefinition] and all the
-        // ICollectionFixture<> interfaces.
-    }
+    
 }
