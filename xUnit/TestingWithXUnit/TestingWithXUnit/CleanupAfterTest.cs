@@ -12,12 +12,12 @@ namespace TestingWithXUnit
     {
         public CleanupAfterTest()
         {
-            Console.WriteLine("Constructor with setup code");
+            // Constructor for setup code
         }
 
         public void Dispose()
         {
-            Console.WriteLine("Destructor for cleanup");
+            // Dispose for cleanup code
         }
 
         [Fact]

@@ -8,13 +8,30 @@ namespace TestingWithXUnit
 {
     using Xunit;
 
-    public class CleanupAfterClass : IClassFixture<MyDbSetupCode>
+    public class MyDbSetupCode : IDisposable
+    {
+        public MyDbSetupCode()
+        {
+            // setup code
+        }
+
+        public void Dispose()
+        {
+            // clean-up code
+        }
+    }
+    public class MyTestClass : IClassFixture<MyDbSetupCode>
     {
         private MyDbSetupCode classwideFixture;
 
-        public CleanupAfterClass(MyDbSetupCode fixture)
+        //public CleanupAfterClass(MyDbSetupCode fixture)
+        //{
+        //    this.classwideFixture = fixture;
+        //}
+
+        public CleanupAfterClass()
         {
-            this.classwideFixture = fixture;
+            
         }
 
         [Fact]
@@ -36,16 +53,5 @@ namespace TestingWithXUnit
         }
     }
 
-    public class MyDbSetupCode : IDisposable
-    {
-        public MyDbSetupCode()
-        {
-            // setup code
-        }
-
-        public void Dispose()
-        {
-            // Cleanup code
-        }
-    }
+    
 }
