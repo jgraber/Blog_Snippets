@@ -20,6 +20,7 @@ namespace DBMigration
                     .SqlDatabase(connectionString)
                     .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
                     .WithTransactionPerScript()
+                    .WithVariablesDisabled()
                     .LogToConsole()
                     .Build();
 
