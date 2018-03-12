@@ -73,6 +73,24 @@ namespace HumanizrDemo
         }
 
         [TestMethod]
+        public void DateTime_Vor72Stunden_WirdAlsVor3TagenAngezeigt2()
+        {
+            var erstelltAm = DateTime.UtcNow.AddDays(-72);
+            var result = erstelltAm.Humanize();
+
+            Assert.AreEqual("vor 2 Monaten", result);
+        }
+
+        [TestMethod]
+        public void DateTime_Vor72Tagen_WirdAlsVor3TagenAngezeigt3()
+        {
+            var erstelltAm = TimeSpan.FromDays(-72);
+            var result = erstelltAm.Humanize();
+
+            Assert.AreEqual("10 Wochen", result);
+        }
+
+        [TestMethod]
         public void RoemischeZahlen_AusArabischen_WerdenUmgewandelt()
         {
             Assert.AreEqual("I", 1.ToRoman());
