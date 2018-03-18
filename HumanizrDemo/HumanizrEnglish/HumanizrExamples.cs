@@ -36,6 +36,16 @@ namespace HumanizrEnglish
         }
 
         [Fact]
+        public void DateTime_IsTranslated()
+        {
+            var duration = DateTime.UtcNow.AddMonths(-5);
+            
+            Assert.Equal("5 months ago", duration.Humanize(culture: new CultureInfo("en-GB")));
+            Assert.Equal("vor 5 Monaten", duration.Humanize(culture: new CultureInfo("de-CH")));
+            Assert.Equal("il y a 5 mois", duration.Humanize(culture: new CultureInfo("fr-FR")));
+        }
+
+        [Fact]
         public void FileSize_CanBeConverted()
         {
             var filesize = (10).Megabytes();
@@ -110,7 +120,7 @@ namespace HumanizrEnglish
         {
             var duration = TimeSpan.FromDays(367);
             Assert.Equal("52 weeks", duration.Humanize());
-            Assert.Equal("1 year", duration.Humanize(maxUnit:TimeUnit.Year));
+            Assert.Equal("1 year", duration.Humanize(maxUnit: TimeUnit.Year));
             Assert.Equal("12 months", duration.Humanize(maxUnit: TimeUnit.Month));
         }
 
