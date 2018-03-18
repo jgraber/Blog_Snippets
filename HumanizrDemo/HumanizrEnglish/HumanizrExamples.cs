@@ -27,22 +27,26 @@ namespace HumanizrEnglish
         [Fact]
         public void DateTime_IsDisplayedAsTimeSince()
         {
-            Assert.Equal("2 minutes ago", DateTime.UtcNow.AddMinutes(-2).Humanize());
-            Assert.Equal("2 minutes from now", DateTime.UtcNow.AddMinutes(2).Humanize());
+            var now = DateTime.UtcNow;
+            Assert.Equal("2 minutes ago", now.AddMinutes(-2).Humanize());
+            Assert.Equal("2 minutes from now", now.AddMinutes(2).Humanize());
 
-            Assert.Equal("11 months ago", DateTime.UtcNow.AddMonths(-11).Humanize());
-            Assert.Equal("one year ago", DateTime.UtcNow.AddMonths(-13).Humanize());
-            Assert.Equal("10 years ago", DateTime.UtcNow.AddYears(-10).Humanize());
+            Assert.Equal("11 months ago", now.AddMonths(-11).Humanize());
+            Assert.Equal("one year ago", now.AddMonths(-13).Humanize());
+            Assert.Equal("10 years ago", now.AddYears(-10).Humanize());
         }
 
         [Fact]
         public void DateTime_IsTranslated()
         {
             var duration = DateTime.UtcNow.AddMonths(-5);
-            
-            Assert.Equal("5 months ago", duration.Humanize(culture: new CultureInfo("en-GB")));
-            Assert.Equal("vor 5 Monaten", duration.Humanize(culture: new CultureInfo("de-CH")));
-            Assert.Equal("il y a 5 mois", duration.Humanize(culture: new CultureInfo("fr-FR")));
+            var english = new CultureInfo("en-GB");
+            var german = new CultureInfo("de-CH");
+            var french = new CultureInfo("fr-FR");
+
+            Assert.Equal("5 months ago", duration.Humanize(culture: english));
+            Assert.Equal("vor 5 Monaten", duration.Humanize(culture: german));
+            Assert.Equal("il y a 5 mois", duration.Humanize(culture: french));
         }
 
         [Fact]
@@ -58,9 +62,7 @@ namespace HumanizrEnglish
         public void FileSize_IsHumanReadable()
         {
             Assert.Equal("10 MB", (10).Megabytes().Humanize());
-
             Assert.Equal("1 GB", (1024).Megabytes().Humanize());
-
             Assert.Equal("500 GB", (1024*1024*500).Kilobytes().Humanize());
         }
 
@@ -123,6 +125,17 @@ namespace HumanizrEnglish
             Assert.Equal("1 year", duration.Humanize(maxUnit: TimeUnit.Year));
             Assert.Equal("12 months", duration.Humanize(maxUnit: TimeUnit.Month));
         }
+
+        [Fact]
+        public void CuttingStrings()
+        {
+            Assert.Equal("abc", "abc".Truncate(4));
+            Assert.Equal("abcd", "abcd".Truncate(4));
+            Assert.Equal("abc…", "abcdef".Truncate(4));
+
+            Assert.Equal("abc*", "abcdef".Truncate(4, "*"));
+
+        } 
 
     }
 }
