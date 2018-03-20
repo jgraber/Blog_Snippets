@@ -1,0 +1,13 @@
+digraph "DoxygenDemoApplication.MvcApplication.Application_Start"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="DoxygenDemoApplication.Mvc\lApplication.Application_Start",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 [label="DoxygenDemoApplication.Filter\lConfig.RegisterGlobalFilters",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_doxygen_demo_application_1_1_filter_config.html#a75ebe17224ce52689211f60390e29e02"];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="DoxygenDemoApplication.Route\lConfig.RegisterRoutes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_doxygen_demo_application_1_1_route_config.html#ad8ce309725466085d0a5d34175a0f81b"];
+  Node0 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="DoxygenDemoApplication.Bundle\lConfig.RegisterBundles",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_doxygen_demo_application_1_1_bundle_config.html#aaf64b5e04c989cfd414fc1c2b4e05981"];
+}
