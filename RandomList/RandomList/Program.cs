@@ -19,7 +19,21 @@ namespace RandomList
                 var shuffled = myList.OrderBy(x => Guid.NewGuid()).ToList();
                 Console.WriteLine(String.Join(" ", shuffled));
             }
-            
+
+            var myUsers = new List<Person>
+            {
+                new Person() {FirstName = "A", LastName = "B"},
+                new Person() {FirstName = "C", LastName = "D"},
+                new Person() {FirstName = "E", LastName = "F"},
+                new Person() {FirstName = "G", LastName = "H"},
+            };
+
+            for (int i = 0; i < 10; i++)
+            {
+                var shuffled = myUsers.OrderBy(x => Guid.NewGuid()).ToList();
+                Console.WriteLine(String.Join(" ", shuffled));
+            }
+
         }
 
         private static void PerformanceOfGUID()
@@ -48,6 +62,17 @@ namespace RandomList
             }
 
             Console.WriteLine("end");
+        }
+    }
+
+    public class Person
+    {
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{FirstName} {LastName}]";
         }
     }
 }
