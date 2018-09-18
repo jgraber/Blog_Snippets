@@ -24,9 +24,11 @@ namespace CoreWeb.Controllers
 
         public IActionResult Contact()
         {
+            var companyInfo = new CompanyInfo { Name = "Demo", PhoneNumber = "555 xxx xxx" };
+
             ViewData["Message"] = "Your contact page.";
 
-            return View();
+            return View(companyInfo);
         }
 
         public IActionResult Privacy()

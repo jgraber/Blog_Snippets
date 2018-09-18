@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CoreWeb.Models.CompanyInfo
+@{
     ViewData["Title"] = "Contact";
 }
 <h2>@ViewData["Title"]</h2>
@@ -8,7 +9,7 @@
     One Microsoft Way<br />
     Redmond, WA 98052-6399<br />
     <abbr title="Phone">P:</abbr>
-    425.555.0100
+    @Model.PhoneNumber
 </address>
 
 <address>
