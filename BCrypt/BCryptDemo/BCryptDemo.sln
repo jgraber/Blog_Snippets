@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCryptDemo", "BCryptDemo\BC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCryptWorkloadCalc", "BCryptWorkloadCalc\BCryptWorkloadCalc.csproj", "{E010B0D5-69FA-400C-BA43-FFC0BF44A05B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIBPClient", "HIBPClient\HIBPClient.csproj", "{8C338FAC-0890-4941-88D0-B2683B8B450F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,15 @@ Global
 		{E010B0D5-69FA-400C-BA43-FFC0BF44A05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E010B0D5-69FA-400C-BA43-FFC0BF44A05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E010B0D5-69FA-400C-BA43-FFC0BF44A05B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C338FAC-0890-4941-88D0-B2683B8B450F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C338FAC-0890-4941-88D0-B2683B8B450F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C338FAC-0890-4941-88D0-B2683B8B450F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C338FAC-0890-4941-88D0-B2683B8B450F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C2C43A5-E31F-4137-8ECB-7D29D69427C7}
 	EndGlobalSection
 EndGlobal
