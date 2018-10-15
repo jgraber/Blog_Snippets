@@ -40,11 +40,11 @@ namespace HIBPClient
 
                 if (numberOfPawnedAccounts > 0)
                 {
-                    Console.WriteLine($"Your password is used in {numberOfPawnedAccounts} pawned accounts");
+                    Console.WriteLine($"Your password is used in {numberOfPawnedAccounts} pwned accounts");
                 }
                 else
                 {
-                    Console.WriteLine("Your password was not used by any pawned accounts");
+                    Console.WriteLine("Your password was not used by any pwned accounts");
                 }
             }
             catch (Exception e)
