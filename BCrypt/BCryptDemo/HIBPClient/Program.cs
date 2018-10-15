@@ -24,8 +24,6 @@ namespace HIBPClient
 
         static async Task RunAsync()
         {
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:64195/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -34,54 +32,19 @@ namespace HIBPClient
             try
             {
 
-                HttpResponseMessage response =
-                    await client.GetAsync("https://haveibeenpwned.com/api/v2/breachedaccount/jg@jgraber.ch");
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var breaches = JsonConvert.DeserializeObject<Breach[]>(json);
-
-                    foreach (var breach in breaches)
-                    {
-                        Console.WriteLine($"({breach.BreachDate}) {breach.Title}");
-                        Console.WriteLine($"Domain: {breach.Domain}");
-                        Console.WriteLine($"is Verified: {breach.IsVerified}");
-
-                        Console.WriteLine(new string('-', 50));
-                    }
-                }
-
+                await CheckBreaches("test@test.com");
 
                 var hash = Hash("test");
-                var first5 = hash.Substring(0, 5);
-                var restOfHash = hash.Substring(5);
-                Console.WriteLine(first5);
 
-                response = await client.GetAsync($"https://api.pwnedpasswords.com/range/{first5}");
-                if (response.IsSuccessStatusCode)
+                var numberOfPawnedAccounts = await CheckPassword(hash);
+
+                if (numberOfPawnedAccounts > 0)
                 {
-                    var range = await response.Content.ReadAsStringAsync();
-                    var lines = range.Split(
-                        new[] { Environment.NewLine },
-                        StringSplitOptions.None);
-
-                    var directory = new Dictionary<string, int>();
-
-                    foreach (var line in lines)
-                    {
-                        //Console.WriteLine(line);
-                        var parts = line.Split(':');
-                        directory[parts[0]] = int.Parse(parts[1]);
-                    }
-
-                    if (directory.ContainsKey(restOfHash))
-                    {
-                        Console.WriteLine($"Your password is used in {directory[restOfHash]} pawned accounts");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Your password was not found in pawned accounts");
-                    }
+                    Console.WriteLine($"Your password is used in {numberOfPawnedAccounts} pawned accounts");
+                }
+                else
+                {
+                    Console.WriteLine("Your password was not used by any pawned accounts");
                 }
             }
             catch (Exception e)
@@ -92,6 +55,58 @@ namespace HIBPClient
             Console.ReadLine();
         }
 
+        private static async Task CheckBreaches(string email)
+        {
+            HttpResponseMessage response =
+                await client.GetAsync($"https://haveibeenpwned.com/api/v2/breachedaccount/{email}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var breaches = JsonConvert.DeserializeObject<Breach[]>(json);
+
+                foreach (var breach in breaches)
+                {
+                    Console.WriteLine($"({breach.BreachDate}) {breach.Title}");
+                    Console.WriteLine($"Domain: {breach.Domain}");
+                    Console.WriteLine($"is Verified: {breach.IsVerified}");
+
+                    Console.WriteLine(new string('-', 50));
+                }
+            }
+        }
+
+        private static async Task<int> CheckPassword(string hash)
+        {
+            var first5 = hash.Substring(0, 5);
+            var restOfHash = hash.Substring(5);
+            var requestUri = $"https://api.pwnedpasswords.com/range/{first5}";
+
+            HttpResponseMessage response2 = await client.GetAsync(requestUri);
+
+            if (response2.IsSuccessStatusCode)
+            {
+                var range = await response2.Content.ReadAsStringAsync();
+                var lines = range.Split(new[]
+                                            {
+                                                Environment.NewLine
+                                            }, StringSplitOptions.None);
+
+                foreach (var line in lines)
+                {
+                    var parts = line.Split(':');
+
+                    if (restOfHash.Equals(parts[0]))
+                    {
+                        return int.Parse(parts[1]);
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+        // Source code from https://stackoverflow.com/a/26558102 
         public static string Hash(string input)
         {
             using (SHA1Managed sha1 = new SHA1Managed())
