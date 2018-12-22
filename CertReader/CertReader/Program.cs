@@ -9,7 +9,7 @@
         {
             var str = "test.com";
 
-            var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+            var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
             store.Open(OpenFlags.OpenExistingOnly);
 
             var collection = store.Certificates.Find(X509FindType.FindBySubjectName, str, false);

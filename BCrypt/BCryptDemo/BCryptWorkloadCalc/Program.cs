@@ -107,7 +107,7 @@ namespace BCryptWorkloadCalc
                 pw,
                 salt, true);
             Console.WriteLine(hash2);
-            Console.WriteLine(BCrypt.Net.BCrypt.Verify(pw, hash2, true));
+            Console.WriteLine(BCrypt.Net.BCrypt.Verify(pw, hash2, enhancedEntropy: true));
 
             Console.WriteLine();
             Console.WriteLine(BCrypt.Net.BCrypt.HashPassword("yvsOkgpMd3Ao07oLSMlVYAkpzF4aRKHmirH9zZKafYn9ZImsll6h5AnUbzUVYZ2xpbRQrX6IYUnxtb1lhHXR4K8sT8o5iJk847y3", salt, true));
