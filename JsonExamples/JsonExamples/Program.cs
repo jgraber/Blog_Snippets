@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Formatting = Newtonsoft.Json.Formatting;
 
@@ -72,6 +73,9 @@ namespace JsonExamples
             Console.WriteLine(postWithCamelCase);
 
            
+            var comment = new Comment(){FullName = "JSON Demo", State = State.Published, Text = "Hello world!"};
+            var jsonFromProperties = JsonConvert.SerializeObject(comment, Formatting.Indented);
+            Console.WriteLine(jsonFromProperties);
         }
     }
 
@@ -91,8 +95,26 @@ namespace JsonExamples
 
     public enum State
     {
-        Draft,
-        Published,
-        Deleted,
+        Draft = 1,
+        Published = 2,
+        Deleted = 3
+    }
+
+    public class Comment
+    {
+        public Guid Id { get; set; }
+
+        [JsonPropertyAttribute("User")]
+        public string FullName { get; set; }
+        
+        public string Text { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public State State { get; set; }
+
+        public Comment()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }
