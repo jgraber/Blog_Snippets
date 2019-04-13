@@ -107,6 +107,7 @@ namespace JsonExamples
         [JsonPropertyAttribute("User")]
         public string FullName { get; set; }
         
+        [JsonIgnore]
         public string Text { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
