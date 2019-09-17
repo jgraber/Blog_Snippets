@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartialInterfaces", "PartialInterfaces\PartialInterfaces.csproj", "{14976372-8BEE-4E6F-A5DA-58255DAF03F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14976372-8BEE-4E6F-A5DA-58255DAF03F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14976372-8BEE-4E6F-A5DA-58255DAF03F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14976372-8BEE-4E6F-A5DA-58255DAF03F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14976372-8BEE-4E6F-A5DA-58255DAF03F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D024AE0B-D283-4367-B7ED-CE48B7D1E12F}
+	EndGlobalSection
+EndGlobal
