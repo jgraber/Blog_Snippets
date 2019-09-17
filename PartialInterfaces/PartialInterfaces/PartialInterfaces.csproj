@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPersistable.g.cs" />
+    <Compile Include="MemoryStore.g.cs" />
     <Compile Include="MemoryStore.cs" />
     <Compile Include="IPersistable.cs" />
     <Compile Include="Program.cs" />

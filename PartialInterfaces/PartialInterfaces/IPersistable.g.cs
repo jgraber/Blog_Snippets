@@ -8,6 +8,6 @@ namespace PartialInterfaces
 {
     partial interface IPersistable
     {
-        void Save(object o);
+        void Load(int i);
     }
 }

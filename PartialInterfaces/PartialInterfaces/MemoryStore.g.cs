@@ -8,9 +8,9 @@ namespace PartialInterfaces
 {
     public partial class MemoryStore : IPersistable
     {
-        public void Save(object o)
+        public void Load(int i)
         {
-            Console.WriteLine($"Save was called for {o}");
+            Console.WriteLine($"Load was called for {i}");
         }
     }
 }
