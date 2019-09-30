@@ -18,7 +18,7 @@ namespace Logic.Tests
         public void Test1()
         {
             var testee = new ReportGenerator();
-            //testee.InternalLogic();
+            testee.InternalLogic();
         }
     }
 }
