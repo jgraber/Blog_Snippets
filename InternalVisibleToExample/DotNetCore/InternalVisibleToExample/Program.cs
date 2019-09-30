@@ -9,6 +9,8 @@ namespace InternalVisibleToExample
         {
             var report = new ReportGenerator();
             report.GenerateReport();
+
+            Console.WriteLine("Hello World");
         }
     }
 }
