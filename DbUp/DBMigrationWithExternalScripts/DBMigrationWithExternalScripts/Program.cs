@@ -17,6 +17,8 @@ namespace DBMigrationWithExternalScripts
                 DeployChanges.To
                     .SqlDatabase(connectionString)
                     .WithScriptsFromFileSystem(@"../../../../Scripts/")
+                    //.WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+                    .WithTransactionPerScript()
                     .LogToConsole()
                     .Build();
 
