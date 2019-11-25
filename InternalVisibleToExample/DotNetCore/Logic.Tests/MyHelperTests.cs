@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Logic.Tests
 {
-    public class ReportGeneratorTests
+    public class MyHelperTests
     {
         [SetUp]
         public void Setup()
@@ -12,8 +12,8 @@ namespace Logic.Tests
         [Test]
         public void Test1()
         {
-            var testee = new ReportGenerator();
-            testee.InternalLogic();
+            var testee = new MyHelper();
+            testee.InternalMethod();
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Logic;
+﻿using Logic;
 
 namespace InternalVisibleToExample
 {
@@ -11,8 +6,8 @@ namespace InternalVisibleToExample
     {
         static void Main(string[] args)
         {
-            var report = new ReportGenerator();
-            report.GenerateReport();
+            var report = new MyHelper();
+            report.PublicMethod();
         }
     }
 }

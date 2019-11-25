@@ -7,8 +7,8 @@ namespace InternalVisibleToExample
     {
         static void Main(string[] args)
         {
-            var report = new ReportGenerator();
-            report.GenerateReport();
+            var report = new MyHelper();
+            report.PublicMethod();
 
             Console.WriteLine("Hello World");
         }
