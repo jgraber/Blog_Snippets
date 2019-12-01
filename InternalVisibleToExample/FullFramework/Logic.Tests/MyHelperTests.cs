@@ -10,7 +10,7 @@ namespace Logic.Tests
         }
 
         [Test]
-        public void Test1()
+        public void InternalMethodCanBeUsed()
         {
             var testee = new MyHelper();
             testee.InternalMethod();

@@ -6,8 +6,8 @@ namespace InternalVisibleToExample
     {
         static void Main(string[] args)
         {
-            var report = new MyHelper();
-            report.PublicMethod();
+            var helper = new MyHelper();
+            helper.PublicMethod();
         }
     }
 }
