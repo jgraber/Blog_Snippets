@@ -11,6 +11,11 @@ namespace CatchAllRule.Controllers
         // GET: Everything
         public ActionResult Index()
         {
+            // use your logger to track outdated links:
+            System.Diagnostics.Debug.WriteLine(
+                $"Update link on page '{Request.UrlReferrer}' for '{Request.Url}'"
+                );
+
             return View();
         }
     }
