@@ -1,5 +1,5 @@
 # Blog Snippets
-Code examples and snippets for blog posts
+Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://improveandrepeat.com/)
 
 * [DbUp](./DbUp/DBMigration)
 * [DeadCode](./DeadCode)
