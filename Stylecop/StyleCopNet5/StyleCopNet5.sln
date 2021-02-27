@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5", "StyleCopNet5.csproj", "{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {229B9360-2A53-4DB0-98C9-DE834EB7D884}
+	EndGlobalSection
+EndGlobal
