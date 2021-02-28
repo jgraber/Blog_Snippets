@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5", "StyleCopNet5.csproj", "{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Tests", "..\StyleCopNet5.Domain.Tests\StyleCopNet5.Domain.Tests.csproj", "{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
