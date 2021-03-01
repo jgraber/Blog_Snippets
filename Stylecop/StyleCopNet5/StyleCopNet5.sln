@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Core", "..\StyleCopNet5.Domain.Core\StyleCopNet5.Domain.Core.csproj", "{575BD2E5-2739-4975-BF81-C048A128207C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Standard", "..\StyleCopNet5.Domain.Standard\StyleCopNet5.Domain.Standard.csproj", "{4EDACF37-F332-47C6-BB8E-583905D5E0C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,18 @@ Global
 		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{575BD2E5-2739-4975-BF81-C048A128207C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{575BD2E5-2739-4975-BF81-C048A128207C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{575BD2E5-2739-4975-BF81-C048A128207C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{575BD2E5-2739-4975-BF81-C048A128207C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDACF37-F332-47C6-BB8E-583905D5E0C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDACF37-F332-47C6-BB8E-583905D5E0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDACF37-F332-47C6-BB8E-583905D5E0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDACF37-F332-47C6-BB8E-583905D5E0C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
