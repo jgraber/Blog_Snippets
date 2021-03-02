@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5", "StyleCopNet5.csproj", "{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5", ".\StyleCopNet5\StyleCopNet5.csproj", "{52AE4E5D-A7EE-46B0-B141-9FA46A829C2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Tests", "..\StyleCopNet5.Domain.Tests\StyleCopNet5.Domain.Tests.csproj", "{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Tests", ".\StyleCopNet5.Domain.Tests\StyleCopNet5.Domain.Tests.csproj", "{3D98B439-F451-4D7F-B2DA-654D9D73CDD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Core", "..\StyleCopNet5.Domain.Core\StyleCopNet5.Domain.Core.csproj", "{575BD2E5-2739-4975-BF81-C048A128207C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Core", ".\StyleCopNet5.Domain.Core\StyleCopNet5.Domain.Core.csproj", "{575BD2E5-2739-4975-BF81-C048A128207C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Standard", "..\StyleCopNet5.Domain.Standard\StyleCopNet5.Domain.Standard.csproj", "{4EDACF37-F332-47C6-BB8E-583905D5E0C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopNet5.Domain.Standard", ".\StyleCopNet5.Domain.Standard\StyleCopNet5.Domain.Standard.csproj", "{4EDACF37-F332-47C6-BB8E-583905D5E0C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
