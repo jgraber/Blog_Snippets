@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DemoProject\modulA\Class1.cs" />
+    <Compile Remove="DemoProject\modulB\Class2.cs" />
+    <Compile Remove="DemoProject\modulB\Class3.g.cs" />
+    <Compile Remove="DemoProject\modulC\Class4.g.cs" />
+    <Compile Remove="DemoProject\modulC\Class5.g.cs" />
+    <Compile Remove="DemoProject\modulD\subModulD1\Class6.cs" />
+    <Compile Remove="DemoProject\modulD\subModulD2\Class7.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="DemoProject\modulA\Class1.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoProject\modulB\Class2.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoProject\modulB\Class3.g.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoProject\modulC\Class4.g.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoProject\modulC\Class5.g.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoProject\modulD\subModulD1\Class6.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DemoProject\modulD\subModulD2\Class7.g.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+</Project>
