@@ -14,7 +14,7 @@ namespace CodeGenerationPercentage.Tests
         }
 
         [Test]
-        public void Test1()
+        public void Spike_OverallPercentage()
         {
             var projectRoot = TestContext.CurrentContext.TestDirectory + @"\DemoProject";
             var fileExtension = "*.cs";
