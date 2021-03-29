@@ -44,32 +44,26 @@ namespace CodeGenerationPercentage.Tests
 
         private double CalculatePercentage(List<CodeFile> codeFiles)
         {
-            long totalLines = 0;
-            long generatedLines = 0;
-            long handWrittenLines = 0;
-            
-            long totalFiles = 0;
-            long totalGeneratedFiles = 0;
-            long totalhandWrittenFiles = 0;
+            var stats = new OverallStats();
 
             foreach (var codeFile in codeFiles)
             {
-                totalLines += codeFile.NumberOfLines;
-                totalFiles++;
+                stats.totalLines += codeFile.NumberOfLines;
+                stats.totalFiles++;
 
                 if (codeFile.Generated)
                 {
-                    generatedLines += codeFile.NumberOfLines;
-                    totalGeneratedFiles++;
+                    stats.generatedLines += codeFile.NumberOfLines;
+                    stats.totalGeneratedFiles++;
                 }
                 else
                 {
-                    handWrittenLines += codeFile.NumberOfLines;
-                    totalhandWrittenFiles++;
+                    stats.handWrittenLines += codeFile.NumberOfLines;
+                    stats.totalhandWrittenFiles++;
                 }
             }
 
-            return 100.0 / totalLines * generatedLines;
+            return 100.0 / stats.totalLines * stats.generatedLines;
         }
 
         [Test]
@@ -83,6 +77,21 @@ namespace CodeGenerationPercentage.Tests
 
             Assert.AreEqual("modulB", relativePath);
         }
+    }
+
+    public class OverallStats
+    {
+        public long totalLines { get; set; }
+
+        public long generatedLines { get; set; }
+
+        public long handWrittenLines { get; set; }
+
+        public long totalFiles { get; set; }
+
+        public long totalGeneratedFiles { get; set; }
+
+        public long totalhandWrittenFiles { get; set; }
     }
 
     public class CodeFile
