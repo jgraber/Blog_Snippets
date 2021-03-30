@@ -63,7 +63,7 @@ namespace CodeGenerationPercentage.Tests
                 }
             }
 
-            return 100.0 / stats.totalLines * stats.generatedLines;
+            return stats.PercentageGeneratedLines(stats);
         }
 
         [Test]
@@ -92,6 +92,11 @@ namespace CodeGenerationPercentage.Tests
         public long totalGeneratedFiles { get; set; }
 
         public long totalhandWrittenFiles { get; set; }
+
+        public double PercentageGeneratedLines(OverallStats stats)
+        {
+            return 100.0 / stats.totalLines * stats.generatedLines;
+        }
     }
 
     public class CodeFile
