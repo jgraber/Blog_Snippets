@@ -39,8 +39,8 @@ namespace CodeGenerationPercentage.Tests
             var stats = CalculatePercentage(codeFiles);
 
             Assert.AreEqual(7, codeFiles.Count);
-            Assert.AreEqual(57.15, stats.PercentageGeneratedLines(stats), 0.01); // 7*12=84 4*12=48 100/84*48 = 
-            Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(stats), 0.01);
+            Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*12=84 4*12=48 100/84*48 = 
+            Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(), 0.01);
         }
 
         private OverallStats CalculatePercentage(List<CodeFile> codeFiles)
@@ -94,14 +94,14 @@ namespace CodeGenerationPercentage.Tests
 
         public long totalhandWrittenFiles { get; set; }
 
-        public double PercentageGeneratedLines(OverallStats stats)
+        public double PercentageGeneratedLines()
         {
-            return 100.0 / stats.totalLines * stats.generatedLines;
+            return 100.0 / this.totalLines * this.generatedLines;
         }
 
-        public double PercentageGeneratedFiles(OverallStats stats)
+        public double PercentageGeneratedFiles()
         {
-            return 100.0 / stats.totalFiles * stats.totalGeneratedFiles;
+            return 100.0 / this.totalFiles * this.totalGeneratedFiles;
         }
     }
 
