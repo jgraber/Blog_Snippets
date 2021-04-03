@@ -15,6 +15,8 @@ namespace InheritXMLDocumentation.Tests
         {
             IUserRepository userRepository = new InMemoryUserRepository();
             userRepository.Add(new User());
+            userRepository.Update(new User());
+            userRepository.FindById(1);
         }
 
         [Test]
@@ -22,6 +24,8 @@ namespace InheritXMLDocumentation.Tests
         {
             var userRepository = new InMemoryUserRepository();
             userRepository.Add(new User());
+            userRepository.Update(new User());
+            userRepository.FindById(1);
         }
     }
 
@@ -37,6 +41,8 @@ namespace InheritXMLDocumentation.Tests
         {
             IUserRepository userRepository = new DbUserRepository();
             userRepository.Add(new User());
+            userRepository.Update(new User());
+            userRepository.FindById(1);
         }
 
         [Test]
@@ -44,6 +50,8 @@ namespace InheritXMLDocumentation.Tests
         {
             var userRepository = new DbUserRepository();
             userRepository.Add(new User());
+            userRepository.Update(new User());
+            userRepository.FindById(1);
         }
     }
 }
