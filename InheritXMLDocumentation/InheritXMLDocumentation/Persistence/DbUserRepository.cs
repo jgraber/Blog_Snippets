@@ -8,30 +8,19 @@ namespace InheritXMLDocumentation.Persistence
     /// </summary>
     public class DbUserRepository : IUserRepository
     {
-        /// <summary>
-        /// Add a user to the repository
-        /// </summary>
-        /// <param name="user">the user you want to add</param>
-        /// <returns>the generated Id</returns>
+        /// <inheritdoc cref="IUserRepository.Add"/>
         public int Add(User user)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Returns the user for the given Id
-        /// </summary>
-        /// <param name="id">the Id you want</param>
-        /// <returns>the matching user</returns>
+        /// <inheritdoc cref="IUserRepository.FindById"/>
         public User FindById(int id)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Updates a user and sets its values to the ones provided in the object
-        /// </summary>
-        /// <param name="user">the user object with the new values</param>
+        /// <inheritdoc cref="IUserRepository.Update"/>
         public void Update(User user)
         {
             throw new NotImplementedException();
