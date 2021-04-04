@@ -1,7 +1,8 @@
 ﻿namespace InheritXMLDocumentation.Persistence
 {
     /// <summary>
-    /// The contract a user repository implementation must follow
+    /// The contract a user repository implementation
+    /// must follow
     /// </summary>
     public interface IUserRepository
     {
@@ -20,9 +21,10 @@
         User FindById(int id);
 
         /// <summary>
-        /// Updates a user and sets its values to the ones provided in the object
+        /// Updates a user and sets its values to the ones
+        /// provided in the object
         /// </summary>
-        /// <param name="user">the user object with the new values</param>
+        /// <param name="user">object with the new values</param>
         void Update(User user);
     }
 }

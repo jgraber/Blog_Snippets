@@ -3,8 +3,8 @@
 namespace InheritXMLDocumentation.Persistence
 {
     /// <summary>
-    /// This repository implementation lets you store your users
-    /// in a SQL Server database.
+    /// This repository implementation lets you store
+    /// your users in a SQL Server database.
     /// </summary>
     public class DbUserRepository : IUserRepository
     {
