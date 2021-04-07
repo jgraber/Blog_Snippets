@@ -7,6 +7,8 @@ using MailKit.Net.Smtp;
 
 using MimeKit;
 
+using netDumbster.smtp;
+
 using NUnit.Framework;
 
 namespace MailKitDemo
@@ -140,6 +142,45 @@ I just wanted to let you know that Monica and I were going to go play some paint
             Assert.AreEqual(0, emails.Count()); // Does not give emails back :-(
         }
 
+        /// <summary>
+        /// Install-Package netDumbster -Version 2.0.0.8
+        /// </summary>
+        [Test]
+        public void SendEMailToNetDumbster()
+        {
+            var port = 9009;
+            var server = SimpleSmtpServer.Start(port);
 
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
+            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
+            message.Subject = "How you doin'?";
+
+            message.Body = new TextPart("plain")
+                               {
+                                   Text = @"Hey Chandler,
+
+        I just wanted to let you know that Monica and I were going to go play some paintball, you in?
+
+        -- Joey"
+                               };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("localhost", port, false);
+
+                // Note: only needed if the SMTP server requires authentication
+                //client.Authenticate("joey", "password");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
+
+            var emails = server.ReceivedEmail;
+            Assert.AreEqual(1, emails.Count()); // works!
+
+            var myMail = emails.First();
+            Assert.AreEqual("How you doin'?", myMail.Subject);
+        }
     }
 }
