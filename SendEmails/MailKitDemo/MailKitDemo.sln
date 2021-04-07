@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailKitDemo", "MailKitDemo.csproj", "{F34848B9-8C9D-4F6D-8B9D-A4419E3989C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailKitDemo", "MailKitDemo.csproj", "{F34848B9-8C9D-4F6D-8B9D-A4419E3989C9}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SmtpInMemory", "..\SmtpInMemory\SmtpInMemory.fsproj", "{BCD00716-62CA-40DC-98B8-1A3061A4F453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F34848B9-8C9D-4F6D-8B9D-A4419E3989C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F34848B9-8C9D-4F6D-8B9D-A4419E3989C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F34848B9-8C9D-4F6D-8B9D-A4419E3989C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD00716-62CA-40DC-98B8-1A3061A4F453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD00716-62CA-40DC-98B8-1A3061A4F453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD00716-62CA-40DC-98B8-1A3061A4F453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD00716-62CA-40DC-98B8-1A3061A4F453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

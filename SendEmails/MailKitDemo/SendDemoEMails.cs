@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 using MailKit.Net.Smtp;
@@ -100,42 +101,44 @@ I just wanted to let you know that Monica and I were going to go play some paint
             }
         }
 
-////        /// <summary>
-////        /// Does not work with .Net 5, only works with .Net 4.8
-////        /// Install-Package SmtpInMemory -Version 2.1.0
-////        /// </summary>
-////        [Test]
-////        public void SendEMailToSmptInMemory()
-////        {
-////            var port = 9000;
-////            var server = new SMTP.Server(port); //port is optional - will default to 25
+        /// <summary>
+        /// Does not work with .Net 5, only works with .Net 4.8
+        /// Install-Package SmtpInMemory -Version 2.1.0
+        /// </summary>
+        [Test]
+        public void SendEMailToSmptInMemory()
+        {
+            var port = 9009;
+            var server = new SMTP.Server(port); //port is optional - will default to 25
 
-////            var message = new MimeMessage();
-////            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
-////            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
-////            message.Subject = "How you doin'?";
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
+            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
+            message.Subject = "How you doin'?";
 
-////            message.Body = new TextPart("plain")
-////                               {
-////                                   Text = @"Hey Chandler,
+            message.Body = new TextPart("plain")
+            {
+                Text = @"Hey Chandler,
 
-////I just wanted to let you know that Monica and I were going to go play some paintball, you in?
+        I just wanted to let you know that Monica and I were going to go play some paintball, you in?
 
-////-- Joey"
+        -- Joey"
+            };
 
-////            using (var client = new SmtpClient())
-////            {
-////                client.Connect("localhost", 9000, false);
+                    using (var client = new SmtpClient())
+            {
+                client.Connect("localhost", port, false);
 
-////                // Note: only needed if the SMTP server requires authentication
-////                //client.Authenticate("joey", "password");
+                // Note: only needed if the SMTP server requires authentication
+                //client.Authenticate("joey", "password");
 
-////                client.Send(message);
-////                client.Disconnect(true);
-////            }
+                client.Send(message);
+                client.Disconnect(true);
+            }
 
-////            var emails = server.GetEmails();
-////        }
+            var emails = server.GetEmails();
+            Assert.AreEqual(0, emails.Count()); // Does not give emails back :-(
+        }
 
 
     }
