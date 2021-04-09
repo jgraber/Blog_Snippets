@@ -28,19 +28,7 @@ namespace MailKitDemo
         [Test]
         public void SendEMailToSmtp4dev()
         {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
-            message.Subject = "How you doin'?";
-
-            message.Body = new TextPart("plain")
-                               {
-                                   Text = @"Hey Chandler,
-
-I just wanted to let you know that Monica and I were going to go play some paintball, you in?
-
--- Joey"
-                               };
+            var message = CreateMailMessage();
 
             using (var client = new SmtpClient())
             {
@@ -65,19 +53,7 @@ I just wanted to let you know that Monica and I were going to go play some paint
             var id = Guid.NewGuid();
             var subject = $"Test #{id.ToString().Substring(0,6)}";
 
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
-            message.Subject = subject;
-
-            message.Body = new TextPart("plain")
-                               {
-                                   Text = @"Hey Chandler,
-
-I just wanted to let you know that Monica and I were going to go play some paintball, you in?
-
--- Joey"
-                               };
+            var message = CreateMailMessage();
 
             using (var client = new SmtpClient())
             {
@@ -113,21 +89,9 @@ I just wanted to let you know that Monica and I were going to go play some paint
             var port = 9009;
             var server = new SMTP.Server(port); //port is optional - will default to 25
 
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
-            message.Subject = "How you doin'?";
+            var message = CreateMailMessage();
 
-            message.Body = new TextPart("plain")
-            {
-                Text = @"Hey Chandler,
-
-        I just wanted to let you know that Monica and I were going to go play some paintball, you in?
-
-        -- Joey"
-            };
-
-                    using (var client = new SmtpClient())
+            using (var client = new SmtpClient())
             {
                 client.Connect("localhost", port, false);
 
@@ -151,19 +115,7 @@ I just wanted to let you know that Monica and I were going to go play some paint
             var port = 9009;
             var server = SimpleSmtpServer.Start(port);
 
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
-            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
-            message.Subject = "How you doin'?";
-
-            message.Body = new TextPart("plain")
-                               {
-                                   Text = @"Hey Chandler,
-
-        I just wanted to let you know that Monica and I were going to go play some paintball, you in?
-
-        -- Joey"
-                               };
+            var message = CreateMailMessage();
 
             using (var client = new SmtpClient())
             {
@@ -181,6 +133,24 @@ I just wanted to let you know that Monica and I were going to go play some paint
 
             var myMail = emails.First();
             Assert.AreEqual("How you doin'?", myMail.Subject);
+        }
+
+        private MimeMessage CreateMailMessage()
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Joey Tribbiani", "joey@friends.com"));
+            message.To.Add(new MailboxAddress("Mrs. Chanandler Bong", "chandler@friends.com"));
+            message.Subject = "How you doin'?";
+
+            message.Body = new TextPart("plain")
+                               {
+                                   Text = @"Hey Chandler,
+
+        I just wanted to let you know that Monica and I were going to go play some paintball, you in?
+
+        -- Joey"
+                               };
+            return message;
         }
     }
 }
