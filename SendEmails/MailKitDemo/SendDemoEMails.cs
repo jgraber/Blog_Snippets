@@ -108,6 +108,7 @@ namespace MailKitDemo
 
         /// <summary>
         /// Install-Package netDumbster -Version 2.0.0.8
+        /// use it directly in your test or test setup method
         /// </summary>
         [Test]
         public void SendEMailToNetDumbster()
