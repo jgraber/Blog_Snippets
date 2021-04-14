@@ -15,11 +15,6 @@ namespace MailKitDemo
 {
     public class SendDemoEMails
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         /// <summary>
         /// Run demo for mailing and see what shows up in smtp4dev (https://github.com/rnwood/smtp4dev)
         /// * Install smtp4dev: dotnet tool install -g Rnwood.Smtp4dev
