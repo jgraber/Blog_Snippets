@@ -20,6 +20,16 @@ namespace CodeGenerationPercentage.Tests
             var fileExtension = "*.cs";
             var generatedFilesExtension = ".g.cs";
 
+            var codeFiles = GeneratedFilesCalculator(projectRoot, fileExtension, generatedFilesExtension, out var stats);
+
+            Assert.AreEqual(7, codeFiles.Count);
+            Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*12=84 4*12=48 100/84*48 = 
+            Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(), 0.01);
+        }
+
+        private List<CodeFile> GeneratedFilesCalculator(string projectRoot, string fileExtension, string generatedFilesExtension,
+            out OverallStats stats)
+        {
             var codeFiles = new List<CodeFile>();
 
             string[] entries = Directory.GetFileSystemEntries(projectRoot, fileExtension, SearchOption.AllDirectories);
@@ -36,11 +46,9 @@ namespace CodeGenerationPercentage.Tests
                 codeFiles.Add(codeFile);
             }
 
-            var stats = CalculatePercentage(codeFiles);
 
-            Assert.AreEqual(7, codeFiles.Count);
-            Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*12=84 4*12=48 100/84*48 = 
-            Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(), 0.01);
+            stats = CalculatePercentage(codeFiles);
+            return codeFiles;
         }
 
         private OverallStats CalculatePercentage(List<CodeFile> codeFiles)
