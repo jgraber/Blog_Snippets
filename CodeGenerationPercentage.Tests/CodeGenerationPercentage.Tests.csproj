@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="DemoProject\DemoProject.csproj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="DemoProject\modulA\Class1.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
