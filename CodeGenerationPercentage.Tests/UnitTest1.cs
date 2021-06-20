@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
+using CodeGenerationPercentage.Domain;
 using NUnit.Framework;
 
 namespace CodeGenerationPercentage.Tests

@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace CodeGenerationPercentage.Tests
+namespace CodeGenerationPercentage.Domain
 {
     public class CodeFile
     {
