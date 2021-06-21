@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CodeGenerationPercentage.Domain;
 
 namespace CodeGenerationPercentage
@@ -12,6 +13,7 @@ namespace CodeGenerationPercentage
 
             if (args.Length != 2)
             {
+                Console.WriteLine(args.Length);
                 throw new Exception("Pfad und Namen nötig!");
             }
 
@@ -20,7 +22,9 @@ namespace CodeGenerationPercentage
             Console.WriteLine($"Ordner: {ordner}");
             Console.WriteLine($"Name: {name}");
 
-            var projects = new List<Project>();// FindProjects(projectRoot);
+            var walker = new FileSystemWalker();
+
+            var projects = walker.FindProjects(ordner);
 
             var fileExtension = "*.cs";
             var generatedFilesExtension = ".g.cs";
@@ -37,10 +41,11 @@ namespace CodeGenerationPercentage
             }
 
             Console.WriteLine();
+            var lines = new List<string>();
 
             foreach (var project in projects)
             {
-                //var codeFiles = GeneratedFilesCalculator(project.Path, project.Name, fileExtension, generatedFilesExtension, out var stats);
+                var codeFiles = walker.GeneratedFilesCalculator(project.Path, project.Name, fileExtension, generatedFilesExtension, out var stats);
                 //Assert.AreEqual(7, codeFiles.Count);
                 //Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*12=84 4*12=48 100/84*48 = 
                 //Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(), 0.01);
@@ -48,8 +53,14 @@ namespace CodeGenerationPercentage
                 //Assert.AreEqual(36, stats.handWrittenLines);
                 //Assert.AreEqual(84, stats.totalLines);
 
-                //Console.WriteLine($"{project.Name} {stats.totalLines} {stats.handWrittenLines} {stats.generatedLines} {String.Format("{0:0.00}", stats.PercentageGeneratedLines())}");
+                var line = $"{project.Name};{name};{stats.totalLines};";
+                lines.Add(line);
+                Console.WriteLine(line);
             }
+
+            var datei = $@"c:\Temp\{name}.csv";
+            File.WriteAllLinesAsync(datei, lines);
+            Console.WriteLine($"Datei geschrieben: {datei}");
         }
     }
 }

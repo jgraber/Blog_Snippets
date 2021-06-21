@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace CodeGenerationPercentage.Domain
 {
@@ -40,19 +41,25 @@ namespace CodeGenerationPercentage.Domain
         {
             var codeFiles = new List<CodeFile>();
 
-            string[] entries = Directory.GetFileSystemEntries(projectRoot, fileExtension, SearchOption.AllDirectories);
+            var allowedExtensions = new[] { ".cs", ".g.cs", ".sql", ".cshtml", ".feature", ".resx" };
+
+            string[] entries = Directory.GetFileSystemEntries(projectRoot, "*.*", SearchOption.AllDirectories);
             foreach (var entry in entries)
             {
                 var fileInfo = new FileInfo(entry);
 
-                var codeFile = new CodeFile();
-                codeFile.FileName = fileInfo.Name;
-                codeFile.NumberOfLines = File.ReadAllLines(entry).Length;
-                codeFile.Namespace = Path.GetRelativePath(projectRoot, fileInfo.DirectoryName);
-                codeFile.Generated = entry.EndsWith(generatedFilesExtension);
-                codeFile.Project = projectName;
-                //Console.WriteLine(codeFile);
-                codeFiles.Add(codeFile);
+                if (allowedExtensions.Any(x => fileInfo.Extension.ToLower() == x))
+                {
+
+                    var codeFile = new CodeFile();
+                    codeFile.FileName = fileInfo.Name;
+                    codeFile.NumberOfLines = File.ReadAllLines(entry).Length;
+                    codeFile.Namespace = Path.GetRelativePath(projectRoot, fileInfo.DirectoryName);
+                    codeFile.Generated = entry.EndsWith(generatedFilesExtension);
+                    codeFile.Project = projectName;
+                    //Console.WriteLine(codeFile);
+                    codeFiles.Add(codeFile);
+                }
             }
 
 

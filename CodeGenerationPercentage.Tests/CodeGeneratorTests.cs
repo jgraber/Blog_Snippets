@@ -68,14 +68,14 @@ namespace CodeGenerationPercentage.Tests
             {
                 Console.WriteLine($"{project.Name}");
             }
-            Console.WriteLine();
-
+            Console.WriteLine("\n\n\n");
+            Console.WriteLine("State,State Code,Region,Division");
             foreach (var project in projects)
             {
                 Console.WriteLine($"{project.Name},X,{project.Bereich()},{project.Typ()} ");
             }
 
-            Console.WriteLine();
+            Console.WriteLine("\n\n\n");
 
             foreach (var project in projects)
             {
