@@ -17,7 +17,7 @@ namespace WriteLessTestCode
 
             Assert.AreEqual(expectedResult, result);
         }
-
+        
         private int Add(int a, int b)
         {
             return a + b;
