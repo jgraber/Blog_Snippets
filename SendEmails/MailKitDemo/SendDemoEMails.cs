@@ -28,10 +28,6 @@ namespace MailKitDemo
             using (var client = new SmtpClient())
             {
                 client.Connect("localhost", 25, false);
-
-                // Note: only needed if the SMTP server requires authentication
-                //client.Authenticate("joey", "password");
-
                 client.Send(message);
                 client.Disconnect(true);
             }
@@ -53,10 +49,6 @@ namespace MailKitDemo
             using (var client = new SmtpClient())
             {
                 client.Connect("localhost", 25, false);
-
-                // Note: only needed if the SMTP server requires authentication
-                //client.Authenticate("joey", "password");
-
                 client.Send(message);
                 client.Disconnect(true);
             }
@@ -89,10 +81,6 @@ namespace MailKitDemo
             using (var client = new SmtpClient())
             {
                 client.Connect("localhost", port, false);
-
-                // Note: only needed if the SMTP server requires authentication
-                //client.Authenticate("joey", "password");
-
                 client.Send(message);
                 client.Disconnect(true);
             }
@@ -116,10 +104,6 @@ namespace MailKitDemo
             using (var client = new SmtpClient())
             {
                 client.Connect("localhost", port, false);
-
-                // Note: only needed if the SMTP server requires authentication
-                //client.Authenticate("joey", "password");
-
                 client.Send(message);
                 client.Disconnect(true);
             }
