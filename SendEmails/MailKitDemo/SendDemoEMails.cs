@@ -27,7 +27,7 @@ namespace MailKitDemo
 
             using (var client = new SmtpClient())
             {
-                client.Connect("localhost", 25, false);
+                client.Connect("localhost", 1025, false);
                 client.Send(message);
                 client.Disconnect(true);
             }
@@ -123,13 +123,13 @@ namespace MailKitDemo
             message.Subject = "How you doin'?";
 
             message.Body = new TextPart("plain")
-                               {
-                                   Text = @"Hey Chandler,
+                                {
+                                    Text = @"Hey Chandler,
 
         I just wanted to let you know that Monica and I were going to go play some paintball, you in?
 
         -- Joey"
-                               };
+                                };
             return message;
         }
     }
