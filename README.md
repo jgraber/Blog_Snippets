@@ -11,3 +11,10 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [DeadCode](./DeadCode)
 * [ExifInCSharp](./ExifInCSharp)
 * [HumanizrDemo](./HumanizrDemo)
+* [SendEmails](./SendEmails)
+  * [Saving Emails to Disk in C#](https://improveandrepeat.com/2017/08/saving-emails-to-disk-in-c/)
+  * [Embedding your Company Logo in Emails sent with C#](https://improveandrepeat.com/2017/08/embedding-your-company-logo-in-emails-sent-with-c/)
+  * [Sending Emails in .Net 5 With MailKit](https://improveandrepeat.com/2021/09/sending-emails-in-net-5-with-mailkit/)
+  
+
+
