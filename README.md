@@ -4,6 +4,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [BCrypt](./BCrypt)
   * [Use BCrypt to Save Password (Hashes)](https://improveandrepeat.com/2018/10/use-bcrypt-to-save-password-hashes/)
   * [How to Find out If Your User’s Password Is in a Data Breach](https://improveandrepeat.com/2018/10/how-to-find-out-if-your-users-password-is-in-a-data-breach/)
+* [Combine PDFs](./CombinePDF)
+  * [Combining PDF Files Swiftly with PDFsharp](https://improveandrepeat.com/2018/05/combining-pdf-files-swiftly-with-pdfsharp/)
 * [DbUp](./DbUp/DBMigration)
   *  [Simple Database Migrations with DbUp](https://improveandrepeat.com/2015/12/simple-database-migrations-with-dbup/)  
   *  [Running DbUp Inside a Transaction](https://improveandrepeat.com/2018/01/running-dbup-inside-a-transaction/)
