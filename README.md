@@ -15,6 +15,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   *  [How to Use DbUp Without Embedded Scripts](https://improveandrepeat.com/2019/11/how-to-use-dbup-without-embedded-scripts/)
 * [DeadCode](./DeadCode)
 * [ExifInCSharp](./ExifInCSharp)
+* [FakeItEasy](./FakeItEasy)
+  * [FakeItEasy Cheat Sheet for Moq Users](https://improveandrepeat.com/2018/02/fakeiteasy-cheat-sheet-for-moq-users/)
 * [HumanizrDemo](./HumanizrDemo)
 * [SendEmails](./SendEmails)
   * [Saving Emails to Disk in C#](https://improveandrepeat.com/2017/08/saving-emails-to-disk-in-c/)
