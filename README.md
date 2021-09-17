@@ -18,6 +18,7 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [FakeItEasy](./FakeItEasy)
   * [FakeItEasy Cheat Sheet for Moq Users](https://improveandrepeat.com/2018/02/fakeiteasy-cheat-sheet-for-moq-users/)
 * [HumanizrDemo](./HumanizrDemo)
+  * [Make .Net Data Types Human Readable with Humanizer](https://improveandrepeat.com/2018/04/make-net-data-types-human-readable-with-humanizer/)
 * [SendEmails](./SendEmails)
   * [Saving Emails to Disk in C#](https://improveandrepeat.com/2017/08/saving-emails-to-disk-in-c/)
   * [Embedding your Company Logo in Emails sent with C#](https://improveandrepeat.com/2017/08/embedding-your-company-logo-in-emails-sent-with-c/)
