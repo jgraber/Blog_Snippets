@@ -17,6 +17,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [ExifInCSharp](./ExifInCSharp)
 * [FakeItEasy](./FakeItEasy)
   * [FakeItEasy Cheat Sheet for Moq Users](https://improveandrepeat.com/2018/02/fakeiteasy-cheat-sheet-for-moq-users/)
+* [Hangfire](./HangfireDemo)
+  * [A Quick Overview on Hangfire.io](https://improveandrepeat.com/2017/09/a-quick-overview-on-hangfire-io/)
 * [HumanizrDemo](./HumanizrDemo)
   * [Make .Net Data Types Human Readable with Humanizer](https://improveandrepeat.com/2018/04/make-net-data-types-human-readable-with-humanizer/)
 * [Inherit XML Documentation](./InheritXMLDocumentation)
