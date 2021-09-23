@@ -28,6 +28,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [NUnit](./NUnit)
   * [Parametrised Tests in NUnit](https://improveandrepeat.com/2021/07/parametrised-tests-in-nunit/)
   * [Reuse Your Parametrised Test Inputs With TestCaseSource in NUnit](https://improveandrepeat.com/2021/07/reuse-your-parametrised-test-inputs-with-testcasesource-in-nunit/)
+* [PasteSpecial](./PasteSpecial)
+  * [Paste XML as Class in Visual Studio 2017](https://improveandrepeat.com/2017/08/paste-xml-as-class-in-visual-studio-2017/)
 * [SendEmails](./SendEmails)
   * [Saving Emails to Disk in C#](https://improveandrepeat.com/2017/08/saving-emails-to-disk-in-c/)
   * [Embedding your Company Logo in Emails sent with C#](https://improveandrepeat.com/2017/08/embedding-your-company-logo-in-emails-sent-with-c/)
