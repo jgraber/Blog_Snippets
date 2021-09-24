@@ -25,6 +25,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [Inherit XML Documentation Comments in C#](https://improveandrepeat.com/2021/04/inherit-xml-documentation-comments-in-c/)
 * [InternalVisibleTo Example](./InternalVisibleToExample)
   * [How to Test Your Internal Classes in C#](https://improveandrepeat.com/2019/12/how-to-test-your-internal-classes-in-c/)
+* [JSON Examples](./JsonExamples)
+  * [How to Work with JSON in .Net](https://improveandrepeat.com/2019/04/how-to-work-with-json-in-net/)
 * [NUnit](./NUnit)
   * [Parametrised Tests in NUnit](https://improveandrepeat.com/2021/07/parametrised-tests-in-nunit/)
   * [Reuse Your Parametrised Test Inputs With TestCaseSource in NUnit](https://improveandrepeat.com/2021/07/reuse-your-parametrised-test-inputs-with-testcasesource-in-nunit/)
