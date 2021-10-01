@@ -36,6 +36,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [Debugging with OzCode: What List Element is this?](https://improveandrepeat.com/2017/10/debugging-with-ozcode-what-list-element-is-this/)
 * [PasteSpecial](./PasteSpecial)
   * [Paste XML as Class in Visual Studio 2017](https://improveandrepeat.com/2017/08/paste-xml-as-class-in-visual-studio-2017/)
+* [Random List](./RandomList)
+  * [A Simple Way to Shuffle Your Lists in C#](https://improveandrepeat.com/2018/08/a-simple-way-to-shuffle-your-lists-in-c/)
 * [SendEmails](./SendEmails)
   * [Saving Emails to Disk in C#](https://improveandrepeat.com/2017/08/saving-emails-to-disk-in-c/)
   * [Embedding your Company Logo in Emails sent with C#](https://improveandrepeat.com/2017/08/embedding-your-company-logo-in-emails-sent-with-c/)
