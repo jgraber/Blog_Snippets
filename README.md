@@ -4,6 +4,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [BCrypt](./BCrypt)
   * [Use BCrypt to Save Password (Hashes)](https://improveandrepeat.com/2018/10/use-bcrypt-to-save-password-hashes/)
   * [How to Find out If Your User’s Password Is in a Data Breach](https://improveandrepeat.com/2018/10/how-to-find-out-if-your-users-password-is-in-a-data-breach/)
+* [Build Views](./BuildViews)
+  * [Pre-Compile Your Views in ASP.Net MVC](https://improveandrepeat.com/2018/11/pre-compile-your-views-in-asp-net-mvc/)
 * [Combine PDFs](./CombinePDF)
   * [Combining PDF Files Swiftly with PDFsharp](https://improveandrepeat.com/2018/05/combining-pdf-files-swiftly-with-pdfsharp/)
 * [DbUp](./DbUp/DBMigration)
