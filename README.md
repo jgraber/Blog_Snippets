@@ -18,6 +18,7 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   *  [DbUp: Variable X Has No Value Defined](https://improveandrepeat.com/2018/03/dbup-variable-x-has-no-value-defined/)
   *  [How to Use DbUp Without Embedded Scripts](https://improveandrepeat.com/2019/11/how-to-use-dbup-without-embedded-scripts/)
 * [DeadCode](./DeadCode)
+  * [Let Death Code Die](https://improveandrepeat.com/2016/11/let-death-code-die/)
 * [ExifInCSharp](./ExifInCSharp)
 * [FakeItEasy](./FakeItEasy)
   * [FakeItEasy Cheat Sheet for Moq Users](https://improveandrepeat.com/2018/02/fakeiteasy-cheat-sheet-for-moq-users/)
