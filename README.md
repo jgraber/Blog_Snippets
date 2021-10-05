@@ -39,6 +39,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [Boost your Debugging Speed with OzCode](https://improveandrepeat.com/2016/12/boost-your-debugging-speed-with-ozcode/)
   * [Debugging with OzCode: Create Data for Regression Tests](https://improveandrepeat.com/2017/10/debugging-with-ozcode-create-data-for-regression-tests/)
   * [Debugging with OzCode: What List Element is this?](https://improveandrepeat.com/2017/10/debugging-with-ozcode-what-list-element-is-this/)
+* [PartialInterfaces](./PartialInterfaces)
+  * [Partial Interfaces in C# – They Exist and There Is a Use Case for Them](https://improveandrepeat.com/2019/09/partial-interfaces-in-c-they-exist-and-there-is-a-use-case-for-them/)
 * [PasteSpecial](./PasteSpecial)
   * [Paste XML as Class in Visual Studio 2017](https://improveandrepeat.com/2017/08/paste-xml-as-class-in-visual-studio-2017/)
 * [Random List](./RandomList)
