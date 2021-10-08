@@ -48,6 +48,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
 * [ReportUnit](./ReportUnit)
   * [Creating a Beautiful Overview of your Test Suite (using Report Unit)](https://improveandrepeat.com/2017/07/creating-a-beautiful-overview-of-your-test-suite-using-report-unit/)
   * [Extent .NET CLI as ReportUnit Replacement?](https://improveandrepeat.com/2021/02/extent-net-cli-as-reportunit-replacement/)
+* [Security Headers Example](./SecurityHeadersExample)
+  * [How to Improve the Security Headers for Your ASP.NET Application](https://improveandrepeat.com/2019/05/how-to-improve-the-security-headers-for-your-asp-net-application/)
 * [SendEmails](./SendEmails)
   * [Saving Emails to Disk in C#](https://improveandrepeat.com/2017/08/saving-emails-to-disk-in-c/)
   * [Embedding your Company Logo in Emails sent with C#](https://improveandrepeat.com/2017/08/embedding-your-company-logo-in-emails-sent-with-c/)
