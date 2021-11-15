@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:latest
+    volumes:
+        - ./container_db:/var/opt/mssql/data
+    environment:
+        ACCEPT_EULA: Y
+        SA_PASSWORD: P@ssword123
+    ports:
+        - 6000:1433
