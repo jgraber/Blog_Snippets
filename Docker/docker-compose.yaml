@@ -9,3 +9,12 @@ services:
         SA_PASSWORD: P@ssword123
     ports:
         - 6000:1433
+  api:
+    image:
+        mcr.microsoft.com/dotnet/sdk:6.0
+    volumes:
+        - ./MinApi:/workspace
+    working_dir: /workspace
+    command: sh -c 'while true; do sleep 30; done'
+    ports:
+        - 7001:7000
