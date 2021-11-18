@@ -1,8 +1,14 @@
 using Dapper;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 var config = app.Services.GetRequiredService<IConfiguration>();
 var connectionString = config.GetConnectionString("Adventure");
@@ -10,9 +16,13 @@ Console.WriteLine(connectionString);
 var sqlCon = new SqlConnection(connectionString);
 var emplyeeHandler = new EmployeeHandler(sqlCon);
 
+app.UseSwagger();
+
 app.MapGet("/", () => "Welcome!");
 
 app.MapGet("/employee/{id}", (int id) => emplyeeHandler.FindById(id));
+
+app.UseSwaggerUI();
 
 app.Run("http://+:7000");
 
