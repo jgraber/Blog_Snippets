@@ -18,3 +18,5 @@ services:
     command: sh -c 'while true; do sleep 30; done'
     ports:
         - 7001:7000
+    depends_on:
+      - db
