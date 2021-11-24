@@ -12,7 +12,6 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 var config = app.Services.GetRequiredService<IConfiguration>();
 var connectionString = config.GetConnectionString("Adventure");
-Console.WriteLine(connectionString);
 var sqlCon = new SqlConnection(connectionString);
 var emplyeeHandler = new EmployeeHandler(sqlCon);
 
