@@ -25,6 +25,7 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [Access Your Dev Container With Visual Studio Code](https://improveandrepeat.com/2021/11/access-your-dev-container-with-visual-studio-code/)
   * [How to Create a Dev Container for PostgreSQL](https://improveandrepeat.com/2021/11/dev-container-for-postgresql/)
   * [How to Create a Dev Container for Rails Apps](https://improveandrepeat.com/2021/11/dev-container-for-rails-apps/)
+  * [How to Create a Dev Container for SQL Server 2019](https://improveandrepeat.com/2021/11/dev-container-for-sql-server-2019/)
 * [ExifInCSharp](./ExifInCSharp)
 * [FakeItEasy](./FakeItEasy)
   * [FakeItEasy Cheat Sheet for Moq Users](https://improveandrepeat.com/2018/02/fakeiteasy-cheat-sheet-for-moq-users/)
