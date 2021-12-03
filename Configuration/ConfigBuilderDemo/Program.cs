@@ -9,6 +9,7 @@ namespace ConfigBuilderDemo
         static void Main(string[] args)
         {
             var builder = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings_1.json", true, true)
                 .AddJsonFile("appsettings_2.json", true, true);
