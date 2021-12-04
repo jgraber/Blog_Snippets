@@ -1,0 +1,24 @@
+version: "3.2"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./container_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+  app:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+    working_dir: /workspace
+    command: sh -c 'while true; do sleep 30; done'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
