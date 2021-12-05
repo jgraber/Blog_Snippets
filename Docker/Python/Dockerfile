@@ -1,10 +1,8 @@
 FROM python:3.10.0-slim
 
-WORKDIR /usr/src/app
+RUN apt-get update -qq && apt-get install -y postgresql-client
+
+WORKDIR /workspace
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-CMD [ "python", "./your-daemon-or-script.py" ]
