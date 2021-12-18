@@ -27,6 +27,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [How to Create a Dev Container for Rails Apps](https://improveandrepeat.com/2021/11/dev-container-for-rails-apps/)
   * [How to Create a Dev Container for SQL Server 2019](https://improveandrepeat.com/2021/11/dev-container-for-sql-server-2019/)
   * [How to Create a Dev Container for .Net 6](https://improveandrepeat.com/2021/12/how-to-create-a-dev-container-for-net-6/)
+  * [Python Friday #101: Creating a Dev Container for Python](https://improveandrepeat.com/2021/12/python-friday-101-creating-a-dev-container-for-python/)
+  * [Parting Thoughts on Dev Containers in Docker](https://improveandrepeat.com/2021/12/parting-thoughts-on-dev-containers-in-docker/)
 * [ExifInCSharp](./ExifInCSharp)
 * [FakeItEasy](./FakeItEasy)
   * [FakeItEasy Cheat Sheet for Moq Users](https://improveandrepeat.com/2018/02/fakeiteasy-cheat-sheet-for-moq-users/)
