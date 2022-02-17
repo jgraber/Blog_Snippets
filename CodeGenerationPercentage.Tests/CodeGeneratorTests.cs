@@ -29,7 +29,7 @@ namespace CodeGenerationPercentage.Tests
             var codeFiles = _fileSystemWalker.GeneratedFilesCalculator(projectRoot, "X", fileExtension, generatedFilesExtension, out var stats);
 
             Assert.AreEqual(7, codeFiles.Count);
-            Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*12=84 4*12=48 100/84*48 = 
+            Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*11=77 4*11=44 100/77*44 = 
             Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(), 0.01);
         }
 
@@ -46,11 +46,11 @@ namespace CodeGenerationPercentage.Tests
             {
                 var codeFiles = _fileSystemWalker.GeneratedFilesCalculator(project.Path, project.Name, fileExtension, generatedFilesExtension, out var stats);
                 Assert.AreEqual(7, codeFiles.Count);
-                Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); // 7*12=84 4*12=48 100/84*48 = 
+                Assert.AreEqual(57.15, stats.PercentageGeneratedLines(), 0.01); 
                 Assert.AreEqual(57.15, stats.PercentageGeneratedFiles(), 0.01);
-                Assert.AreEqual(48, stats.generatedLines);
-                Assert.AreEqual(36, stats.handWrittenLines);
-                Assert.AreEqual(84, stats.totalLines);
+                Assert.AreEqual(44, stats.generatedLines);
+                Assert.AreEqual(33, stats.handWrittenLines);
+                Assert.AreEqual(77, stats.totalLines);
                 Console.WriteLine($"{project.Name} {stats.totalLines} {stats.handWrittenLines} {stats.generatedLines} {String.Format("{0:0.00}", stats.PercentageGeneratedLines())}");
             }
         }

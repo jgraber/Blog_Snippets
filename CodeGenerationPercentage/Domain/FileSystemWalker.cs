@@ -42,25 +42,31 @@ namespace CodeGenerationPercentage.Domain
         {
             var codeFiles = new List<CodeFile>();
 
-            var allowedExtensions = new[] { ".cs", ".g.cs", ".sql", ".cshtml", ".feature", ".resx", ".ts", ".js" };
+            var allowedExtensions = new[] { ".cs", ".g.cs", ".sql", ".cshtml", ".feature", ".resx", ".ts", ".js", ".scss", ".html", ".json", ".razor" };
 
             string[] entries = Directory.GetFileSystemEntries(projectRoot, "*.*", SearchOption.AllDirectories);
             foreach (var entry in entries)
             {
                 var fileInfo = new FileInfo(entry);
 
+                if (fileInfo.DirectoryName.Contains("wwwroot"))
+                {
+                    continue;
+                }
+
                 if (allowedExtensions.Any(x => fileInfo.Extension.ToLower() == x))
                 {
-
                     var codeFile = new CodeFile();
                     codeFile.FileName = fileInfo.Name;
                     try
                     {
-                        codeFile.NumberOfLines = File.ReadAllLines(entry).Length;
+                        var contentAll = File.ReadAllLines(entry);
+                        var content = contentAll.Where(x => string.IsNullOrWhiteSpace(x) == false);
+                        codeFile.NumberOfLines = content.Count();
                     }
                     catch (Exception e)
                     {
-                        codeFile.NumberOfLines = 2700;
+                        codeFile.NumberOfLines = 0;
                         //Console.WriteLine(e);
                     }
                     
