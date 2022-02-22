@@ -53,11 +53,11 @@ namespace CodeGenerationPercentage
                 //Assert.AreEqual(36, stats.handWrittenLines);
                 //Assert.AreEqual(84, stats.totalLines);
 
-                var line = $"{project.Name};{name};{stats.totalLines};";
+                var line = $"{project.Name};{name};{stats.totalLines};{stats.handWrittenLines};{stats.generatedLines};{stats.totalFiles};{stats.totalhandWrittenFiles};{stats.totalGeneratedFiles}";
                 lines.Add(line);
                 Console.WriteLine(line);
             }
-
+            
             var datei = $@"c:\Temp\{name}.csv";
             File.WriteAllLinesAsync(datei, lines);
             Console.WriteLine($"Datei geschrieben: {datei}");

@@ -49,7 +49,7 @@ namespace CodeGenerationPercentage.Domain
             {
                 var fileInfo = new FileInfo(entry);
 
-                if (fileInfo.DirectoryName.Contains("wwwroot"))
+                if (fileInfo.DirectoryName.Contains("wwwroot") || fileInfo.DirectoryName.Contains("Scripts"))
                 {
                     continue;
                 }
@@ -71,7 +71,7 @@ namespace CodeGenerationPercentage.Domain
                     }
                     
                     codeFile.Namespace = Path.GetRelativePath(projectRoot, fileInfo.DirectoryName);
-                    codeFile.Generated = entry.EndsWith(generatedFilesExtension);
+                    codeFile.Generated = fileInfo.Name.Contains(".g.");
                     codeFile.Project = projectName;
                     //Console.WriteLine(codeFile);
                     codeFiles.Add(codeFile);
