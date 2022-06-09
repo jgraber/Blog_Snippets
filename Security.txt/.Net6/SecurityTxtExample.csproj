@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="wwwroot\.well-known\security.txt" />
+  </ItemGroup>
+
 </Project>

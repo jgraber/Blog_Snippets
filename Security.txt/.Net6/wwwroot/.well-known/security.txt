@@ -1,0 +1,3 @@
+﻿Contact: mailto:security@company.com
+Expires: 2024-03-31T21:59:00.000Z
+Preferred-Languages: en, de
