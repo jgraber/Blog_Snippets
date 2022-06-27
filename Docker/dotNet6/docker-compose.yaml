@@ -16,6 +16,8 @@ services:
         - ./MinApi:/workspace
     working_dir: /workspace
     command: sh -c 'while true; do sleep 30; done'
+    environment:
+        - MY_KEY=Abc$$5
     ports:
         - 7001:7000
     depends_on:
