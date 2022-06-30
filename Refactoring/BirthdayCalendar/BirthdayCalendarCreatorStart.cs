@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BirthdayCalendar
 {
-    public class BirthdayCalendarCreator
+    public class BirthdayCalendarCreatorStart
     {
         private readonly string _connectionString;
 
-        public BirthdayCalendarCreator(string connectionString)
+        public BirthdayCalendarCreatorStart(string connectionString)
         {
             _connectionString = connectionString;
         }
@@ -49,22 +49,11 @@ namespace BirthdayCalendar
                 }
 
                 // Print report
-                var reportEmployee = new ReportEmployee();
-                PrintReportLine(reportEmployee, report, title, row, middleName, birthday);
+                report.Append($"{title} {row.FirstName} {middleName} {row.LastName}: {birthday.ToShortDateString()}\n");
             }
 
             
             return report.ToString();
         }
-
-        private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, string title, dynamic row, string middleName, DateTime birthday)
-        {
-            report.Append($"{title} {row.FirstName} {middleName} {row.LastName}: {birthday.ToShortDateString()}\n");
-        }
-    }
-
-    public class ReportEmployee
-    {
-
     }
 }
