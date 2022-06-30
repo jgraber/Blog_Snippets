@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BirthdayCalendar
 {
-    public class BirthdayCalendarCreator
+    public class BirthdayCalendarCreatorLastPhaseExtracted
     {
         private readonly string _connectionString;
 
-        public BirthdayCalendarCreator(string connectionString)
+        public BirthdayCalendarCreatorLastPhaseExtracted(string connectionString)
         {
             _connectionString = connectionString;
         }
@@ -64,15 +64,15 @@ namespace BirthdayCalendar
         }
     }
 
-    public class ReportEmployee
-    {
-        public string Title { get; set; }
-        public string MiddleName { get; set; }
-        public DateTime Birthday { get; set; }
+    ////public class ReportEmployee
+    ////{
+    ////    public string Title { get; set; }
+    ////    public string MiddleName { get; set; }
+    ////    public DateTime Birthday { get; set; }
 
-        public ReportEmployee()
-        {
-            MiddleName = string.Empty;
-        }
-    }
+    ////    public ReportEmployee()
+    ////    {
+    ////        MiddleName = string.Empty;
+    ////    }
+    ////}
 }
