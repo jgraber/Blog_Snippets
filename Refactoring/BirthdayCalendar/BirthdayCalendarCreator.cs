@@ -15,6 +15,24 @@ namespace BirthdayCalendar
 
         public string Create()
         {
+            var rows = LoadEmployees();
+            
+            // Process data
+            var report = new StringBuilder();
+            foreach (var row in rows)
+            {
+                // Cleanup
+                ReportEmployee reportEmployee = Cleanup(row);
+
+                // Print report
+                PrintReportLine(reportEmployee, report, row);
+            }
+
+            return report.ToString();
+        }
+
+        private IEnumerable<dynamic> LoadEmployees()
+        {
             var connection = new SqlConnection(_connectionString);
 
             // Load data
@@ -23,39 +41,32 @@ namespace BirthdayCalendar
                         INNER JOIN HumanResources.Employee e 
 	                        ON e.BusinessEntityID = p.BusinessEntityID
                         ORDER BY MONTH(e.BirthDate), DAY(e.BirthDate)";
-            
+
             var rows = connection.Query(sql);
+            return rows;
+        }
 
-
-            // Process data
-            var report = new StringBuilder();
-            foreach (var row in rows) 
+        private ReportEmployee Cleanup(dynamic row)
+        {
+            var reportEmployee = new ReportEmployee();
+            reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
+            string middleName = (string)row.MiddleName;
+            if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
             {
-                // Cleanup
-                var reportEmployee = new ReportEmployee();
-                reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
-                string middleName = (string)row.MiddleName;
-                if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
-                {
-                    reportEmployee.MiddleName = $"{middleName}.";
-                }
-                string title = (string)row.Title;
-                if (string.IsNullOrEmpty(title))
-                {
-                    reportEmployee.Title = "      ";
-                }
-                else
-                {
-                    reportEmployee.Title = $"({title}) ";
-                }
-
-                // Print report
-                
-                PrintReportLine(reportEmployee, report, row);
+                reportEmployee.MiddleName = $"{middleName}.";
             }
 
-            
-            return report.ToString();
+            string title = (string)row.Title;
+            if (string.IsNullOrEmpty(title))
+            {
+                reportEmployee.Title = "      ";
+            }
+            else
+            {
+                reportEmployee.Title = $"({title}) ";
+            }
+
+            return reportEmployee;
         }
 
         private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, dynamic row)

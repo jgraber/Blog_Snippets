@@ -29,10 +29,25 @@ namespace BirthdayCalendar
 
             // Process data
             var report = new StringBuilder();
-            foreach (var row in rows)
+            foreach (var row in rows) 
             {
                 // Cleanup
-                ReportEmployee reportEmployee = Cleanup(row);
+                var reportEmployee = new ReportEmployee();
+                reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
+                string middleName = (string)row.MiddleName;
+                if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
+                {
+                    reportEmployee.MiddleName = $"{middleName}.";
+                }
+                string title = (string)row.Title;
+                if (string.IsNullOrEmpty(title))
+                {
+                    reportEmployee.Title = "      ";
+                }
+                else
+                {
+                    reportEmployee.Title = $"({title}) ";
+                }
 
                 // Print report
                 PrintReportLine(reportEmployee, report, row);
@@ -42,44 +57,21 @@ namespace BirthdayCalendar
             return report.ToString();
         }
 
-        private ReportEmployee Cleanup(dynamic row)
-        {
-            var reportEmployee = new ReportEmployee();
-            reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
-            string middleName = (string)row.MiddleName;
-            if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
-            {
-                reportEmployee.MiddleName = $"{middleName}.";
-            }
-
-            string title = (string)row.Title;
-            if (string.IsNullOrEmpty(title))
-            {
-                reportEmployee.Title = "      ";
-            }
-            else
-            {
-                reportEmployee.Title = $"({title}) ";
-            }
-
-            return reportEmployee;
-        }
-
         private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, dynamic row)
         {
             report.Append($"{reportEmployee.Title} {row.FirstName} {reportEmployee.MiddleName} {row.LastName}: {reportEmployee.Birthday.ToShortDateString()}\n");
         }
     }
 
-    ////public class ReportEmployee
-    ////{
-    ////    public string Title { get; set; }
-    ////    public string MiddleName { get; set; }
-    ////    public DateTime Birthday { get; set; }
+    //public class ReportEmployee
+    //{
+    //    public string Title { get; set; }
+    //    public string MiddleName { get; set; }
+    //    public DateTime Birthday { get; set; }
 
-    ////    public ReportEmployee()
-    ////    {
-    ////        MiddleName = string.Empty;
-    ////    }
-    ////}
+    //    public ReportEmployee()
+    //    {
+    //        MiddleName = string.Empty;
+    //    }
+    //}
 }
