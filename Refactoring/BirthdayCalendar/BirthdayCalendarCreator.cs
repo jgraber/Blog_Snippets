@@ -17,15 +17,11 @@ namespace BirthdayCalendar
         {
             var rows = LoadEmployees();
             
-            // Process data
             var report = new StringBuilder();
             foreach (var row in rows)
             {
-                // Cleanup
                 ReportEmployee reportEmployee = Cleanup(row);
-
-                // Print report
-                PrintReportLine(reportEmployee, report, row);
+                PrintReportLine(reportEmployee, report);
             }
 
             return report.ToString();
@@ -49,6 +45,9 @@ namespace BirthdayCalendar
         private ReportEmployee Cleanup(dynamic row)
         {
             var reportEmployee = new ReportEmployee();
+            reportEmployee.FirstName = row.FirstName;
+            reportEmployee.LastName = row.LastName;
+            
             reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
             string middleName = (string)row.MiddleName;
             if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
@@ -69,9 +68,9 @@ namespace BirthdayCalendar
             return reportEmployee;
         }
 
-        private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, dynamic row)
+        private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report)
         {
-            report.Append($"{reportEmployee.Title} {row.FirstName} {reportEmployee.MiddleName} {row.LastName}: {reportEmployee.Birthday.ToShortDateString()}\n");
+            report.Append($"{reportEmployee.Title} {reportEmployee.FirstName} {reportEmployee.MiddleName} {reportEmployee.LastName}: {reportEmployee.Birthday.ToShortDateString()}\n");
         }
     }
 
@@ -80,6 +79,8 @@ namespace BirthdayCalendar
         public string Title { get; set; }
         public string MiddleName { get; set; }
         public DateTime Birthday { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public ReportEmployee()
         {
