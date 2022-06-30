@@ -29,33 +29,40 @@ namespace BirthdayCalendar
 
             // Process data
             var report = new StringBuilder();
-            foreach (var row in rows) 
+            foreach (var row in rows)
             {
                 // Cleanup
-                var reportEmployee = new ReportEmployee();
-                reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
-                string middleName = (string)row.MiddleName;
-                if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
-                {
-                    reportEmployee.MiddleName = $"{middleName}.";
-                }
-                string title = (string)row.Title;
-                if (string.IsNullOrEmpty(title))
-                {
-                    reportEmployee.Title = "      ";
-                }
-                else
-                {
-                    reportEmployee.Title = $"({title}) ";
-                }
+                ReportEmployee reportEmployee = Cleanup(row);
 
                 // Print report
-                
                 PrintReportLine(reportEmployee, report, row);
             }
 
             
             return report.ToString();
+        }
+
+        private ReportEmployee Cleanup(dynamic row)
+        {
+            var reportEmployee = new ReportEmployee();
+            reportEmployee.Birthday = ((DateTime)row.BirthDate).Date;
+            string middleName = (string)row.MiddleName;
+            if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
+            {
+                reportEmployee.MiddleName = $"{middleName}.";
+            }
+
+            string title = (string)row.Title;
+            if (string.IsNullOrEmpty(title))
+            {
+                reportEmployee.Title = "      ";
+            }
+            else
+            {
+                reportEmployee.Title = $"({title}) ";
+            }
+
+            return reportEmployee;
         }
 
         private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, dynamic row)
