@@ -37,7 +37,7 @@ namespace BirthdayCalendar
                 string middleName = (string)row.MiddleName;
                 if (!string.IsNullOrEmpty(middleName) && middleName.Length == 1)
                 {
-                    middleName = $"{middleName}.";
+                    reportEmployee.MiddleName = $"{middleName}.";
                 }
                 string title = (string)row.Title;
                 if (string.IsNullOrEmpty(title))
@@ -51,21 +51,27 @@ namespace BirthdayCalendar
 
                 // Print report
                 
-                PrintReportLine(reportEmployee, report, row, middleName, birthday);
+                PrintReportLine(reportEmployee, report, row, birthday);
             }
 
             
             return report.ToString();
         }
 
-        private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, dynamic row, string middleName, DateTime birthday)
+        private static void PrintReportLine(ReportEmployee reportEmployee, StringBuilder report, dynamic row, DateTime birthday)
         {
-            report.Append($"{reportEmployee.Title} {row.FirstName} {middleName} {row.LastName}: {birthday.ToShortDateString()}\n");
+            report.Append($"{reportEmployee.Title} {row.FirstName} {reportEmployee.MiddleName} {row.LastName}: {birthday.ToShortDateString()}\n");
         }
     }
 
     public class ReportEmployee
     {
         public string Title { get; set; }
+        public string MiddleName { get; set; }
+
+        public ReportEmployee()
+        {
+            MiddleName = string.Empty;
+        }
     }
 }
