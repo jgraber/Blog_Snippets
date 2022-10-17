@@ -53,6 +53,7 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [Partial Interfaces in C# – They Exist and There Is a Use Case for Them](https://improveandrepeat.com/2019/09/partial-interfaces-in-c-they-exist-and-there-is-a-use-case-for-them/)
 * [PasteSpecial](./PasteSpecial)
   * [Paste XML as Class in Visual Studio 2017](https://improveandrepeat.com/2017/08/paste-xml-as-class-in-visual-studio-2017/)
+  * [Visual Studio 2022: An Improved Paste JSON as Classes](https://improveandrepeat.com/2022/01/visual-studio-2022-an-improved-paste-json-as-classes/)
 * [Random List](./RandomList)
   * [A Simple Way to Shuffle Your Lists in C#](https://improveandrepeat.com/2018/08/a-simple-way-to-shuffle-your-lists-in-c/)
 * [ReportUnit](./ReportUnit)
