@@ -81,6 +81,8 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   * [StyleCop for .Net 5 Projects: Clean-up](https://improveandrepeat.com/2021/03/stylecop-for-net-5-projects-clean-up/)
   * [How to Correctly Include stylecop.json Into Your Project](https://improveandrepeat.com/2020/08/how-to-correctly-include-stylecop-json-into-your-project/)
   * [How to Disable StyleCop for Certain Projects](https://improveandrepeat.com/2018/02/how-to-disable-stylecop-for-certain-projects/)
+* [SQLServer](.SQLServer)
+  * [How to Calculate the Time Between Two Rows in SQL Server](https://improveandrepeat.com/2022/08/how-to-calculate-the-time-between-two-rows-in-sql-server/)
 * [Temp Files](./TempFiles)
   * [Working with Temporary Files in .Net](https://improveandrepeat.com/2019/10/working-with-temporary-files-in-net/)
 * [xUnit](./xUnit)
