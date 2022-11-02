@@ -29,4 +29,16 @@ public class Tests : PageTest
         // Expects the URL to contain intro.
         await Expect(Page).ToHaveURLAsync(new Regex(".*intro"));
     }
+
+    [Test]
+    public async Task GetText()
+    {
+        await Page.GotoAsync("https://improveandrepeat.com/about/");
+
+        var allText = await Page.Locator("article").AllInnerTextsAsync();
+        foreach (var text in allText)
+        {
+            Console.WriteLine(text);
+        }
+    }
 }
