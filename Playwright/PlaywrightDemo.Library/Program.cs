@@ -10,11 +10,18 @@ class Program
                                           {
                                               Headless = false,
                                           });
-        var context = await browser.NewContextAsync();
+        var context = await browser.NewContextAsync(
+                        new()
+                        {
+                            RecordVideoDir = "videos/"
+                        });
+        
 
         var Page = await context.NewPageAsync();
 
         await Page.GotoAsync("https://improveandrepeat.com/");
+
+        await context.CloseAsync();
 
     }
 }
