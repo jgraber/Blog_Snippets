@@ -21,6 +21,12 @@ class Program
 
         await Page.GotoAsync("https://improveandrepeat.com/");
 
+        await Page.ScreenshotAsync(new()
+                                       {
+                                           Path = "screenshot_view.png",
+                                       });
+
+
         await context.CloseAsync();
 
     }
