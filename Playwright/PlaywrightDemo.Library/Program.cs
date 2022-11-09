@@ -27,6 +27,12 @@ class Program
                                        });
 
 
+        await Page.ScreenshotAsync(new()
+                                {
+                                    Path = "screenshot_full.png",
+                                    FullPage = true,
+                                });
+
         await context.CloseAsync();
 
     }
