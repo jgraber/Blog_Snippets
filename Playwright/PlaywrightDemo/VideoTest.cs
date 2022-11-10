@@ -47,6 +47,12 @@ public class VideoTest : PageTest
     {
         await Page.GotoAsync("https://playwright.dev");
 
+        await Page.ScreenshotAsync(new()
+                                       {
+                                           Path = "screenshot_full.png",
+                                           FullPage = true,
+                                       });
+
         // Expect a title "to contain" a substring.
         await Expect(Page).ToHaveTitleAsync(new Regex("PlaywrightXYZ"));
     }
