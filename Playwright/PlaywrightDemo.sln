@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaywrightDemo", "PlaywrightDemo\PlaywrightDemo.csproj", "{D02724CB-20FA-4864-95A4-94C0AE3BF5BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightDemo.Library", "PlaywrightDemo.Library\PlaywrightDemo.Library.csproj", "{21FA9417-4E53-45DE-AB66-10DD899C479F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaywrightDemo.Library", "PlaywrightDemo.Library\PlaywrightDemo.Library.csproj", "{21FA9417-4E53-45DE-AB66-10DD899C479F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightDemo.Connect", "PlaywrightDemo.Connect\PlaywrightDemo.Connect.csproj", "{FD5BA7EF-EF5E-4EC0-B767-D9D36778534C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{21FA9417-4E53-45DE-AB66-10DD899C479F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21FA9417-4E53-45DE-AB66-10DD899C479F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21FA9417-4E53-45DE-AB66-10DD899C479F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5BA7EF-EF5E-4EC0-B767-D9D36778534C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5BA7EF-EF5E-4EC0-B767-D9D36778534C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5BA7EF-EF5E-4EC0-B767-D9D36778534C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5BA7EF-EF5E-4EC0-B767-D9D36778534C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
