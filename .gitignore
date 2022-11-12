@@ -197,3 +197,5 @@ FakesAssemblies/
 
 # SonarQube
 .scannerwork
+
+.env
