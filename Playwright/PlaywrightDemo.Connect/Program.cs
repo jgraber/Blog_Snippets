@@ -9,6 +9,11 @@ class Program
 {
     public static async Task Main(string[] args)
     {
+        await BrowserStack();
+    }
+
+    private static async Task BrowserStack()
+    {
         DotEnv.Load();
         var envVars = DotEnv.Read();
 
@@ -21,26 +26,19 @@ class Program
         browserstackOptions.Add("os_version", "catalina");
         // allowed browsers are `chrome`, `edge`, `playwright-chromium`,
         // `playwright-firefox` and `playwright-webkit`
-        browserstackOptions.Add("browser", "chrome");  
+        browserstackOptions.Add("browser", "chrome");
         browserstackOptions.Add("browserstack.username", envVars["username"]);
         browserstackOptions.Add("browserstack.accessKey", envVars["accessKey"]);
         string capsJson = JsonConvert.SerializeObject(browserstackOptions);
         string cdpUrl = "wss://cdp.browserstack.com/playwright?caps=" + Uri.EscapeDataString(capsJson);
 
         await using var browser = await playwright.Chromium.ConnectAsync(cdpUrl);
-        var page = await browser.NewPageAsync(
-                       new BrowserNewPageOptions()
-                           {
-                               Locale = "en-GB"
-                           });
+        var page = await browser.NewPageAsync(new BrowserNewPageOptions() { Locale = "en-GB" });
         try
         {
             await page.GotoAsync("https://www.google.com/");
 
-            await page.GetByRole(AriaRole.Button, new()
-                                                      {
-                                                          NameString = "Accept all"
-                                                      }).ClickAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameString = "Accept all" }).ClickAsync();
             await page.WaitForURLAsync("https://www.google.com/");
 
             await page.Locator("[aria-label='Search']").ClickAsync();
@@ -63,6 +61,7 @@ class Program
         {
             await MarkTestStatus("failed", err.Message, page);
         }
+
         await browser.CloseAsync();
     }
 
