@@ -30,15 +30,20 @@ class Program
         browserstackOptions.Add("browserstack.username", envVars["username"]);
         browserstackOptions.Add("browserstack.accessKey", envVars["accessKey"]);
         string capsJson = JsonConvert.SerializeObject(browserstackOptions);
-        string cdpUrl = "wss://cdp.browserstack.com/playwright?caps=" + Uri.EscapeDataString(capsJson);
+        string cdpUrl = "wss://cdp.browserstack.com/playwright?caps=" 
+                        + Uri.EscapeDataString(capsJson);
 
         await using var browser = await playwright.Chromium.ConnectAsync(cdpUrl);
-        var page = await browser.NewPageAsync(new BrowserNewPageOptions() { Locale = "en-GB" });
+        var page = await browser.NewPageAsync(new BrowserNewPageOptions() 
+                                                  { Locale = "en-GB" });
         try
         {
             await page.GotoAsync("https://www.google.com/");
 
-            await page.GetByRole(AriaRole.Button, new() { NameString = "Accept all" }).ClickAsync();
+            await page.GetByRole(AriaRole.Button, new()
+                                                      {
+                                                          NameString = "Accept all"
+                                                      }).ClickAsync();
             await page.WaitForURLAsync("https://www.google.com/");
 
             await page.Locator("[aria-label='Search']").ClickAsync();
@@ -48,8 +53,9 @@ class Program
 
             if (title == "BrowserStack - Google Search")
             {
-                // following line of code is responsible for marking the status of the test on
-                // BrowserStack as 'passed'. You can use this code in your after hook after each test
+                // following line of code is responsible for marking the status of the
+                // test on BrowserStack as 'passed'. You can use this code in your after
+                // hook after each test
                 await MarkTestStatus("passed", "Title matched", page);
             }
             else
@@ -68,7 +74,7 @@ class Program
     public static async Task MarkTestStatus(string status, string reason, IPage page)
     {
         await page.EvaluateAsync("_ => {}", 
-            "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\":\"" + 
-            status + "\", \"reason\": \"" + reason + "\"}}");
+            "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\":" +
+            " {\"status\":\"" + status + "\", \"reason\": \"" + reason + "\"}}");
     }
 }
