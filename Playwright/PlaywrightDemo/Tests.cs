@@ -40,4 +40,13 @@ public class Tests : PageTest
             Console.WriteLine(text);
         }
     }
+
+    [Test]
+    public async Task Where()
+    {
+        await Page.GotoAsync("https://www.whatismybrowser.com/");
+
+        var version = await Page.Locator("#primary-browser-detection").InnerTextAsync();
+        Console.WriteLine(version);
+    }
 }
