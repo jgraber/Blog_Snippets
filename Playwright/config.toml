@@ -1,0 +1,14 @@
+[docker]
+# Configs have a mapping between the Docker image to use 
+# and the capabilities that need to be matched to
+# start a container with the given image.
+configs = [
+    "selenium/standalone-firefox:4.5.0-20221017", "{\"browserName\": \"firefox\"}",
+    "selenium/standalone-chrome:4.5.0-20221017", "{\"browserName\": \"chrome\"}",
+    "selenium/standalone-edge:4.5.0-20221017", "{\"browserName\": \"MicrosoftEdge\"}"
+    ]
+
+# URL for connecting to the docker daemon
+url = "http://host.docker.internal:2375"
+# Docker image used for video recording
+video-image = "selenium/video:ffmpeg-4.3.1-20221017"
