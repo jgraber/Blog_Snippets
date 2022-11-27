@@ -46,7 +46,8 @@ public class Tests : PageTest
     {
         await Page.GotoAsync("https://www.whatismybrowser.com/");
 
-        var version = await Page.Locator("#primary-browser-detection").InnerTextAsync();
+        var version = await Page.Locator("#primary-browser-detection")
+                            .InnerTextAsync();
         Console.WriteLine(version);
     }
 }
