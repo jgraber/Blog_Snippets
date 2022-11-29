@@ -4,12 +4,50 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using dotenv.net;
+using static System.Net.WebRequestMethods;
 
 class Program
 {
     public static async Task Main(string[] args)
     {
-        await BrowserStack();
+        //await BrowserStack();
+        await SeleniumGrid();
+    }
+
+    private static async Task SeleniumGrid()
+    {
+        Environment.SetEnvironmentVariable("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub");
+
+        using var playwright = await Playwright.CreateAsync();
+
+        await using var browser = await playwright.Chromium.LaunchAsync();
+        var context = await browser.NewContextAsync(
+                          new()
+                              {
+                                  RecordVideoDir = "videos/", 
+                                  Locale = "en-GB"
+                              });
+
+        var page = await context.NewPageAsync();
+        await page.GotoAsync("chrome://version/");
+        Thread.Sleep(5000);
+
+
+        await page.GotoAsync("https://www.google.com/");
+
+        await page.GetByRole(AriaRole.Button, new()
+                                                  {
+                                                      NameString = "Accept all"
+                                                  }).ClickAsync();
+        await page.WaitForURLAsync("https://www.google.com/");
+
+        await page.Locator("[aria-label='Search']").ClickAsync();
+        await page.FillAsync("[aria-label='Search']", "BrowserStack");
+        await page.Locator("[aria-label='Google Search'] >> nth=0").ClickAsync();
+        var title = await page.TitleAsync();
+
+
+        await browser.CloseAsync();
     }
 
     private static async Task BrowserStack()
