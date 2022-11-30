@@ -16,17 +16,18 @@ class Program
 
     private static async Task SeleniumGrid()
     {
-        Environment.SetEnvironmentVariable("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub");
+        Environment.SetEnvironmentVariable("SELENIUM_REMOTE_URL", 
+            "http://localhost:4444/wd/hub");
 
         using var playwright = await Playwright.CreateAsync();
 
         await using var browser = await playwright.Chromium.LaunchAsync();
         var context = await browser.NewContextAsync(
-                          new()
-                              {
-                                  RecordVideoDir = "videos/", 
-                                  Locale = "en-GB"
-                              });
+                            new()
+                                {
+                                    RecordVideoDir = "videos/", 
+                                    Locale = "en-GB"
+                                });
 
         var page = await context.NewPageAsync();
         await page.GotoAsync("chrome://version/");
@@ -36,9 +37,9 @@ class Program
         await page.GotoAsync("https://www.google.com/");
 
         await page.GetByRole(AriaRole.Button, new()
-                                                  {
-                                                      NameString = "Accept all"
-                                                  }).ClickAsync();
+                                                    {
+                                                        NameString = "Accept all"
+                                                    }).ClickAsync();
         await page.WaitForURLAsync("https://www.google.com/");
 
         await page.Locator("[aria-label='Search']").ClickAsync();
