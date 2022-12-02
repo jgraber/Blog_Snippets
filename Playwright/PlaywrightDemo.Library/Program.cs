@@ -9,11 +9,13 @@ class Program
                                       new BrowserTypeLaunchOptions
                                           {
                                               Headless = false,
-                                          });
+                                              Args = new string[] { "--start-maximized" }
+                                      });
         var context = await browser.NewContextAsync(
                         new()
                         {
-                            RecordVideoDir = "videos/"
+                            RecordVideoDir = "videos/",
+                            ViewportSize = ViewportSize.NoViewport
                         });
         
 
