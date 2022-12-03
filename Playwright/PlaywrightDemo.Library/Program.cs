@@ -15,6 +15,7 @@ class Program
                         new()
                         {
                             RecordVideoDir = "videos/",
+                            Locale = "en-GB",
                             ViewportSize = ViewportSize.NoViewport
                         });
         
