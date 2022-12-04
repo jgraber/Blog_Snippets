@@ -15,6 +15,11 @@ class Program
                         new()
                         {
                             RecordVideoDir = "videos/",
+                            Geolocation = new Geolocation()
+                                              {
+                                                  Latitude = 41.890221f,
+                                                  Longitude = 12.492348f
+                            },
                             Locale = "en-GB",
                             ViewportSize = ViewportSize.NoViewport
                         });
