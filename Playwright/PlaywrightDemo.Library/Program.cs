@@ -15,6 +15,7 @@ class Program
                         new()
                         {
                             RecordVideoDir = "videos/",
+                            UserAgent = "my browser XYZ",
                             Geolocation = new Geolocation()
                                               {
                                                   Latitude = 41.890221f,
