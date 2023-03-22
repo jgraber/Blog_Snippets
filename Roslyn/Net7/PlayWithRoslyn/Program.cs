@@ -16,6 +16,8 @@ namespace PlayWithRoslyn
             
             var solution = await workspace.OpenSolutionAsync(solutionPath);
 
+            ListProjects(solution);
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -78,5 +80,16 @@ namespace PlayWithRoslyn
                 }
             }
         }
+
+        private static void ListProjects(Solution solution)
+        {
+            foreach (var project in solution.Projects)
+            {
+                Console.WriteLine($"Project {project.Name} [{project.Id.Id}]\n");
+            }
+
+            Console.WriteLine("\n==========================================\n");
+        }
+
     }
 }
