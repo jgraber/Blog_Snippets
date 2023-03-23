@@ -18,6 +18,8 @@ namespace PlayWithRoslyn
 
             ListProjects(solution);
 
+            ListProjectDependencies(solution);
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -86,6 +88,21 @@ namespace PlayWithRoslyn
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine($"Project {project.Name} [{project.Id.Id}]\n");
+            }
+
+            Console.WriteLine("\n==========================================\n");
+        }
+
+        private static void ListProjectDependencies(Solution solution)
+        {
+            foreach (var project in solution.Projects)
+            {
+                Console.WriteLine($"Project '{project}' depends on:");
+
+                foreach (var projectReference in project.AllProjectReferences)
+                {
+                    Console.WriteLine($"\t-{projectReference.ProjectId.Id}");
+                }
             }
 
             Console.WriteLine("\n==========================================\n");
