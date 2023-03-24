@@ -20,6 +20,8 @@ namespace PlayWithRoslyn
 
             ListProjectDependencies(solution);
 
+            ListProjectDependenciesImproved(solution);
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -102,6 +104,27 @@ namespace PlayWithRoslyn
                 foreach (var projectReference in project.AllProjectReferences)
                 {
                     Console.WriteLine($"\t-{projectReference.ProjectId.Id}");
+                }
+            }
+
+            Console.WriteLine("\n==========================================\n");
+        }
+
+        private static void ListProjectDependenciesImproved(Solution solution)
+        {
+            var projectDict = new Dictionary<Guid, string>();
+            foreach (var project in solution.Projects)
+            {
+                projectDict[project.Id.Id] = project.Name;
+            }
+
+            foreach (var project in solution.Projects)
+            {
+                Console.WriteLine($"Project '{project}' depends on:");
+
+                foreach (var projectReference in project.AllProjectReferences)
+                {
+                    Console.WriteLine($"\t-{projectDict[projectReference.ProjectId.Id]}");
                 }
             }
 
