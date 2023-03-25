@@ -22,6 +22,8 @@ namespace PlayWithRoslyn
 
             ListProjectDependenciesImproved(solution);
 
+            ListInterfaces(solution);
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -130,6 +132,42 @@ namespace PlayWithRoslyn
 
             Console.WriteLine("\n==========================================\n");
         }
+
+        private static async Task ListInterfaces(Solution solution)
+        {
+            foreach (var project in solution.Projects)
+            {
+                foreach (var document in project.Documents)
+                {
+                    var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
+                    var interfaces = root.DescendantNodes().OfType<InterfaceDeclarationSyntax>().ToList();
+                    
+                    if (interfaces.Count > 0)
+                    {
+                        Console.WriteLine($"Interfaces in {project.Name}:");
+                        foreach (var declarationExpressionSyntax in interfaces)
+                        {
+                            Console.WriteLine(
+                                $"\t[{declarationExpressionSyntax.Identifier.Text} - {declarationExpressionSyntax.Keyword}]");
+
+                            var nodes = root.DescendantNodes()
+                                .OfType<MethodDeclarationSyntax>().ToList();
+                            if (nodes.Count > 0)
+                            {
+                                foreach (var method in nodes)
+                                {
+                                    Console.WriteLine("\t - " + method.Identifier + "()");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("\n==========================================\n");
+        }
+
+
 
     }
 }
