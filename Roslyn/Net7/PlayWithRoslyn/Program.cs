@@ -24,6 +24,8 @@ namespace PlayWithRoslyn
 
             ListInterfaces(solution);
 
+            ListClasses(solution);
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -165,6 +167,37 @@ namespace PlayWithRoslyn
             }
 
             Console.WriteLine("\n==========================================\n");
+        }
+        private static async Task ListClasses(Solution solution)
+        {
+            foreach (var project in solution.Projects)
+            {
+                Console.WriteLine($"Classes in {project.Name}:");
+                foreach (var document in project.Documents)
+                {
+                    var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
+
+                    var classes = root.DescendantNodes().OfType<ClassDeclarationSyntax>().ToList();
+                    if (classes.Count > 0)
+                    {
+                        foreach (var classDeclaration in classes)
+                        {
+                            Console.WriteLine(
+                                $"\t[{classDeclaration.Identifier.Text} - {classDeclaration.Keyword}]");
+
+                            var nodes = root.DescendantNodes()
+                                .OfType<MethodDeclarationSyntax>().ToList();
+                            if (nodes.Count > 0)
+                            {
+                                foreach (var method in nodes)
+                                {
+                                    Console.WriteLine("\t - " + method.Identifier + "()");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
 
