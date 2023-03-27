@@ -26,6 +26,8 @@ namespace PlayWithRoslyn
 
             ListClasses(solution);
 
+            ListEnums(solution);
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -198,6 +200,30 @@ namespace PlayWithRoslyn
                     }
                 }
             }
+        }
+
+        private static async Task ListEnums(Solution solution)
+        {
+            foreach (var project in solution.Projects)
+            {
+                Console.WriteLine($"Enums in {project.Name}:");
+                foreach (var document in project.Documents)
+                {
+                    var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
+
+                    var enums = root.DescendantNodes().OfType<EnumDeclarationSyntax>().ToList();
+                    if (enums.Count > 0)
+                    {
+                        foreach (var enumDeclarationSyntax in enums)
+                        {
+                            Console.WriteLine(
+                                $"\t[{enumDeclarationSyntax.Identifier.Text} - {enumDeclarationSyntax.EnumKeyword}]");
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("\n==========================================\n");
         }
 
 
