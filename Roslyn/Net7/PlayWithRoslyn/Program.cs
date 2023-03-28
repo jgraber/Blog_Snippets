@@ -1,6 +1,8 @@
 ﻿using Microsoft.Build.Locator;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
+using System.Reflection.Metadata;
 
 namespace PlayWithRoslyn
 {
@@ -10,10 +12,10 @@ namespace PlayWithRoslyn
         {
             string solutionPath = @"..\..\..\..\..\..\NUnit\NunitUpgrade\NunitUpgrade.sln";
 
+			// Register MSBuild
             MSBuildLocator.RegisterDefaults();
 
             var workspace = MSBuildWorkspace.Create();
-            
             var solution = await workspace.OpenSolutionAsync(solutionPath);
 
             ListProjects(solution);
@@ -28,6 +30,12 @@ namespace PlayWithRoslyn
 
             ListEnums(solution);
 
+            var projectDict = new Dictionary<Guid, string>();
+            foreach (var project in solution.Projects)
+            {
+                projectDict[project.Id.Id] = project.Name;
+            }
+
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine("\n\n==========================================");
@@ -37,23 +45,12 @@ namespace PlayWithRoslyn
                 Console.WriteLine("Project dependencies:");
                 foreach (var projectReference in project.AllProjectReferences)
                 {
-                    Console.WriteLine($"\t- {projectReference.ProjectId.Id}");
+                    Console.WriteLine($"\t- {projectDict[projectReference.ProjectId.Id]}");
                 }
 
                 foreach (var document in project.Documents)
                 {
                     var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
-                    
-                    var enums = root.DescendantNodes().OfType<EnumDeclarationSyntax>().ToList();
-                    if (enums.Count > 0)
-                    {
-                        Console.WriteLine("Enums:");
-                        foreach (var enumDeclarationSyntax in enums)
-                        {
-                            Console.WriteLine(
-                                $"\t[{enumDeclarationSyntax.Identifier.Text} - {enumDeclarationSyntax.EnumKeyword}]");
-                        }
-                    }
 
                     var interfaces = root.DescendantNodes().OfType<InterfaceDeclarationSyntax>().ToList();
                     if (interfaces.Count > 0)
@@ -65,6 +62,19 @@ namespace PlayWithRoslyn
                                 $"\t[{declarationExpressionSyntax.Identifier.Text} - {declarationExpressionSyntax.Keyword}]");
                         }
                     }
+
+                    var enums = root.DescendantNodes().OfType<EnumDeclarationSyntax>().ToList();
+                    if (enums.Count > 0)
+                    {
+                        Console.WriteLine("Enums:");
+                        foreach (var enumDeclarationSyntax in enums)
+                        {
+                            Console.WriteLine(
+                                $"\t[{enumDeclarationSyntax.Identifier.Text} - {enumDeclarationSyntax.EnumKeyword}]");
+                        }
+                    }
+
+                    
 
                     var classes = root.DescendantNodes().OfType<ClassDeclarationSyntax>().ToList();
                     if (classes.Count > 0)
@@ -109,7 +119,7 @@ namespace PlayWithRoslyn
 
                 foreach (var projectReference in project.AllProjectReferences)
                 {
-                    Console.WriteLine($"\t-{projectReference.ProjectId.Id}");
+                    Console.WriteLine($"\t- {projectReference.ProjectId.Id}");
                 }
             }
 
@@ -130,7 +140,7 @@ namespace PlayWithRoslyn
 
                 foreach (var projectReference in project.AllProjectReferences)
                 {
-                    Console.WriteLine($"\t-{projectDict[projectReference.ProjectId.Id]}");
+                    Console.WriteLine($"\t- {projectDict[projectReference.ProjectId.Id]}");
                 }
             }
 
@@ -200,6 +210,8 @@ namespace PlayWithRoslyn
                     }
                 }
             }
+
+            Console.WriteLine("\n==========================================\n");
         }
 
         private static async Task ListEnums(Solution solution)
