@@ -19,15 +19,10 @@ namespace PlayWithRoslyn
             var solution = await workspace.OpenSolutionAsync(solutionPath);
 
             ListProjects(solution);
-
             ListProjectDependencies(solution);
-
             ListProjectDependenciesImproved(solution);
-
             ListInterfaces(solution);
-
             ListClasses(solution);
-
             ListEnums(solution);
 
             var projectDict = new Dictionary<Guid, string>();
