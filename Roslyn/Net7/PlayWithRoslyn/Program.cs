@@ -21,9 +21,9 @@ namespace PlayWithRoslyn
             ListProjects(solution);
             ListProjectDependencies(solution);
             ListProjectDependenciesImproved(solution);
-            ListInterfaces(solution);
-            ListClasses(solution);
-            ListEnums(solution);
+            await ListInterfaces(solution);
+            await ListClasses(solution);
+            await ListEnums(solution);
 
             var projectDict = new Dictionary<Guid, string>();
             foreach (var project in solution.Projects)
