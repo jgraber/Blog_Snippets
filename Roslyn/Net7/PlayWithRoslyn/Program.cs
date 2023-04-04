@@ -162,8 +162,5 @@ namespace PlayWithRoslyn
 
             Console.WriteLine("\n==========================================\n");
         }
-
-
-
     }
 }
