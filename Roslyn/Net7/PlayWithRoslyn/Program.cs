@@ -89,15 +89,7 @@ namespace PlayWithRoslyn
                             Console.WriteLine(
                                 $"\t[{declarationExpressionSyntax.Identifier.Text} - {declarationExpressionSyntax.Keyword}]");
 
-                            var nodes = root.DescendantNodes()
-                                .OfType<MethodDeclarationSyntax>().ToList();
-                            if (nodes.Count > 0)
-                            {
-                                foreach (var method in nodes)
-                                {
-                                    Console.WriteLine("\t - " + method.Identifier + "()");
-                                }
-                            }
+                            ShowMethods(root);
                         }
                     }
                 }
@@ -122,15 +114,7 @@ namespace PlayWithRoslyn
                             Console.WriteLine(
                                 $"\t[{classDeclaration.Identifier.Text} - {classDeclaration.Keyword}]");
 
-                            var nodes = root.DescendantNodes()
-                                .OfType<MethodDeclarationSyntax>().ToList();
-                            if (nodes.Count > 0)
-                            {
-                                foreach (var method in nodes)
-                                {
-                                    Console.WriteLine("\t - " + method.Identifier + "()");
-                                }
-                            }
+                            ShowMethods(root);
                         }
                     }
                 }
@@ -162,5 +146,19 @@ namespace PlayWithRoslyn
 
             Console.WriteLine("\n==========================================\n");
         }
+
+        private static void ShowMethods(SyntaxNode root)
+        {
+            var nodes = root.DescendantNodes()
+                .OfType<MethodDeclarationSyntax>().ToList();
+            if (nodes.Count > 0)
+            {
+                foreach (var method in nodes)
+                {
+                    Console.WriteLine("\t - " + method.Identifier + "()");
+                }
+            }
+        }
+
     }
 }
