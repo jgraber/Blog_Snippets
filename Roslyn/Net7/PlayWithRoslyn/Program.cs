@@ -139,6 +139,11 @@ namespace PlayWithRoslyn
                         {
                             Console.WriteLine(
                                 $"\t[{enumDeclarationSyntax.Identifier.Text} - {enumDeclarationSyntax.EnumKeyword}]");
+
+                            foreach (var member in enumDeclarationSyntax.Members)
+                            {
+                                Console.WriteLine($"\t - {member}");
+                            }
                         }
                     }
                 }
