@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using System.Reflection.Metadata;
 using System.Text;
+using Document = Microsoft.CodeAnalysis.Document;
 
 namespace PlayWithRoslyn
 {
@@ -56,19 +57,19 @@ namespace PlayWithRoslyn
 
         private static void ListProjectDependenciesImproved(Solution solution)
         {
-            var projectDict = new Dictionary<Guid, string>();
+            var names = new Dictionary<Guid, string>();
             foreach (var project in solution.Projects)
             {
-                projectDict[project.Id.Id] = project.Name;
+                names[project.Id.Id] = project.Name;
             }
 
             foreach (var project in solution.Projects)
             {
                 Console.WriteLine($"Project '{project}' depends on:");
 
-                foreach (var projectReference in project.AllProjectReferences)
+                foreach (var reference in project.AllProjectReferences)
                 {
-                    Console.WriteLine($"\t- {projectDict[projectReference.ProjectId.Id]}");
+                    Console.WriteLine($"\t- {names[reference.ProjectId.Id]}");
                 }
             }
 
@@ -81,16 +82,16 @@ namespace PlayWithRoslyn
             {
                 foreach (var document in project.Documents)
                 {
-                    var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
-                    var interfaces = root.DescendantNodes().OfType<InterfaceDeclarationSyntax>().ToList();
+                    var root = await GetRootNode(document);
+                    var interfaces = FilterNodes<InterfaceDeclarationSyntax>(root);
                     
                     if (interfaces.Count > 0)
                     {
                         Console.WriteLine($"Interfaces in {project.Name}:");
-                        foreach (var declarationExpressionSyntax in interfaces)
+                        foreach (var unit in interfaces)
                         {
                             Console.WriteLine(
-                                $"\t[{declarationExpressionSyntax.Identifier.Text} - {declarationExpressionSyntax.Keyword}]");
+                                $" - [{unit.Identifier.Text} - {unit.Keyword}]");
 
                             ShowMethods(root);
                         }
@@ -100,6 +101,33 @@ namespace PlayWithRoslyn
 
             Console.WriteLine("\n==========================================\n");
         }
+
+        private static async Task<SyntaxNode> GetRootNode(Document document)
+        {
+            var root = await document.GetSyntaxTreeAsync()
+                .Result?.GetRootAsync()!;
+            return root;
+        }
+
+        private static List<T> FilterNodes<T>(SyntaxNode root)
+        {
+            List<T> interfaces = root.DescendantNodes().OfType<T>().ToList();
+            return interfaces;
+        }
+
+        private static void ShowMethods(SyntaxNode root)
+        {
+            var nodes = root.DescendantNodes()
+                .OfType<MethodDeclarationSyntax>().ToList();
+            if (nodes.Count > 0)
+            {
+                foreach (var method in nodes)
+                {
+                    Console.WriteLine($"   * {method.Identifier}()");
+                }
+            }
+        }
+
         private static async Task ListClasses(Solution solution)
         {
             foreach (var project in solution.Projects)
@@ -107,15 +135,15 @@ namespace PlayWithRoslyn
                 Console.WriteLine($"Classes in {project.Name}:");
                 foreach (var document in project.Documents)
                 {
-                    var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
-
-                    var classes = root.DescendantNodes().OfType<ClassDeclarationSyntax>().ToList();
+                    var root = await GetRootNode(document);
+                    var classes = FilterNodes<ClassDeclarationSyntax>(root);
+                    
                     if (classes.Count > 0)
                     {
-                        foreach (var classDeclaration in classes)
+                        foreach (var unit in classes)
                         {
                             Console.WriteLine(
-                                $"\t[{classDeclaration.Identifier.Text} - {classDeclaration.Keyword}]");
+                                $" - [{unit.Identifier.Text} - {unit.Keyword}]");
 
                             ShowMethods(root);
                         }
@@ -130,22 +158,23 @@ namespace PlayWithRoslyn
         {
             foreach (var project in solution.Projects)
             {
-                Console.WriteLine($"Enums in {project.Name}:");
                 foreach (var document in project.Documents)
                 {
-                    var root = await document.GetSyntaxTreeAsync().Result?.GetRootAsync()!;
-
-                    var enums = root.DescendantNodes().OfType<EnumDeclarationSyntax>().ToList();
+                    var root = await GetRootNode(document);
+                    var enums = FilterNodes<EnumDeclarationSyntax>(root);
+                    
                     if (enums.Count > 0)
                     {
-                        foreach (var enumDeclarationSyntax in enums)
+                        Console.WriteLine($"Enums in {project.Name}:");
+
+                        foreach (var unit in enums)
                         {
                             Console.WriteLine(
-                                $"\t[{enumDeclarationSyntax.Identifier.Text} - {enumDeclarationSyntax.EnumKeyword}]");
+                                $" - [{unit.Identifier.Text} - {unit.EnumKeyword}]");
 
-                            foreach (var member in enumDeclarationSyntax.Members)
+                            foreach (var member in unit.Members)
                             {
-                                Console.WriteLine($"\t - {member}");
+                                Console.WriteLine($"   * {member}");
                             }
                         }
                     }
@@ -155,37 +184,24 @@ namespace PlayWithRoslyn
             Console.WriteLine("\n==========================================\n");
         }
 
-        private static void ShowMethods(SyntaxNode root)
-        {
-            var nodes = root.DescendantNodes()
-                .OfType<MethodDeclarationSyntax>().ToList();
-            if (nodes.Count > 0)
-            {
-                foreach (var method in nodes)
-                {
-                    Console.WriteLine("\t - " + method.Identifier + "()");
-                }
-            }
-        }
-
         private static void CreatePythonCode(Solution solution)
         {
             var python = new StringBuilder();
             python.AppendLine("import networkx as nx\n");
             python.AppendLine("G = nx.DiGraph()");
 
-            var projectDict = new Dictionary<Guid, string>();
+            var names = new Dictionary<Guid, string>();
             foreach (var project in solution.Projects)
             {
-                projectDict[project.Id.Id] = project.Name;
+                names[project.Id.Id] = project.Name;
                 python.AppendLine($"G.add_node('{project.Name}')");
             }
 
             foreach (var project in solution.Projects)
             {
-                foreach (var dependant in project.AllProjectReferences)
+                foreach (var reference in project.AllProjectReferences)
                 {
-                    python.AppendLine($"G.add_edge('{project.Name}', '{projectDict[dependant.ProjectId.Id]}')");
+                    python.AppendLine($"G.add_edge('{project.Name}', '{names[reference.ProjectId.Id]}')");
                 }
             }
 
@@ -193,6 +209,7 @@ namespace PlayWithRoslyn
             python.AppendLine("print(f'Edged: {G.number_of_edges()}')");
 
             File.WriteAllText("project_graph.py", python.ToString());
+
             Console.WriteLine("Python file project_graph.py generated");
         }
     }
