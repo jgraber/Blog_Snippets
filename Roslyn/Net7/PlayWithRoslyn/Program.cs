@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
 using System.Reflection.Metadata;
+using System.Text;
 
 namespace PlayWithRoslyn
 {
@@ -24,6 +25,8 @@ namespace PlayWithRoslyn
             await ListInterfaces(solution);
             await ListClasses(solution);
             await ListEnums(solution);
+
+            CreatePythonCode(solution);
         }
 
         private static void ListProjects(Solution solution)
@@ -165,5 +168,32 @@ namespace PlayWithRoslyn
             }
         }
 
+        private static void CreatePythonCode(Solution solution)
+        {
+            var python = new StringBuilder();
+            python.AppendLine("import networkx as nx\n");
+            python.AppendLine("G = nx.DiGraph()");
+
+            var projectDict = new Dictionary<Guid, string>();
+            foreach (var project in solution.Projects)
+            {
+                projectDict[project.Id.Id] = project.Name;
+                python.AppendLine($"G.add_node('{project.Name}')");
+            }
+
+            foreach (var project in solution.Projects)
+            {
+                foreach (var dependant in project.AllProjectReferences)
+                {
+                    python.AppendLine($"G.add_edge('{project.Name}', '{projectDict[dependant.ProjectId.Id]}')");
+                }
+            }
+
+            python.AppendLine("\nprint(f'Nodes: {G.number_of_nodes()}')");
+            python.AppendLine("print(f'Edged: {G.number_of_edges()}')");
+
+            File.WriteAllText("project_graph.py", python.ToString());
+            Console.WriteLine("Python file project_graph.py generated");
+        }
     }
 }
