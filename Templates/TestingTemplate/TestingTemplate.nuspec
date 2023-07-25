@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+	<icon>Content\.template.config\logo.png</icon>
+    <id>JG.Tests</id>
+    <version>0.6.0</version>
+    <description>
+      JG Test Project Template with NUnit AND FluentAssertions
+    </description>
+    <authors>Johnny Graber</authors>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="TestingTemplate\**\*.*" exclude="TestingTemplate\**\bin\**\*.*;TestingTemplate\**\obj\**\*.*" target="Content" />
+  </files>
+</package>
