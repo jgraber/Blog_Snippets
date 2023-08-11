@@ -3,7 +3,7 @@
   <metadata>
 	<icon>Content\.template.config\logo.png</icon>
     <id>JG.Tests</id>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
     <description>
       JG Test Project Template with NUnit AND FluentAssertions
     </description>
