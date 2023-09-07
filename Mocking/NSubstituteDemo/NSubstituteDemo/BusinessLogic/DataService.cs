@@ -32,5 +32,10 @@ namespace NSubstituteDemo.BusinessLogic
             var entries = this.dataAccess.All();
             return entries;
         }
+
+        public bool Check()
+        {
+            return this.dataAccess.IsConnectionReady();
+        }
     }
 }

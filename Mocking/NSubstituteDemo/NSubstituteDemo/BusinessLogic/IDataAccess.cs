@@ -13,5 +13,7 @@ namespace NSubstituteDemo.BusinessLogic
         int Add(DemoDto dto);
 
         List<DemoDto> All();
+
+        bool IsConnectionReady();
     }
 }
