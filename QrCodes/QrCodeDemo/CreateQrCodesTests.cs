@@ -9,7 +9,16 @@ namespace QrCodeDemo
         public void CreatePngQrCode()
         {
             var qr = QrCode.EncodeText("https://improveandrepeat.com/", QrCode.Ecc.Medium);
-            qr.SaveAsPng("hello-world-qr.png", 10, 3);
+            qr.SaveAsPng("qr-url.png", 10, 3);
+        }
+
+        [Test]
+        public void CreateByteArrayQrCode()
+        {
+            var qr = QrCode.EncodeText("https://improveandrepeat.com/", QrCode.Ecc.Medium);
+            var pngAsBytes = qr.ToPng( 10, 3);
+            File.WriteAllBytes("qr-url-bytes.png", pngAsBytes);
+        }
         }
     }
 }
