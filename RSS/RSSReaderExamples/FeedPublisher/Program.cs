@@ -1,16 +1,16 @@
+using System.Runtime.CompilerServices;
 using RSSProducer;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => FeedCreator.CreateFeed());
+app.MapGet("/", () =>
+{
+    var mimeType = "application/rss+xml; charset=utf-8";
+    var bytes = FeedCreator.CreateFeed().ToArray();
+    return Results.File(bytes, contentType: mimeType);
+});
 
 app.Run();
-
