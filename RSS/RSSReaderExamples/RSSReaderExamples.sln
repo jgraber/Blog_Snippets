@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RSSReaderExamples", "RSSReaderExamples\RSSReaderExamples.csproj", "{E2EAFB86-BD17-4D37-969D-539873827062}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedPublisher", "FeedPublisher\FeedPublisher.csproj", "{2DC0037D-001E-42BC-A973-C6C0012109FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedPublisher", "FeedPublisher\FeedPublisher.csproj", "{2DC0037D-001E-42BC-A973-C6C0012109FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
