@@ -2,6 +2,8 @@ using System.Runtime.CompilerServices;
 using RSSProducer;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHostedService<TimedHostedService>();
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
