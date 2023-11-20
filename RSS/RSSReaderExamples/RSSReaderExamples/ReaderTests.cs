@@ -20,7 +20,8 @@ namespace RSSReaderExamples
         //private string BlogFeed = "https://improveandrepeat.com/category/pythonfriday/feed/?swcfpc=1";
         //private string BlogFeed = "https://devblogs.microsoft.com/python/feed/";
         //private string BlogFeed = "https://talkpython.fm/episodes/rss";
-        private string BlogFeed = "http://feeds.hanselman.com/scotthanselman";
+        //private string BlogFeed = "http://feeds.hanselman.com/scotthanselman";
+        private string BlogFeed = "https://localhost:7066/feed.rss";
         //private string BlogFeed = "https://localhost:7066/";
         //private string BlogFeed = "https://dnug-bern.ch/Veranstaltungen/rss";
 

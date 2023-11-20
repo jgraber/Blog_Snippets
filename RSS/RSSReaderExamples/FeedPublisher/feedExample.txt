@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>My Blog Feed</title>
+    <link>http://someuri/</link>
+    <description>Basic example to produce a RSS feed</description>
+    <managingEditor>jg@jgraber.ch</managingEditor>
+    <lastBuildDate>Sat, 18 Nov 2023 16:01:46 +0100</lastBuildDate>
+    <category>.Net</category>
+    <image>
+      <url>https://jgraber.ch/images/background.jpg</url>
+      <title>My Blog Feed</title>
+      <link>http://someuri/</link>
+    </image>
+    <item>
+      <guid isPermaLink="false">ItemOneID</guid>
+      <link>http://localhost/Content/One</link>
+      <author>A.A@....</author>
+      <category>AI</category>
+      <title>#1 - Start</title>
+      <description>This is the content for item one</description>
+      <pubDate>Sat, 18 Nov 2023 16:01:46 +0100</pubDate>
+      <a10:updated>2023-11-19T16:01:46+01:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">ItemTwoID</guid>
+      <link>http://localhost/Content/Two</link>
+      <author>B.B@....</author>
+      <category>Python</category>
+      <title>#2 - More of it</title>
+      <description>This is the content for item two</description>
+      <pubDate>Sat, 18 Nov 2023 16:01:46 +0100</pubDate>
+      <a10:updated>2023-11-19T16:01:46+01:00</a10:updated>
+    </item>
+    <item>
+      <guid isPermaLink="false">ItemThreeID</guid>
+      <link>http://localhost/Content/three</link>
+      <author>C.C@....</author>
+      <category>.Net</category>
+      <category>Practice</category>
+      <category>Work</category>
+      <title>#3 - With a Category</title>
+      <description>This is the content for item three</description>
+      <pubDate>Sat, 18 Nov 2023 16:01:46 +0100</pubDate>
+      <a10:updated>2023-11-19T16:01:46+01:00</a10:updated>
+    </item>
+  </channel>
+</rss>
