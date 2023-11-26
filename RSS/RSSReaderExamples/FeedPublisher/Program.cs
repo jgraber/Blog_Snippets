@@ -22,4 +22,11 @@ app.MapGet("/feed.rss", () =>
     return Results.File(feed, contentType: mimeType);
 });
 
+app.MapGet("/people", () =>
+{
+    var mimeType = "application/json; charset=utf-8";
+    var feed = File.ReadAllBytes("people.json");
+    return Results.File(feed, contentType: mimeType);
+});
+
 app.Run();
