@@ -1,0 +1,6 @@
+@ServeTestData_HostAddress = http://localhost:5256
+
+GET {{ServeTestData_HostAddress}}/people/
+Accept: application/json
+
+###
