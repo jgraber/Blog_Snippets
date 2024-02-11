@@ -9,13 +9,15 @@ using System.Xml;
 using FluentAssertions;
 using HtmlAgilityPack;
 using System.Web;
+using CodeHollow.FeedReader;
+using NSubstitute;
 
 namespace RSSReaderExamples
 {
     [TestFixture]
     public class ReadRssToDtoTests
     {
-        private string BlogFeed = "https://localhost:7066/feed.rss";
+        private Uri BlogFeed = new Uri("https://localhost:7066/feed.rss");
 
         [Test]
         public void Capture_RSS_feed_as_DTOs()
@@ -37,13 +39,103 @@ namespace RSSReaderExamples
             entries.First().Should().BeEquivalentTo(expectedItem,
                 o => o.Excluding(b => b.Id));
         }
+
+        [Test]
+        public void CommunityFeed_collects_Feeds()
+        {
+            var reader = new CaptureFeed();
+            var storage = Substitute.For<IStoreFeeds>();
+            var configurationReader = Substitute.For<IFeedConfiguration>();
+            configurationReader.GetAllConfigurations(CommunityFeedType.Community).Returns(new List<FeedConfiguraton>()
+                { new FeedConfiguraton() { FeedUri = BlogFeed, Type = CommunityFeedType.Community} });
+            var communityFeed = new CommunityFeed(reader, storage, configurationReader);
+
+            communityFeed.FetchFeeds();
+
+            storage.Received(3).SaveEntry(Arg.Any<FeedEntry>());
+        }
+
+        [Test]
+        public void CommunityFeed_collects_Feeds_handles_existing_items()
+        {
+            var reader = new CaptureFeed();
+            var storage = Substitute.For<IStoreFeeds>();
+            storage.ExistUrl(Arg.Any<Uri>()).Returns(false, false, true);
+            var configurationReader = Substitute.For<IFeedConfiguration>();
+            configurationReader.GetAllConfigurations(CommunityFeedType.Community).Returns(new List<FeedConfiguraton>()
+                { new FeedConfiguraton() { FeedUri = BlogFeed, Type = CommunityFeedType.Community} });
+            var communityFeed = new CommunityFeed(reader, storage, configurationReader);
+
+            communityFeed.FetchFeeds();
+
+            storage.Received(2).SaveEntry(Arg.Any<FeedEntry>());
+        }
     }
 
-    public class CaptureFeed
+    public interface IFeedConfiguration
     {
-        public List<FeedEntry> GetFeed(string blogFeed)
+        List<FeedConfiguraton> GetAllConfigurations(CommunityFeedType type);
+    }
+
+    public enum CommunityFeedType
+    {
+        Community = 1,
+        Education = 2,
+    }
+
+    public class FeedConfiguraton
+    {
+        public Guid Id { get; set; }
+        public CommunityFeedType Type { get; set; }
+        public Uri FeedUri { get; set; }
+    }
+
+    public class CommunityFeed
+    {
+        private readonly ICaptureFeed _captureFeed;
+        private readonly IStoreFeeds _storeFeeds;
+        private readonly IFeedConfiguration _configurationReader;
+
+        public CommunityFeed(ICaptureFeed captureFeed, IStoreFeeds storeFeeds, IFeedConfiguration configurationReader)
         {
-            XmlReader reader = XmlReader.Create(blogFeed);
+            _captureFeed = captureFeed;
+            _storeFeeds = storeFeeds;
+            _configurationReader = configurationReader;
+        }
+
+        public void FetchFeeds()
+        {
+            var feeds = _configurationReader.GetAllConfigurations(CommunityFeedType.Community);
+            foreach (var feedConfiguraton in feeds)
+            {
+                var entries = _captureFeed.GetFeed(feedConfiguraton.FeedUri);
+                foreach (var entry in entries)
+                {
+                    if (_storeFeeds.ExistUrl(entry.Url) == false)
+                    {
+                        _storeFeeds.SaveEntry(entry);
+                    }
+                }
+            }
+        }
+    }
+
+    public interface IStoreFeeds
+    {
+        void SaveEntry(FeedEntry entry);
+        bool ExistUrl(Uri url);
+    }
+
+    public interface ICaptureFeed
+    {
+        List<FeedEntry> GetFeed(Uri blogFeed);
+    }
+
+    public class CaptureFeed : ICaptureFeed
+    {
+        public List<FeedEntry> GetFeed(Uri blogFeed)
+        {
+            XmlReader reader = XmlReader.Create(blogFeed.AbsoluteUri);
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             reader.Close();
 
