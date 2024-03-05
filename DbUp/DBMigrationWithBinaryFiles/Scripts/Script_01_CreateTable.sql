@@ -2,7 +2,7 @@ CREATE TABLE dbo.Files(
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[FileId] [uniqueidentifier] ROWGUIDCOL  NOT NULL,
 	[File] [varbinary](max) FILESTREAM  NULL,
- CONSTRAINT [PK_Vorlage] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Files] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 ) WITH 

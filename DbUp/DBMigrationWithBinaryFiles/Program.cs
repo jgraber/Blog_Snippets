@@ -12,7 +12,7 @@ namespace WithBinary
             var upgrader =
                 DeployChanges.To
                     .SqlDatabase(connectionString)
-                    .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
+                    .WithScriptsAndCodeEmbeddedInAssembly(Assembly.GetExecutingAssembly())
                     .WithTransactionPerScript()
                     .WithVariablesDisabled()
                     .LogToConsole()

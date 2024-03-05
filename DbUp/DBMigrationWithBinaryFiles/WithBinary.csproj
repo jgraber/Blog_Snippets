@@ -19,4 +19,14 @@
     <PackageReference Include="dbup-sqlserver" Version="5.0.40" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Binary\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Binary\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
