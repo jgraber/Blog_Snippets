@@ -1,0 +1,16 @@
+{
+  "FilesToGenerate": [
+    {
+      "Filename": "OrderDto.g.cs",
+      "Project": "",
+      "Path": "TestSubfolder",
+      "Properties": {}
+    },
+    {
+      "Filename": "ProductDto.g.cs",
+      "Project": "",
+      "Path": "TestSubfolder",
+      "Properties": {}
+    }
+  ]
+}

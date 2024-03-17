@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateCodeWithT4", "GenerateCodeWithT4.csproj", "{CC0E329B-7321-40AE-AEA0-58808BB2A3F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateCodeWithFileManager", "..\GenerateCodeWithFileManager\GenerateCodeWithFileManager.csproj", "{30B0C8F0-4550-44FA-A5EA-9799C37FEAAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CC0E329B-7321-40AE-AEA0-58808BB2A3F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC0E329B-7321-40AE-AEA0-58808BB2A3F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC0E329B-7321-40AE-AEA0-58808BB2A3F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B0C8F0-4550-44FA-A5EA-9799C37FEAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B0C8F0-4550-44FA-A5EA-9799C37FEAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B0C8F0-4550-44FA-A5EA-9799C37FEAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B0C8F0-4550-44FA-A5EA-9799C37FEAAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
