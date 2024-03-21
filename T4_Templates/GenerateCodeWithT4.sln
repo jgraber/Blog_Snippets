@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCodeWithT4", "GenerateCodeWithT4\GenerateCodeWithT4.csproj", "{F073B59B-7729-4970-A0E3-28691F6A370B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCodeFromDb", "GenerateCodeFromDb\GenerateCodeFromDb.csproj", "{F3018A20-FE12-4DD1-9CBC-29C908FBA777}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCodeWithFileManager", "GenerateCodeWithFileManager\GenerateCodeWithFileManager.csproj", "{09C82FE2-E714-480C-BACE-9BE607416019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCodeWithFileManager", "GenerateCodeWithFileManager\GenerateCodeWithFileManager.csproj", "{D33AF7EE-4275-4945-97CA-9B9EA44E6C07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateCodeFromDb", "GenerateCodeFromDb\GenerateCodeFromDb.csproj", "{8CE20C5A-4797-4F0F-BA3B-37B36C7BAD5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateCodeWithT4", "GenerateCodeWithT4\GenerateCodeWithT4.csproj", "{FB036C41-3DA9-46FB-9CEB-9B89C4AE5012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F073B59B-7729-4970-A0E3-28691F6A370B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F073B59B-7729-4970-A0E3-28691F6A370B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F073B59B-7729-4970-A0E3-28691F6A370B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F073B59B-7729-4970-A0E3-28691F6A370B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09C82FE2-E714-480C-BACE-9BE607416019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09C82FE2-E714-480C-BACE-9BE607416019}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09C82FE2-E714-480C-BACE-9BE607416019}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09C82FE2-E714-480C-BACE-9BE607416019}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8CE20C5A-4797-4F0F-BA3B-37B36C7BAD5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8CE20C5A-4797-4F0F-BA3B-37B36C7BAD5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8CE20C5A-4797-4F0F-BA3B-37B36C7BAD5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8CE20C5A-4797-4F0F-BA3B-37B36C7BAD5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3018A20-FE12-4DD1-9CBC-29C908FBA777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3018A20-FE12-4DD1-9CBC-29C908FBA777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3018A20-FE12-4DD1-9CBC-29C908FBA777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3018A20-FE12-4DD1-9CBC-29C908FBA777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D33AF7EE-4275-4945-97CA-9B9EA44E6C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D33AF7EE-4275-4945-97CA-9B9EA44E6C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D33AF7EE-4275-4945-97CA-9B9EA44E6C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D33AF7EE-4275-4945-97CA-9B9EA44E6C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB036C41-3DA9-46FB-9CEB-9B89C4AE5012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB036C41-3DA9-46FB-9CEB-9B89C4AE5012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB036C41-3DA9-46FB-9CEB-9B89C4AE5012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB036C41-3DA9-46FB-9CEB-9B89C4AE5012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

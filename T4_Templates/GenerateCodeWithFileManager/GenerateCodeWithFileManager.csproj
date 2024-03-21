@@ -15,6 +15,11 @@
       <LastGenOutput>ClassGenerator.txt</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
+    <None Update="ClassGenerator.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ClassGenerator.tt</DependentUpon>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

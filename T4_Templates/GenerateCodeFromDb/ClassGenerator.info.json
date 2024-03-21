@@ -1,0 +1,16 @@
+{
+  "FilesToGenerate": [
+    {
+      "Filename": "Product.g.cs",
+      "Project": "",
+      "Path": "FromDb",
+      "Properties": {}
+    },
+    {
+      "Filename": "Customer.g.cs",
+      "Project": "",
+      "Path": "FromDb",
+      "Properties": {}
+    }
+  ]
+}

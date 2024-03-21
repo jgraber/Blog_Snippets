@@ -1,0 +1,100 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Runtime" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Security.Principal" #>
+
+<#@ assembly name="$(NuGetPackageRoot)\microsoft.data.sqlclient\5.1.5\lib\net462\Microsoft.Data.SqlClient.dll" #>
+<#@ import namespace="System.Data.SqlClient" #>
+
+
+<#@ assembly name="$(NuGetPackageRoot)\dapper\2.1.35\lib\net461\Dapper.dll" #>
+<#@ import namespace="Dapper" #>
+
+<#@ output extension=".txt" #>
+
+<#@ include file="$(TargetDir)\T4.FileManager.VisualStudio.ttinclude" #>
+
+<#
+var schemaReader = new SchemaReader();
+var fileManager = new T4FileManager(this);
+
+foreach(var itm in schemaReader.ReadTables())
+{
+    fileManager.StartNewFile(itm + ".g.cs","","FromDb");
+#>
+using System;
+
+namespace Test.FromDb
+{
+    public class <#= itm #>
+    {
+<#
+    foreach(var field in schemaReader.ReadColumns(itm))
+    {
+#>
+        public <#= field.DataType#> <#= field.Name #> { get; set; }
+<#
+    }
+#>
+    }
+}
+
+<#
+fileManager.Process();
+};
+#>
+
+
+<#+
+
+public class SchemaReader
+{
+    private string connection { get; set;}
+
+    public SchemaReader()
+    {
+        connection = "Data Source=.;Initial Catalog=T4Demo;Integrated Security=True;MultipleActiveResultSets=True;Encrypt=False;";
+    }
+
+    public List<string> ReadTables()
+    {
+        var con = new SqlConnection(this.connection);
+        var getTables = @"SELECT TABLE_NAME 
+                      FROM INFORMATION_SCHEMA.TABLES";
+        return con.Query<string>(getTables).ToList();
+        //return new List<string>() { "a", "b", "c","d"};
+    }
+
+    public List<Column> ReadColumns(string table)
+    {
+        var con = new SqlConnection(this.connection);
+        var getColumns = @"SELECT 
+                            COLUMN_NAME AS 'Name',
+                            CASE WHEN DATA_TYPE = 'int' THEN 'int'
+		                         WHEN DATA_TYPE = 'nvarchar' THEN 'string' 
+		                         WHEN DATA_TYPE = 'bit' THEN 'bool'
+		                         WHEN DATA_TYPE = 'decimal' THEN 'double'
+		                         WHEN DATA_TYPE = 'datetime' THEN 'DateTime'
+                                 ELSE DATA_TYPE
+	                        END AS 'DataType'
+                            FROM INFORMATION_SCHEMA.COLUMNS
+                            WHERE TABLE_NAME = @Table";
+        return con.Query<Column>(getColumns, new { Table = table}).ToList();
+        //return new List<Column>(){new Column("Id", "int"), new Column("Name", "string")};
+    }
+}
+
+public class Column
+{
+    public string Name { get; set; }
+    public string DataType { get; set; }
+
+    
+}
+
+#>
