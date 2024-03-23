@@ -25,11 +25,11 @@ var fileManager = new T4FileManager(this);
 
 foreach(var itm in schemaReader.ReadTables())
 {
-    fileManager.StartNewFile(itm + ".g.cs","","FromDb");
+    fileManager.StartNewFile(itm + ".g.cs","","FromDb/Entities");
 #>
 using System;
 
-namespace Test.FromDb
+namespace Test.FromDb.Entities
 {
     public class <#= itm #>
     {

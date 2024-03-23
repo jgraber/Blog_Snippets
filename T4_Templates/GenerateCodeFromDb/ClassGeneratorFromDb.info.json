@@ -3,13 +3,13 @@
     {
       "Filename": "Product.g.cs",
       "Project": "",
-      "Path": "FromDb",
+      "Path": "FromDb\\Entities",
       "Properties": {}
     },
     {
       "Filename": "Customer.g.cs",
       "Project": "",
-      "Path": "FromDb",
+      "Path": "FromDb\\Entities",
       "Properties": {}
     }
   ]

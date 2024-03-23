@@ -19,11 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ClassGenerator.tt">
-      <LastGenOutput>ClassGenerator.txt</LastGenOutput>
+    <None Update="ClassGeneratorFromDb.tt">
+      <LastGenOutput>ClassGeneratorFromDb.txt</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
-    <None Update="ClassGenerator.txt">
+    <None Update="ClassGeneratorFromDb.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ClassGeneratorFromDb.tt</DependentUpon>
+    </None>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ClassGenerator.tt</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Test.FromDb
+namespace Test.FromDb.Entities
 {
     public class Customer
     {
