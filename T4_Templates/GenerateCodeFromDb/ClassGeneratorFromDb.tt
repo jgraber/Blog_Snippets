@@ -31,7 +31,7 @@ using System;
 
 namespace Test.FromDb.Entities
 {
-    public class <#= itm #>
+    public partial class <#= itm #>
     {
 <#
     foreach(var field in schemaReader.ReadColumns(itm))

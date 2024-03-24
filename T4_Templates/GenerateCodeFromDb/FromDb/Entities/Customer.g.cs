@@ -2,7 +2,7 @@
 
 namespace Test.FromDb.Entities
 {
-    public class Customer
+    public partial class Customer
     {
         public int Id { get; set; }
         public string LastName { get; set; }
