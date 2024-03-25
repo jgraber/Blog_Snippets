@@ -1,0 +1,28 @@
+{
+  "FilesToGenerate": [
+    {
+      "Filename": "IProductRepository.g.cs",
+      "Project": "",
+      "Path": "FromDb\\Repositories",
+      "Properties": {}
+    },
+    {
+      "Filename": "ICustomerRepository.g.cs",
+      "Project": "",
+      "Path": "FromDb\\Repositories",
+      "Properties": {}
+    },
+    {
+      "Filename": "ProductRepository.g.cs",
+      "Project": "",
+      "Path": "FromDb\\Repositories",
+      "Properties": {}
+    },
+    {
+      "Filename": "CustomerRepository.g.cs",
+      "Project": "",
+      "Path": "FromDb\\Repositories",
+      "Properties": {}
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Runtime" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Security.Principal" #>
+
+<#@ assembly name="$(NuGetPackageRoot)\microsoft.data.sqlclient\5.1.5\lib\net462\Microsoft.Data.SqlClient.dll" #>
+<#@ import namespace="System.Data.SqlClient" #>
+
+
+<#@ assembly name="$(NuGetPackageRoot)\dapper\2.1.35\lib\net461\Dapper.dll" #>
+<#@ import namespace="Dapper" #>
+
+<#@ output extension=".txt" #>
+
+<#@ include file="$(TargetDir)\T4.FileManager.VisualStudio.ttinclude" #>
+
+<#
+var schemaReader = new SchemaReader();
+var fileManager = new T4FileManager(this);
+
+foreach(var itm in schemaReader.ReadTables())
+{
+    fileManager.StartNewFile("I" + itm + "Repository.g.cs","","FromDb/Repositories");
+#>
+using System;
+using Test.FromDb.Entities;
+
+namespace Test.FromDb.Repositories
+{
+    public partial interface I<#= itm #>Repository
+    {
+        int Create(<#= itm #> <#= itm.ToLower() #>);
+        <#= itm #> FindById(int id);
+        void Update(<#= itm #> <#= itm.ToLower() #>);
+        void Delete(<#= itm #> <#= itm.ToLower() #>);
+    }
+}
+
+<#
+fileManager.Process();
+};
+#>
+
+
+<#
+
+foreach(var itm in schemaReader.ReadTables())
+{
+    fileManager.StartNewFile(itm + "Repository.g.cs","","FromDb/Repositories");
+#>
+using System;
+using System.Data;
+using System.Linq;
+using Dapper;
+using Test.FromDb.Entities;
+
+namespace Test.FromDb.Repositories
+{
+    public partial class <#= itm #>Repository : I<#= itm #>Repository
+    {
+        private readonly IDbConnection connection;
+
+        public <#= itm #>Repository(IDbConnection connection)
+        {
+            this.connection = connection;
+        }
+
+        public int Create(<#= itm #> <#= itm.ToLower() #>)
+        {
+            var sql = @"<#= GenerateInsert(itm, schemaReader.ReadColumns(itm))#>";
+            
+            return this.connection.Query<int>(sql, <#= itm.ToLower() #>).Single();
+        }
+
+        public <#= itm #> FindById(int id)
+        {
+            var sql = @"<#= GenerateSelect(itm, schemaReader.ReadColumns(itm))#>";
+
+            return this.connection.Query<<#= itm #>>(sql, new {Id = id}).FirstOrDefault();
+        }
+        
+        public void Update(<#= itm #> <#= itm.ToLower() #>)
+        {
+            var sql = @"<#= GenerateUpdate(itm, schemaReader.ReadColumns(itm))#>";
+
+            this.connection.Execute(sql, <#= itm.ToLower() #>);
+        }
+        
+        public void Delete(<#= itm #> <#= itm.ToLower() #>)
+        {
+            var sql = "DELETE FROM <#= itm #> WHERE Id = @Id";
+
+            this.connection.Execute(sql, new {Id = <#= itm.ToLower() #>.Id});
+        }
+    }
+}
+
+<#
+fileManager.Process();
+};
+#>
+
+
+
+<#+
+
+public string GenerateInsert(string table, List<Column> columns)
+{
+    var sb = new StringBuilder();
+    sb.AppendLine();
+    sb.AppendLine("INSERT INTO dbo." + table + "(");
+
+    var index = 0;
+    foreach(var col in columns)
+    {
+        if(col.Name == "Id")
+        {
+            continue;
+        }
+        if(index > 0)
+        {
+        sb.Append(",");
+        }
+
+        sb.AppendLine($"[{col.Name}]");
+        index++;
+    }
+
+    sb.AppendLine(") VALUES (");
+    index = 0;
+    foreach(var col in columns)
+    {
+        if(col.Name == "Id")
+        {
+            continue;
+        }
+        if(index > 0)
+        {
+        sb.Append(",");
+        }
+
+        sb.AppendLine($"@{col.Name}");
+        index++;
+    }
+    sb.Append(")");
+
+    sb.AppendLine("SELECT CAST(SCOPE_IDENTITY() as INT);");
+
+    return sb.ToString();
+}
+
+public string GenerateSelect(string table, List<Column> columns)
+{
+    var sb = new StringBuilder();
+    sb.AppendLine();
+    sb.AppendLine("SELECT");
+
+    var index = 0;
+    foreach(var col in columns)
+    {
+        if(index > 0)
+        {
+        sb.Append(",");
+        }
+
+        sb.AppendLine($"[{col.Name}]");
+        index++;
+    }
+
+    sb.AppendLine("FROM dbo." + table);
+    sb.AppendLine("WHERE Id = @Id");
+
+    return sb.ToString();
+}
+
+public string GenerateUpdate(string table, List<Column> columns)
+{
+    var sb = new StringBuilder();
+    sb.AppendLine();
+    sb.AppendLine("UPDATE dbo." + table);
+    sb.AppendLine("SET");
+
+    var index = 0;
+    foreach(var col in columns)
+    {
+        if(col.Name == "Id")
+        {
+            continue;
+        }
+        if(index > 0)
+        {
+        sb.Append(",");
+        }
+
+        sb.AppendLine($"[{col.Name}] = @{col.Name}");
+        index++;
+    }
+
+    sb.AppendLine("WHERE Id = @Id");
+
+    return sb.ToString();
+}
+
+
+public class SchemaReader
+{
+    private string connection { get; set;}
+
+    public SchemaReader()
+    {
+        connection = "Data Source=.;Initial Catalog=T4Demo;Integrated Security=True;MultipleActiveResultSets=True;Encrypt=False;";
+    }
+
+    public List<string> ReadTables()
+    {
+        var con = new SqlConnection(this.connection);
+        var getTables = @"SELECT TABLE_NAME 
+                      FROM INFORMATION_SCHEMA.TABLES";
+        return con.Query<string>(getTables).ToList();
+        //return new List<string>() { "a", "b", "c","d"};
+    }
+
+    public List<Column> ReadColumns(string table)
+    {
+        var con = new SqlConnection(this.connection);
+        var getColumns = @"SELECT 
+                            COLUMN_NAME AS 'Name',
+                            CASE WHEN DATA_TYPE = 'int' THEN 'int'
+		                         WHEN DATA_TYPE = 'nvarchar' THEN 'string' 
+		                         WHEN DATA_TYPE = 'bit' THEN 'bool'
+		                         WHEN DATA_TYPE = 'decimal' THEN 'double'
+		                         WHEN DATA_TYPE = 'datetime' THEN 'DateTime'
+                                 ELSE DATA_TYPE
+	                        END AS 'DataType'
+                            FROM INFORMATION_SCHEMA.COLUMNS
+                            WHERE TABLE_NAME = @Table";
+        return con.Query<Column>(getColumns, new { Table = table}).ToList();
+        //return new List<Column>(){new Column("Id", "int"), new Column("Name", "string")};
+    }
+}
+
+public class Column
+{
+    public string Name { get; set; }
+    public string DataType { get; set; }
+
+    
+}
+
+#>

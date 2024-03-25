@@ -13,12 +13,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="FromDb\Repositories\Customer.g.cs" />
+    <Compile Remove="FromDb\Repositories\ICustomer.g.cs" />
+    <Compile Remove="FromDb\Repositories\IProduct.g.cs" />
+    <Compile Remove="FromDb\Repositories\Product.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.5" />
     <PackageReference Include="T4.FileManager.VisualStudio" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="RepositoryGeneratorFromDb.tt">
+      <LastGenOutput>RepositoryGeneratorFromDb.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
     <None Update="ClassGeneratorFromDb.tt">
       <LastGenOutput>ClassGeneratorFromDb.txt</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -28,9 +39,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ClassGeneratorFromDb.tt</DependentUpon>
     </None>
+    <None Update="RepositoryGeneratorFromDb.txt">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ClassGenerator.tt</DependentUpon>
+      <DependentUpon>RepositoryGeneratorFromDb.tt</DependentUpon>
     </None>
   </ItemGroup>
 
