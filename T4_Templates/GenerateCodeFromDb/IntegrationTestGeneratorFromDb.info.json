@@ -1,0 +1,16 @@
+{
+  "FilesToGenerate": [
+    {
+      "Filename": "ProductRepositoryTests.g.cs",
+      "Project": "",
+      "Path": "FromDb\\IntegrationTests",
+      "Properties": {}
+    },
+    {
+      "Filename": "CustomerRepositoryTests.g.cs",
+      "Project": "",
+      "Path": "FromDb\\IntegrationTests",
+      "Properties": {}
+    }
+  ]
+}

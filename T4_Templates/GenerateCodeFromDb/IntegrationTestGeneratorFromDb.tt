@@ -1,0 +1,171 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Runtime" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Security.Principal" #>
+
+<#@ assembly name="$(NuGetPackageRoot)\microsoft.data.sqlclient\5.1.5\lib\net462\Microsoft.Data.SqlClient.dll" #>
+<#@ import namespace="System.Data.SqlClient" #>
+
+
+<#@ assembly name="$(NuGetPackageRoot)\dapper\2.1.35\lib\net461\Dapper.dll" #>
+<#@ import namespace="Dapper" #>
+
+<#@ output extension=".txt" #>
+
+<#@ include file="$(TargetDir)\T4.FileManager.VisualStudio.ttinclude" #>
+
+<#
+var schemaReader = new SchemaReader();
+var fileManager = new T4FileManager(this);
+
+foreach(var itm in schemaReader.ReadTables())
+{
+    fileManager.StartNewFile(itm + "RepositoryTests.g.cs","","FromDb/IntegrationTests");
+#>
+using System;
+using System.Transactions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Data.SqlClient;
+using FluentAssertions;
+using GenerateCodeFromDb.Helper;
+using GenerateCodeFromDb.TestDataGenerators;
+using NUnit.Framework;
+using Test.FromDb.Repositories;
+
+namespace Test.FromDb.IntegrationTests
+{
+    [TestFixture]
+    public partial class <#= itm #>RepositoryTests
+    {
+        private I<#= itm #>Repository testee;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            var connectionString = SettingsReader.ReadSettings().GetConnectionString("db");
+            this.testee = new <#= itm #>Repository(new SqlConnection(connectionString));
+        }
+
+        [Test]
+        public void Create_<#= itm #>()
+        {
+
+            using (new TransactionScope(TransactionScopeOption.RequiresNew))
+            {
+                var <#= itm.ToLower() #> = <#= itm #>Generator.GetTestData();
+
+                var newId = this.testee.Create(<#= itm.ToLower() #>);
+
+                newId.Should().BeGreaterThan(0);
+            }
+        }
+
+        [Test]
+        public void Find_<#= itm #>()
+        {
+            using (new TransactionScope(TransactionScopeOption.RequiresNew))
+            {
+                var <#= itm.ToLower() #> = <#= itm #>Generator.GetTestData();
+                var newId = this.testee.Create(<#= itm.ToLower() #>);
+                <#= itm.ToLower() #>.Id = newId;
+
+                var fromDb = this.testee.FindById(newId);
+                fromDb.Should().BeEquivalentTo(<#= itm.ToLower() #>);
+            }
+        }
+
+        [Test]
+        public void Update_<#= itm #>()
+        {
+            using (new TransactionScope(TransactionScopeOption.RequiresNew))
+            {
+                var <#= itm.ToLower() #> = <#= itm #>Generator.GetTestData();
+                var newId = this.testee.Create(<#= itm.ToLower() #>);
+
+                var update<#= itm #> = <#= itm #>Generator.GetDataForUpdate();
+                update<#= itm #>.Id = newId;
+
+                testee.Update(update<#= itm #>);
+
+                var fromDb = this.testee.FindById(newId);
+                fromDb.Should().BeEquivalentTo(update<#= itm #>);
+            }
+        }
+
+        [Test]
+        public void Delete_<#= itm #>()
+        {
+            using (new TransactionScope(TransactionScopeOption.RequiresNew))
+            {
+                var <#= itm.ToLower() #> = <#= itm #>Generator.GetTestData();
+                var newId = this.testee.Create(<#= itm.ToLower() #>);
+                <#= itm.ToLower() #>.Id = newId;
+
+                testee.Delete(<#= itm.ToLower() #>);
+
+                var fromDb = this.testee.FindById(newId);
+                fromDb.Should().BeNull();
+            }
+        }
+    }
+}
+
+<#
+fileManager.Process();
+};
+#>
+
+
+<#+
+
+public class SchemaReader
+{
+    private string connection { get; set;}
+
+    public SchemaReader()
+    {
+        connection = "Data Source=.;Initial Catalog=T4Demo;Integrated Security=True;MultipleActiveResultSets=True;Encrypt=False;";
+    }
+
+    public List<string> ReadTables()
+    {
+        var con = new SqlConnection(this.connection);
+        var getTables = @"SELECT TABLE_NAME 
+                      FROM INFORMATION_SCHEMA.TABLES";
+        return con.Query<string>(getTables).ToList();
+        //return new List<string>() { "a", "b", "c","d"};
+    }
+
+    public List<Column> ReadColumns(string table)
+    {
+        var con = new SqlConnection(this.connection);
+        var getColumns = @"SELECT 
+                            COLUMN_NAME AS 'Name',
+                            CASE WHEN DATA_TYPE = 'int' THEN 'int'
+		                         WHEN DATA_TYPE = 'nvarchar' THEN 'string' 
+		                         WHEN DATA_TYPE = 'bit' THEN 'bool'
+		                         WHEN DATA_TYPE = 'decimal' THEN 'double'
+		                         WHEN DATA_TYPE = 'datetime' THEN 'DateTime'
+                                 ELSE DATA_TYPE
+	                        END AS 'DataType'
+                            FROM INFORMATION_SCHEMA.COLUMNS
+                            WHERE TABLE_NAME = @Table";
+        return con.Query<Column>(getColumns, new { Table = table}).ToList();
+        //return new List<Column>(){new Column("Id", "int"), new Column("Name", "string")};
+    }
+}
+
+public class Column
+{
+    public string Name { get; set; }
+    public string DataType { get; set; }
+
+    
+}
+
+#>
