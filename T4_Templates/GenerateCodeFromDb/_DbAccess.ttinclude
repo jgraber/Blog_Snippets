@@ -1,0 +1,48 @@
+﻿<#+
+
+public class SchemaReader
+{
+    private string connection { get; set;}
+
+    public SchemaReader()
+    {
+        connection = "Data Source=.;Initial Catalog=T4Demo;Integrated Security=True;MultipleActiveResultSets=True;Encrypt=False;";
+    }
+
+    public List<string> ReadTables()
+    {
+        var con = new SqlConnection(this.connection);
+        var getTables = @"SELECT TABLE_NAME 
+                      FROM INFORMATION_SCHEMA.TABLES";
+        return con.Query<string>(getTables).ToList();
+        //return new List<string>() { "a", "b", "c","d"};
+    }
+
+    public List<Column> ReadColumns(string table)
+    {
+        var con = new SqlConnection(this.connection);
+        var getColumns = @"SELECT 
+                            COLUMN_NAME AS 'Name',
+                            CASE WHEN DATA_TYPE = 'int' THEN 'int'
+		                         WHEN DATA_TYPE = 'nvarchar' THEN 'string' 
+		                         WHEN DATA_TYPE = 'bit' THEN 'bool'
+		                         WHEN DATA_TYPE = 'decimal' THEN 'double'
+		                         WHEN DATA_TYPE = 'datetime' THEN 'DateTime'
+                                 ELSE DATA_TYPE
+	                        END AS 'DataType'
+                            FROM INFORMATION_SCHEMA.COLUMNS
+                            WHERE TABLE_NAME = @Table";
+        return con.Query<Column>(getColumns, new { Table = table}).ToList();
+        //return new List<Column>(){new Column("Id", "int"), new Column("Name", "string")};
+    }
+}
+
+public class Column
+{
+    public string Name { get; set; }
+    public string DataType { get; set; }
+
+    
+}
+
+#>

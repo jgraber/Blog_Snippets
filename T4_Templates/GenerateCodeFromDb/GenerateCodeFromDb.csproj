@@ -62,6 +62,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>RepositoryGeneratorFromDb.tt</DependentUpon>
     </None>
+    <None Update="_DbAccess.ttinclude">
+      <Generator></Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
