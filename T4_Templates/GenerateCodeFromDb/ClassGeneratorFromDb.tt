@@ -1,20 +1,5 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
-<#@ assembly name="System.Runtime" #>
-<#@ assembly name="System.Core" #>
-<#@ assembly name="System.Data" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Security.Principal" #>
-
-<#@ assembly name="$(NuGetPackageRoot)\microsoft.data.sqlclient\5.1.5\lib\net462\Microsoft.Data.SqlClient.dll" #>
-<#@ import namespace="System.Data.SqlClient" #>
-
-
-<#@ assembly name="$(NuGetPackageRoot)\dapper\2.1.35\lib\net461\Dapper.dll" #>
-<#@ import namespace="Dapper" #>
-
+<#@ include file="$(TargetDir)\_Imports.ttinclude" #>
 <#@ output extension=".txt" #>
 
 <#@ include file="$(TargetDir)\T4.FileManager.VisualStudio.ttinclude" #>
@@ -49,5 +34,3 @@ namespace Test.FromDb.Entities
 fileManager.Process();
 };
 #>
-
-
