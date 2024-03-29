@@ -3,18 +3,19 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ output extension=".txt" #>
+<#@ output extension=".cs" #>
 
 <#
-var files = new string[] { "OrderDto", "ProductDto" };
-var fields = new List<Tuple<string, string>>{new ("Id", "int"), new ("Name", "string"), new ("IsActive","bool")};
+var classes = new string[] { "OrderDto", "ProductDto" };
+var fields = new List<Tuple<string, string>>{new ("Id", "int"), 
+				new ("Name", "string"), new ("IsActive","bool")};
 
-foreach(var itm in files)
+foreach(var name in classes)
 {
 #>
 namespace Test.TestSubFolder
 {
-	public class <#= itm #>
+	public class <#= name #>
 	{
 <#
 	foreach(var field in fields)
