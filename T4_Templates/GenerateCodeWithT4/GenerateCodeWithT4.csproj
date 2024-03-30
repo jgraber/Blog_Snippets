@@ -7,27 +7,39 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="ClassGenerator.txt">
+    <None Include="ClassGenerator.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ClassGenerator.tt</DependentUpon>
-    </Compile>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ClassGenerator.tt">
+    <None Update="basic.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ClassGenerator.txt</LastGenOutput>
+      <LastGenOutput>basic.html</LastGenOutput>
     </None>
-    <None Update="ClassGenerator.txt">
+    <None Update="basic.html">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ClassGenerator.tt</DependentUpon>
+      <DependentUpon>basic.tt</DependentUpon>
+    </None>
+    <None Update="ClassGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClassGenerator.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ClassGenerator.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ClassGenerator.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
