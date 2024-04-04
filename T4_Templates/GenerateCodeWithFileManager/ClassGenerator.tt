@@ -9,7 +9,8 @@
 
 <#
 var files = new string[] { "OrderDto", "ProductDto" };
-var fields = new List<Tuple<string, string>>{new ("Id", "int"), new ("Name", "string"), new ("IsActive","bool")};
+var fields = new List<Tuple<string, string>>{new ("Id", "int"),
+				new ("Name", "string"), new ("IsActive","bool")};
 var fileManager = new T4FileManager(this);
 
 foreach(var name in files)

@@ -15,7 +15,6 @@ public class SchemaReader
         var getTables = @"SELECT TABLE_NAME 
                       FROM INFORMATION_SCHEMA.TABLES";
         return con.Query<string>(getTables).ToList();
-        //return new List<string>() { "a", "b", "c","d"};
     }
 
     public List<Column> ReadColumns(string table)
@@ -33,7 +32,6 @@ public class SchemaReader
                             FROM INFORMATION_SCHEMA.COLUMNS
                             WHERE TABLE_NAME = @Table";
         return con.Query<Column>(getColumns, new { Table = table}).ToList();
-        //return new List<Column>(){new Column("Id", "int"), new Column("Name", "string")};
     }
 }
 
@@ -41,8 +39,6 @@ public class Column
 {
     public string Name { get; set; }
     public string DataType { get; set; }
-
-    
 }
 
 #>
