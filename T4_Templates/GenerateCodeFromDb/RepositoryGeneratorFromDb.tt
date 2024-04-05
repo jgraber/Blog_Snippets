@@ -9,21 +9,21 @@
 var schemaReader = new SchemaReader();
 var fileManager = new T4FileManager(this);
 
-foreach(var itm in schemaReader.ReadTables())
+foreach(var name in schemaReader.ReadTables())
 {
-    fileManager.StartNewFile("I" + itm + "Repository.g.cs","","FromDb/Repositories");
+    fileManager.StartNewFile("I" + name + "Repository.g.cs","","FromDb/Repositories");
 #>
 using System;
 using Test.FromDb.Entities;
 
 namespace Test.FromDb.Repositories
 {
-    public partial interface I<#= itm #>Repository
+    public partial interface I<#= name #>Repository
     {
-        int Create(<#= itm #> <#= itm.ToLower() #>);
-        <#= itm #> FindById(int id);
-        void Update(<#= itm #> <#= itm.ToLower() #>);
-        void Delete(<#= itm #> <#= itm.ToLower() #>);
+        int Create(<#= name #> <#= name.ToLower() #>);
+        <#= name #> FindById(int id);
+        void Update(<#= name #> <#= name.ToLower() #>);
+        void Delete(<#= name #> <#= name.ToLower() #>);
     }
 }
 
@@ -35,9 +35,9 @@ fileManager.Process();
 
 <#
 
-foreach(var itm in schemaReader.ReadTables())
+foreach(var name in schemaReader.ReadTables())
 {
-    fileManager.StartNewFile(itm + "Repository.g.cs","","FromDb/Repositories");
+    fileManager.StartNewFile(name + "Repository.g.cs","","FromDb/Repositories");
 #>
 using System;
 using System.Data;
@@ -47,41 +47,41 @@ using Test.FromDb.Entities;
 
 namespace Test.FromDb.Repositories
 {
-    public partial class <#= itm #>Repository : I<#= itm #>Repository
+    public partial class <#= name #>Repository : I<#= name #>Repository
     {
         private readonly IDbConnection connection;
 
-        public <#= itm #>Repository(IDbConnection connection)
+        public <#= name #>Repository(IDbConnection connection)
         {
             this.connection = connection;
         }
 
-        public int Create(<#= itm #> <#= itm.ToLower() #>)
+        public int Create(<#= name #> <#= name.ToLower() #>)
         {
-            var sql = @"<#= GenerateInsert(itm, schemaReader.ReadColumns(itm))#>";
+            var sql = @"<#= GenerateInsert(name, schemaReader.ReadColumns(name))#>";
             
-            return this.connection.Query<int>(sql, <#= itm.ToLower() #>).Single();
+            return this.connection.Query<int>(sql, <#= name.ToLower() #>).Single();
         }
 
-        public <#= itm #> FindById(int id)
+        public <#= name #> FindById(int id)
         {
-            var sql = @"<#= GenerateSelect(itm, schemaReader.ReadColumns(itm))#>";
+            var sql = @"<#= GenerateSelect(name, schemaReader.ReadColumns(name))#>";
 
-            return this.connection.Query<<#= itm #>>(sql, new {Id = id}).FirstOrDefault();
-        }
-        
-        public void Update(<#= itm #> <#= itm.ToLower() #>)
-        {
-            var sql = @"<#= GenerateUpdate(itm, schemaReader.ReadColumns(itm))#>";
-
-            this.connection.Execute(sql, <#= itm.ToLower() #>);
+            return this.connection.Query<<#= name #>>(sql, new {Id = id}).FirstOrDefault();
         }
         
-        public void Delete(<#= itm #> <#= itm.ToLower() #>)
+        public void Update(<#= name #> <#= name.ToLower() #>)
         {
-            var sql = "DELETE FROM <#= itm #> WHERE Id = @Id";
+            var sql = @"<#= GenerateUpdate(name, schemaReader.ReadColumns(name))#>";
 
-            this.connection.Execute(sql, new {Id = <#= itm.ToLower() #>.Id});
+            this.connection.Execute(sql, <#= name.ToLower() #>);
+        }
+        
+        public void Delete(<#= name #> <#= name.ToLower() #>)
+        {
+            var sql = "DELETE FROM <#= name #> WHERE Id = @Id";
+
+            this.connection.Execute(sql, new {Id = <#= name.ToLower() #>.Id});
         }
     }
 }

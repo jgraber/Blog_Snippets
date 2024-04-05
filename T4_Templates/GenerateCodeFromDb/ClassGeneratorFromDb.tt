@@ -9,18 +9,18 @@
 var schemaReader = new SchemaReader();
 var fileManager = new T4FileManager(this);
 
-foreach(var itm in schemaReader.ReadTables())
+foreach(var name in schemaReader.ReadTables())
 {
-    fileManager.StartNewFile(itm + ".g.cs","","FromDb/Entities");
+    fileManager.StartNewFile(name + ".g.cs","","FromDb/Entities");
 #>
 using System;
 
 namespace Test.FromDb.Entities
 {
-    public partial class <#= itm #>
+    public partial class <#= name #>
     {
 <#
-    foreach(var field in schemaReader.ReadColumns(itm))
+    foreach(var field in schemaReader.ReadColumns(name))
     {
 #>
         public <#= field.DataType#> <#= field.Name #> { get; set; }
