@@ -30,7 +30,8 @@ INSERT INTO dbo.Product(
 ,@IsActive
 ,@CreatedOn
 ,@Description
-)SELECT CAST(SCOPE_IDENTITY() as INT);
+)
+SELECT CAST(SCOPE_IDENTITY() as INT);
 ";
             
             return this.connection.Query<int>(sql, product).Single();

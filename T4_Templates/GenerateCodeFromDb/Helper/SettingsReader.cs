@@ -7,7 +7,8 @@ namespace GenerateCodeFromDb.Helper
     {
         public static IConfiguration ReadSettings()
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory)
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("appsettings.json", false, true);
             return (IConfiguration)builder.Build();
         }

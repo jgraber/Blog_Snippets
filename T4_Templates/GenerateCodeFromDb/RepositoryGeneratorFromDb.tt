@@ -133,7 +133,7 @@ public string GenerateInsert(string table, List<Column> columns)
         sb.AppendLine($"@{col.Name}");
         index++;
     }
-    sb.Append(")");
+    sb.AppendLine(")");
 
     sb.AppendLine("SELECT CAST(SCOPE_IDENTITY() as INT);");
 

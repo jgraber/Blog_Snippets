@@ -30,7 +30,8 @@ INSERT INTO dbo.Customer(
 ,@Email
 ,@IsActive
 ,@CreatedOn
-)SELECT CAST(SCOPE_IDENTITY() as INT);
+)
+SELECT CAST(SCOPE_IDENTITY() as INT);
 ";
             
             return this.connection.Query<int>(sql, customer).Single();
