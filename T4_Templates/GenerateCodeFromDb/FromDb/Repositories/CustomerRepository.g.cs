@@ -24,12 +24,22 @@ INSERT INTO dbo.Customer(
 ,[Email]
 ,[IsActive]
 ,[CreatedOn]
+,[StreetAndNumber]
+,[ZipCode]
+,[City]
+,[State]
+,[CountryCode]
 ) VALUES (
 @LastName
 ,@FirstName
 ,@Email
 ,@IsActive
 ,@CreatedOn
+,@StreetAndNumber
+,@ZipCode
+,@City
+,@State
+,@CountryCode
 )
 SELECT CAST(SCOPE_IDENTITY() as INT);
 ";
@@ -47,6 +57,11 @@ SELECT
 ,[Email]
 ,[IsActive]
 ,[CreatedOn]
+,[StreetAndNumber]
+,[ZipCode]
+,[City]
+,[State]
+,[CountryCode]
 FROM dbo.Customer
 WHERE Id = @Id
 ";
@@ -64,6 +79,11 @@ SET
 ,[Email] = @Email
 ,[IsActive] = @IsActive
 ,[CreatedOn] = @CreatedOn
+,[StreetAndNumber] = @StreetAndNumber
+,[ZipCode] = @ZipCode
+,[City] = @City
+,[State] = @State
+,[CountryCode] = @CountryCode
 WHERE Id = @Id
 ";
 

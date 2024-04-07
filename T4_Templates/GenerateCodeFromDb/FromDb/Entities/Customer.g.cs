@@ -10,6 +10,11 @@ namespace Test.FromDb.Entities
         public string Email { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedOn { get; set; }
+        public string StreetAndNumber { get; set; }
+        public string ZipCode { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string CountryCode { get; set; }
     }
 }
 
