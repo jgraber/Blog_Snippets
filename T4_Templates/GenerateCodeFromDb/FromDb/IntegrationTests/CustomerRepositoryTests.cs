@@ -7,9 +7,9 @@ using System.Transactions;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
 using NUnit.Framework;
-using Test.FromDb.Entities;
+using GenerateCodeFromDb.FromDb.Entities;
 
-namespace Test.FromDb.IntegrationTests
+namespace GenerateCodeFromDb.FromDb.IntegrationTests
 {
     public partial class CustomerRepositoryTests
     {

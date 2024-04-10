@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Test.FromDb.Entities
+namespace GenerateCodeFromDb.FromDb.Entities
 {
     public partial class Product
     {

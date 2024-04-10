@@ -1,7 +1,7 @@
 ﻿using System;
 using FluentAssertions;
+using GenerateCodeFromDb.FromDb.Entities;
 using NUnit.Framework;
-using Test.FromDb.Entities;
 
 namespace GenerateCodeFromDb.FromDb.UnitTests
 {

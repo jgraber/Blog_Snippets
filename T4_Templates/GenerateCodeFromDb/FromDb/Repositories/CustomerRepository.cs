@@ -1,9 +1,9 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Linq;
-using Test.FromDb.Entities;
+using GenerateCodeFromDb.FromDb.Entities;
 
-namespace Test.FromDb.Repositories
+namespace GenerateCodeFromDb.FromDb.Repositories
 {
     public partial class CustomerRepository
     {

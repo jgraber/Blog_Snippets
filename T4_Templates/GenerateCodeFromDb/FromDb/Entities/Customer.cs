@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.FromDb.Entities
+namespace GenerateCodeFromDb.FromDb.Entities
 {
     public partial class Customer
     {

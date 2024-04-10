@@ -15,7 +15,7 @@ foreach(var name in schemaReader.ReadTables())
 #>
 using System;
 
-namespace Test.FromDb.Entities
+namespace GenerateCodeFromDb.FromDb.Entities
 {
     public partial class <#= name #>
     {

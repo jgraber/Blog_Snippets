@@ -1,7 +1,7 @@
 ﻿using System;
-using Test.FromDb.Entities;
+using GenerateCodeFromDb.FromDb.Entities;
 
-namespace Test.FromDb.Repositories
+namespace GenerateCodeFromDb.FromDb.Repositories
 {
     public partial interface ICustomerRepository
     {

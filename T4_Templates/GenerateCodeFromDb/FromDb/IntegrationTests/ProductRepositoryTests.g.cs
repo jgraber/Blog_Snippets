@@ -6,9 +6,9 @@ using FluentAssertions;
 using GenerateCodeFromDb.Helper;
 using GenerateCodeFromDb.TestDataGenerators;
 using NUnit.Framework;
-using Test.FromDb.Repositories;
+using GenerateCodeFromDb.FromDb.Repositories;
 
-namespace Test.FromDb.IntegrationTests
+namespace GenerateCodeFromDb.FromDb.IntegrationTests
 {
     [TestFixture]
     public partial class ProductRepositoryTests

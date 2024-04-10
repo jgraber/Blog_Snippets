@@ -1,5 +1,5 @@
 ﻿using System;
-using Test.FromDb.Entities;
+using GenerateCodeFromDb.FromDb.Entities;
 
 namespace GenerateCodeFromDb.TestDataGenerators;
 
