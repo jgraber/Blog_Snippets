@@ -171,17 +171,12 @@ namespace RSSReaderExamples
 
     public class FeedEntry
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public Uri Url { get; set; }
         public string? Title { get; set; }
         public string? Author { get; set; }
         public DateTimeOffset PublishDate { get; set; }
         public DateTimeOffset LastUpdated { get; set; }
         public object Summary { get; set; }
-
-        public FeedEntry()
-        {
-            Id = Guid.NewGuid();
-        }
     }
 }
