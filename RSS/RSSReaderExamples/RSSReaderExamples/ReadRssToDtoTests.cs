@@ -1,15 +1,9 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel.Syndication;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using FluentAssertions;
 using HtmlAgilityPack;
 using System.Web;
-using CodeHollow.FeedReader;
 using NSubstitute;
 
 namespace RSSReaderExamples
@@ -177,6 +171,6 @@ namespace RSSReaderExamples
         public string? Author { get; set; }
         public DateTimeOffset PublishDate { get; set; }
         public DateTimeOffset LastUpdated { get; set; }
-        public object Summary { get; set; }
+        public string Summary { get; set; }
     }
 }
