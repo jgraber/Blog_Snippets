@@ -86,6 +86,8 @@ namespace RSSReaderExamples
         public Uri FeedUri { get; set; }
         public string ContactEmail { get; set; }
         public string Title { get; set; }
+        public string MaintainerFirstName { get; set; }
+        public string MaintainerLastName { get; set; }
     }
 
     public class CommunityFeed
