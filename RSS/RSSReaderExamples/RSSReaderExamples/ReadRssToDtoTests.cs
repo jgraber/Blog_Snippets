@@ -5,6 +5,8 @@ using FluentAssertions;
 using HtmlAgilityPack;
 using System.Web;
 using NSubstitute;
+using System.Reflection.PortableExecutable;
+using System.Text;
 
 namespace RSSReaderExamples
 {
@@ -66,6 +68,30 @@ namespace RSSReaderExamples
 
             storage.Received(2).SaveEntry(Arg.Any<FeedEntry>());
         }
+
+        [Test]
+        public void CommunityFeed_publish_Feed()
+        {
+            var reader = new CaptureFeed();
+            var storage = Substitute.For<IStoreFeeds>();
+            storage.LoadFeedEntries(CommunityFeedType.Community, 3).Returns(new List<FeedEntry>
+            {
+                new FeedEntry{ Author = "\"A.A@....", Title = "AAA", Summary = "This is A.", Id = Guid.NewGuid(), FeedId = FeedId, PublishDate = new DateTimeOffset(2024, 8, 1, 10 , 10, 10, TimeSpan.Zero)},
+                new FeedEntry{ Author = "\"A.A@....", Title = "BBB", Summary = "This is B.", Id = Guid.NewGuid(), FeedId = FeedId, PublishDate = new DateTimeOffset(2024, 8, 2, 22 , 22, 22, TimeSpan.Zero)},
+                new FeedEntry{ Author = "\"D.D@....", Title = ".Net", Summary = "Here you can ...", Id = Guid.NewGuid(), FeedId = FeedId, PublishDate = new DateTimeOffset(2024, 8, 3, 9 , 9, 9, TimeSpan.Zero)},
+            });
+            var configurationReader = Substitute.For<IFeedConfiguration>();
+
+            var communityFeed = new CommunityFeed(reader, storage, configurationReader);
+
+            var publishedFeedStream = communityFeed.Publish(CommunityFeedType.Community, 3);
+            publishedFeedStream.Position = 0;
+            var publishedFeed = new StreamReader(publishedFeedStream).ReadToEnd();
+            
+            publishedFeed.Should().Contain("<title>AAA</title>");
+            publishedFeed.Should().Contain("<title>BBB</title>");
+            publishedFeed.Should().Contain("<title>.Net</title>");
+        }
     }
 
     public interface IFeedConfiguration
@@ -118,12 +144,57 @@ namespace RSSReaderExamples
                 }
             }
         }
+
+        public MemoryStream Publish(CommunityFeedType type, int numberOfEntries)
+        {
+            var entries = _storeFeeds.LoadFeedEntries(type, numberOfEntries);
+
+            SyndicationFeed feed = new SyndicationFeed("My Blog Feed", "This is a test feed", new Uri("http://SomeURI"));
+            feed.Authors.Add(new SyndicationPerson("jg@jgraber.ch", "Johnny Graber", "https://improveandrepeat.com/"));
+            feed.Categories.Add(new SyndicationCategory(".Net"));
+            feed.Description = new TextSyndicationContent("Basic example to produce a RSS feed");
+            feed.ImageUrl = new Uri("https://jgraber.ch/images/background.jpg");
+            feed.LastUpdatedTime = DateTimeOffset.Now;
+
+            List<SyndicationItem> items = new List<SyndicationItem>();
+
+            foreach (var entry in entries)
+            {
+                SyndicationItem item = new SyndicationItem(
+                    entry.Title,
+                    entry.Summary,
+                    entry.Url,
+                    entry.Id.ToString(),
+                    entry.PublishDate);
+                item.PublishDate = entry.PublishDate;
+                items.Add(item);
+            }
+
+            feed.Items = items;
+
+            var rssFormatter = new Rss20FeedFormatter(feed, true);
+
+            var output = new MemoryStream();
+            var settings = new XmlWriterSettings
+            {
+                Indent = true,
+                Encoding = Encoding.UTF8
+            };
+
+            using (var writer = XmlWriter.Create(output, settings))
+            {
+                rssFormatter.WriteTo(writer);
+                writer.Flush();
+                return output;
+            }
+        }
     }
 
     public interface IStoreFeeds
     {
         void SaveEntry(FeedEntry entry);
         bool ExistUrl(Uri url);
+        List<FeedEntry> LoadFeedEntries(CommunityFeedType community, int count);
     }
 
     public interface ICaptureFeed
