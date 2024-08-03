@@ -46,7 +46,9 @@ namespace RSSReaderExamples
             var configurationReader = Substitute.For<IFeedConfiguration>();
             configurationReader.GetAllConfigurations(CommunityFeedType.Community).Returns(new List<BlogFeed>()
                 { new BlogFeed() { FeedUri = BlogFeed, Type = CommunityFeedType.Community} });
-            var communityFeed = new CommunityFeed(reader, storage, configurationReader);
+            var publisher = Substitute.For<IPublishFeed>();
+
+            var communityFeed = new CommunityFeed(reader, storage, configurationReader, publisher);
 
             communityFeed.FetchFeeds();
 
@@ -62,7 +64,9 @@ namespace RSSReaderExamples
             var configurationReader = Substitute.For<IFeedConfiguration>();
             configurationReader.GetAllConfigurations(CommunityFeedType.Community).Returns(new List<BlogFeed>()
                 { new BlogFeed() { FeedUri = BlogFeed, Type = CommunityFeedType.Community} });
-            var communityFeed = new CommunityFeed(reader, storage, configurationReader);
+            var publisher = Substitute.For<IPublishFeed>();
+
+            var communityFeed = new CommunityFeed(reader, storage, configurationReader, publisher);
 
             communityFeed.FetchFeeds();
 
@@ -81,8 +85,9 @@ namespace RSSReaderExamples
                 new FeedEntry{ Author = "\"D.D@....", Title = ".Net", Summary = "Here you can ...", Id = Guid.NewGuid(), FeedId = FeedId, PublishDate = new DateTimeOffset(2024, 8, 3, 9 , 9, 9, TimeSpan.Zero)},
             });
             var configurationReader = Substitute.For<IFeedConfiguration>();
+            var publisher = new FeedCreator();
 
-            var communityFeed = new CommunityFeed(reader, storage, configurationReader);
+            var communityFeed = new CommunityFeed(reader, storage, configurationReader, publisher);
 
             var publishedFeedStream = communityFeed.Publish(CommunityFeedType.Community, 3);
             publishedFeedStream.Position = 0;
@@ -121,12 +126,14 @@ namespace RSSReaderExamples
         private readonly ICaptureFeed _captureFeed;
         private readonly IStoreFeeds _storeFeeds;
         private readonly IFeedConfiguration _configurationReader;
+        private readonly IPublishFeed _publishFeed;
 
-        public CommunityFeed(ICaptureFeed captureFeed, IStoreFeeds storeFeeds, IFeedConfiguration configurationReader)
+        public CommunityFeed(ICaptureFeed captureFeed, IStoreFeeds storeFeeds, IFeedConfiguration configurationReader, IPublishFeed publishFeed)
         {
             _captureFeed = captureFeed;
             _storeFeeds = storeFeeds;
             _configurationReader = configurationReader;
+            _publishFeed = publishFeed;
         }
 
         public void FetchFeeds()
@@ -149,44 +156,7 @@ namespace RSSReaderExamples
         {
             var entries = _storeFeeds.LoadFeedEntries(type, numberOfEntries);
 
-            SyndicationFeed feed = new SyndicationFeed("My Blog Feed", "This is a test feed", new Uri("http://SomeURI"));
-            feed.Authors.Add(new SyndicationPerson("jg@jgraber.ch", "Johnny Graber", "https://improveandrepeat.com/"));
-            feed.Categories.Add(new SyndicationCategory(".Net"));
-            feed.Description = new TextSyndicationContent("Basic example to produce a RSS feed");
-            feed.ImageUrl = new Uri("https://jgraber.ch/images/background.jpg");
-            feed.LastUpdatedTime = DateTimeOffset.Now;
-
-            List<SyndicationItem> items = new List<SyndicationItem>();
-
-            foreach (var entry in entries)
-            {
-                SyndicationItem item = new SyndicationItem(
-                    entry.Title,
-                    entry.Summary,
-                    entry.Url,
-                    entry.Id.ToString(),
-                    entry.PublishDate);
-                item.PublishDate = entry.PublishDate;
-                items.Add(item);
-            }
-
-            feed.Items = items;
-
-            var rssFormatter = new Rss20FeedFormatter(feed, true);
-
-            var output = new MemoryStream();
-            var settings = new XmlWriterSettings
-            {
-                Indent = true,
-                Encoding = Encoding.UTF8
-            };
-
-            using (var writer = XmlWriter.Create(output, settings))
-            {
-                rssFormatter.WriteTo(writer);
-                writer.Flush();
-                return output;
-            }
+            return _publishFeed.CreateRssStream(entries);
         }
     }
 
@@ -260,5 +230,55 @@ namespace RSSReaderExamples
         public DateTimeOffset PublishDate { get; set; }
         public DateTimeOffset LastUpdated { get; set; }
         public string Summary { get; set; }
+    }
+
+    public interface IPublishFeed
+    {
+        MemoryStream CreateRssStream(List<FeedEntry> entries);
+    }
+
+    public class FeedCreator : IPublishFeed
+    {
+        public MemoryStream CreateRssStream(List<FeedEntry> entries)
+        {
+            SyndicationFeed feed = new SyndicationFeed("My Blog Feed", "This is a test feed", new Uri("http://SomeURI"));
+            feed.Authors.Add(new SyndicationPerson("jg@jgraber.ch", "Johnny Graber", "https://improveandrepeat.com/"));
+            feed.Categories.Add(new SyndicationCategory(".Net"));
+            feed.Description = new TextSyndicationContent("Basic example to produce a RSS feed");
+            feed.ImageUrl = new Uri("https://jgraber.ch/images/background.jpg");
+            feed.LastUpdatedTime = DateTimeOffset.Now;
+
+            List<SyndicationItem> items = new List<SyndicationItem>();
+
+            foreach (var entry in entries)
+            {
+                SyndicationItem item = new SyndicationItem(
+                    entry.Title,
+                    entry.Summary,
+                    entry.Url,
+                    entry.Id.ToString(),
+                    entry.PublishDate);
+                item.PublishDate = entry.PublishDate;
+                items.Add(item);
+            }
+
+            feed.Items = items;
+
+            var rssFormatter = new Rss20FeedFormatter(feed, true);
+
+            var output = new MemoryStream();
+            var settings = new XmlWriterSettings
+            {
+                Indent = true,
+                Encoding = Encoding.UTF8
+            };
+
+            using (var writer = XmlWriter.Create(output, settings))
+            {
+                rssFormatter.WriteTo(writer);
+                writer.Flush();
+                return output;
+            }
+        }
     }
 }
