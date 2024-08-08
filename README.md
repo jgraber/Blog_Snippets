@@ -17,6 +17,7 @@ Code examples and snippets for my blog posts at [ImproveAndRepeat.com](https://i
   *  [DbUp: Fixing Timeouts in Slow Scripts](https://improveandrepeat.com/2016/10/dbup-fixing-timeouts-in-slow-scripts/)
   *  [DbUp: Variable X Has No Value Defined](https://improveandrepeat.com/2018/03/dbup-variable-x-has-no-value-defined/)
   *  [How to Use DbUp Without Embedded Scripts](https://improveandrepeat.com/2019/11/how-to-use-dbup-without-embedded-scripts/)
+  *  [How to Insert Binary Data With DbUp](https://improveandrepeat.com/2024/03/insert-binary-data-with-dbup/)
 * [DeadCode](./DeadCode)
   * [Let Death Code Die](https://improveandrepeat.com/2016/11/let-death-code-die/)
 * [Docker](./Docker)
