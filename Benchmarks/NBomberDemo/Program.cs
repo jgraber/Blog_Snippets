@@ -13,7 +13,7 @@ namespace MyLoadTest
 
             var scenario = Scenario.Create("hello_world_scenario", async context =>
                 {
-                    var response = await httpClient.GetAsync("https://jgraber.com/");
+                    var response = await httpClient.GetAsync("https://localhost:7285/");
 
                     return response.IsSuccessStatusCode
                         ? Response.Ok()
@@ -21,7 +21,7 @@ namespace MyLoadTest
                 })
                 .WithoutWarmUp()
                 .WithLoadSimulations(
-                    Simulation.Inject(rate: 10,
+                    Simulation.Inject(rate: 1_000,
                         interval: TimeSpan.FromSeconds(1),
                         during: TimeSpan.FromSeconds(30))
                 );
