@@ -1,3 +1,8 @@
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
 namespace WebApp
 {
     public class Program
@@ -5,6 +10,26 @@ namespace WebApp
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //builder.Logging.ClearProviders();
+            const string serviceName = "WebAppLoadDemo";
+
+            builder.Logging.AddOpenTelemetry(options =>
+            {
+                options
+                    .SetResourceBuilder(
+                        ResourceBuilder.CreateDefault()
+                            .AddService(serviceName))
+                    .AddOtlpExporter();
+            });
+            builder.Services.AddOpenTelemetry()
+                .ConfigureResource(resource => resource.AddService(serviceName))
+                .WithTracing(tracing => tracing
+                    .AddAspNetCoreInstrumentation()
+                    .AddOtlpExporter())
+                .WithMetrics(metrics => metrics
+                    .AddAspNetCoreInstrumentation()
+                    .AddOtlpExporter());
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
