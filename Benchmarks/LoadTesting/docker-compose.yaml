@@ -1,0 +1,10 @@
+services:
+  aspire-dashboard:
+    image: mcr.microsoft.com/dotnet/aspire-dashboard
+    container_name: aspire-dashboard
+    ports:
+      - 4317:18889
+      - 18888:18888
+    environment:
+      - Dashboard__Frontend__BrowserToken=Tralala
+    
