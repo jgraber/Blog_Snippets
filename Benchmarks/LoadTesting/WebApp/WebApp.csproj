@@ -16,4 +16,14 @@
     <Folder Include="Views\LoadLogic\" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Speed\Empty.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Speed\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Speed\Empty.cshtml" />
+  </ItemGroup>
+
 </Project>
