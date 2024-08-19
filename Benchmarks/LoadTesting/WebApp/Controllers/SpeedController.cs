@@ -13,5 +13,17 @@ namespace WebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Slow()
+        {
+            Thread.Sleep(200);
+            return View();
+        }
+
+        public async Task<IActionResult> AsyncSlow()
+        {
+            await Task.Delay(200);
+            return View();
+        }
     }
 }
