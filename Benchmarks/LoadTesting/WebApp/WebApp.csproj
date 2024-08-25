@@ -10,20 +10,38 @@
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
     <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+    <PackageReference Include="Serilog.Enrichers.Span" Version="3.1.0" />
+    <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Views\LoadLogic\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Speed\Index.cshtml" />
+  </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Speed\AsyncEmpty.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Speed\AsyncSlow.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\Empty.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Speed\Slow.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Speed\Empty.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Speed\Slow.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Speed\AsyncSlow.cshtml" />
   </ItemGroup>
 
 </Project>
