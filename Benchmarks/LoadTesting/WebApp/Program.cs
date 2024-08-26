@@ -74,6 +74,9 @@ namespace WebApp
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            app.Lifetime.ApplicationStarted.Register(() => Console.WriteLine("Application started. Press Ctrl+C to shut down."));
+            app.Lifetime.ApplicationStopping.Register(() => Console.WriteLine("Application is shutting down..."));
+
             app.Run();
         }
     }
