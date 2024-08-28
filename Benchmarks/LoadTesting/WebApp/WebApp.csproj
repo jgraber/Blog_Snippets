@@ -17,23 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\LoadLogic\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <UpToDateCheckInput Remove="Views\Speed\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Speed\AsyncEmpty.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\AsyncSlow.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Speed\Empty.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\Slow.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Speed\Empty.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

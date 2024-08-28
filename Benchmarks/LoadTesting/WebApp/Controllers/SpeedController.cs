@@ -9,7 +9,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult Empty()
+        public IActionResult EmptyPage()
         {
             return View();
         }
