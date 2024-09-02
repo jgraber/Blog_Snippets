@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Speed\AsyncSlow.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Speed\Data.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Speed\Slow.cshtml" />
   </ItemGroup>
@@ -32,6 +33,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Speed\AsyncSlow.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Speed\Data.cshtml" />
   </ItemGroup>
 
 </Project>
