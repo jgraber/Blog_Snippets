@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Helper;
 
 namespace WebApp.Controllers
 {
     public class SpeedController : Controller
     {
+        private readonly Waste _waste = new Waste();
+
         public IActionResult Index()
         {
             return View();
@@ -30,19 +33,20 @@ namespace WebApp.Controllers
 
         public IActionResult Data()
         {
-            var data = GetRandomNumbersAsync(10);
+            var data = GetRandomNumbers(10);
             return View(data);
         }
 
-        private static List<int> GetRandomNumbersAsync(int count)
+        private List<int> GetRandomNumbers(int count)
         {
             Random _random = new Random();
-            var randomNumbers = new List<int>();
+            var randomNumbers = new List<int>(count);
             for (int i = 0; i < count; i++)
             {
-                Thread.Sleep(100);
                 randomNumbers.Add(_random.Next());
             }
+
+            var fib = _waste.Fibonacci(30);
 
             return randomNumbers;
         }
