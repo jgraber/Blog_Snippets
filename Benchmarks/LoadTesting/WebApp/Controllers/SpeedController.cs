@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO.Pipelines;
 using System.Runtime.Serialization;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using WebApp.Helper;
 
 namespace WebApp.Controllers
@@ -46,7 +48,11 @@ namespace WebApp.Controllers
                 randomNumbers.Add(_random.Next());
             }
 
-            var fib = _waste.Fibonacci(30);
+            //var fib = _waste.Fibonacci(35);
+            //var prime = _waste.FindPrimeNumber(10000);
+            //Log.Information("Found {prime}", prime);
+            var end = _waste.Waiting(500);
+            Log.Information("Waited until {end}", end);
 
             return randomNumbers;
         }
