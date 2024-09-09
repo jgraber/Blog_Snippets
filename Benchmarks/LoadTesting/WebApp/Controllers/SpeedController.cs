@@ -10,6 +10,7 @@ namespace WebApp.Controllers
     public class SpeedController : Controller
     {
         private readonly Waste _waste = new Waste();
+        private readonly Logic _logic = new Logic();
 
         public IActionResult Index()
         {
@@ -37,6 +38,15 @@ namespace WebApp.Controllers
         {
             var data = GetRandomNumbers(10);
             return View(data);
+        }
+
+        public IActionResult DownTheRabbitHole()
+        {
+            Thread.Sleep(200);
+            
+            var output = _logic.A(2);
+            Thread.Sleep(20);
+            return View(output);
         }
 
         private List<int> GetRandomNumbers(int count)
