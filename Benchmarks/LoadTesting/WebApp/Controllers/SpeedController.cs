@@ -1,9 +1,11 @@
 ﻿using System;
 using System.IO.Pipelines;
 using System.Runtime.Serialization;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using WebApp.Helper;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -11,6 +13,7 @@ namespace WebApp.Controllers
     {
         private readonly Waste _waste = new Waste();
         private readonly Logic _logic = new Logic();
+        private readonly HttpClient _client = new HttpClient();
 
         public IActionResult Index()
         {
@@ -37,6 +40,17 @@ namespace WebApp.Controllers
         public IActionResult Data()
         {
             var data = GetRandomNumbers(10);
+            return View(data);
+        }
+
+        public async Task<IActionResult> Service()
+        {
+            var result = await _client.GetStringAsync("https://localhost:7256/weatherforecast");
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var data = JsonSerializer.Deserialize<IEnumerable<Forecast>>(result, options);
             return View(data);
         }
 

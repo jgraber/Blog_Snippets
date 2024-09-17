@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Forecast>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Service</h2>
+
+@foreach (var day in Model)
+{
+    <p>
+        @day.Date.ToLongDateString() <br />
+        @day.TemperatureC <br />
+        @day.TemperatureF <br />
+        @day.Summary <br />
+    </p>
+}
