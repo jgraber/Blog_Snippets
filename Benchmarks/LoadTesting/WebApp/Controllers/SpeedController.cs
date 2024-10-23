@@ -14,6 +14,7 @@ namespace WebApp.Controllers
         private readonly Waste _waste = new Waste();
         private readonly Logic _logic = new Logic();
         private readonly HttpClient _client = new HttpClient();
+        private static List<byte[]> keep = new List<byte[]>();
 
         public IActionResult Index()
         {
@@ -52,6 +53,24 @@ namespace WebApp.Controllers
             };
             var data = JsonSerializer.Deserialize<IEnumerable<Forecast>>(result, options);
             return View(data);
+        }
+
+        public async Task<IActionResult> Leak()
+        {
+            byte[] data = new byte[1024 * 1024 * 100];
+            Array.Clear(data, 0, data.Length);
+            keep.Add(data);
+
+            return View();
+        }
+
+        public async Task<IActionResult> LeakLib()
+        {
+            byte[] data = new byte[1024 * 1024 * 100];
+            Array.Clear(data, 0, data.Length);
+            var valid = _waste.Validate(data);
+
+            return View();
         }
 
         public IActionResult DownTheRabbitHole()

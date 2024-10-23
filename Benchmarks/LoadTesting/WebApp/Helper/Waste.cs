@@ -2,6 +2,7 @@
 
 public class Waste
 {
+    private static List<byte[]> Keeper = new List<byte[]>();
     public int Fibonacci(int n)
     {
         if (n <= 1)
@@ -58,5 +59,11 @@ public class Waste
         }
 
         return endTime.Ticks;
+    }
+
+    public bool Validate(byte[] data)
+    {
+        Keeper.Add(data);
+        return data.Length % 2 == 0;
     }
 }

@@ -4,8 +4,6 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Serilog;
-using Serilog.Enrichers.Span;
-using Serilog.Exceptions;
 
 namespace WebApp
 {
@@ -24,9 +22,7 @@ namespace WebApp
                 loggerConfig
                     .ReadFrom.Configuration(context.Configuration)
                     .Enrich.WithProperty("Application", Assembly.GetExecutingAssembly().GetName().Name ?? "API")
-                    .Enrich.WithExceptionDetails()
                     .Enrich.FromLogContext()
-                    .Enrich.With<ActivityEnricher>()
                     .WriteTo.Seq("http://localhost:5341")
                     //.WriteTo.Console()
                     .WriteTo.Debug();
