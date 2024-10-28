@@ -55,7 +55,7 @@ namespace WebApp.Controllers
             return View(data);
         }
 
-        public async Task<IActionResult> Leak()
+        public IActionResult Leak()
         {
             byte[] data = new byte[1024 * 1024 * 100];
             Array.Clear(data, 0, data.Length);
@@ -64,7 +64,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public async Task<IActionResult> LeakLib()
+        public IActionResult LeakLib()
         {
             byte[] data = new byte[1024 * 1024 * 100];
             Array.Clear(data, 0, data.Length);
