@@ -1,4 +1,11 @@
 
+using System.Reflection;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Serilog;
+
 namespace WebService
 {
     public class Program
@@ -6,6 +13,32 @@ namespace WebService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            const string serviceName = "WeatherWebService";
+
+            builder.Logging.AddOpenTelemetry(options =>
+            {
+                options
+                    .SetResourceBuilder(
+                        ResourceBuilder.CreateDefault()
+                            .AddService(serviceName))
+                    .AddConsoleExporter();
+            });
+            builder.Services.AddOpenTelemetry()
+                  .ConfigureResource(resource => resource.AddService(serviceName))
+                  .WithTracing(tracing => tracing
+                      .AddAspNetCoreInstrumentation()
+                      .AddConsoleExporter()
+                      .AddOtlpExporter())
+                  .WithMetrics(metrics => metrics
+                      .AddAspNetCoreInstrumentation()
+                      .AddConsoleExporter()
+                      .AddOtlpExporter());
+
+            builder.Logging.AddOpenTelemetry(logging => {
+                // The rest of your setup code goes here
+                logging.AddOtlpExporter();
+            });
 
             // Add services to the container.
             builder.Services.AddAuthorization();

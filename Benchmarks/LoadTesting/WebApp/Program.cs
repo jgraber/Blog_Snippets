@@ -14,17 +14,16 @@ namespace WebApp
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Logging.ClearProviders();
-            //builder.Services.AddOpenTelemetry()
-            //    .ConfigureResource(r => r.AddService(builder.Environment.ApplicationName))
-            //    .WithLogging(logger => logger.AddOtlpExporter()
-            //    );
+            builder.Services.AddOpenTelemetry()
+                .ConfigureResource(r => r.AddService(builder.Environment.ApplicationName))
+                .WithLogging(logger => logger.AddOtlpExporter()
+                );
             builder.Host.UseSerilog((context, loggerConfig) => {
                 loggerConfig
                     .ReadFrom.Configuration(context.Configuration)
                     .Enrich.WithProperty("Application", Assembly.GetExecutingAssembly().GetName().Name ?? "API")
                     .Enrich.FromLogContext()
                     .WriteTo.Seq("http://localhost:5341")
-                    //.WriteTo.Console()
                     .WriteTo.Debug();
             });
             const string serviceName = "WebAppLoadDemo";
