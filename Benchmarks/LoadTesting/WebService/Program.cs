@@ -13,6 +13,7 @@ namespace WebService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Logging.ClearProviders();
 
             const string serviceName = "WeatherWebService";
 
@@ -22,17 +23,15 @@ namespace WebService
                     .SetResourceBuilder(
                         ResourceBuilder.CreateDefault()
                             .AddService(serviceName))
-                    .AddConsoleExporter();
+                    .AddOtlpExporter();
             });
             builder.Services.AddOpenTelemetry()
                   .ConfigureResource(resource => resource.AddService(serviceName))
                   .WithTracing(tracing => tracing
                       .AddAspNetCoreInstrumentation()
-                      .AddConsoleExporter()
                       .AddOtlpExporter())
                   .WithMetrics(metrics => metrics
                       .AddAspNetCoreInstrumentation()
-                      .AddConsoleExporter()
                       .AddOtlpExporter());
 
             builder.Logging.AddOpenTelemetry(logging => {
@@ -80,6 +79,9 @@ namespace WebService
             })
             .WithName("GetWeatherForecast")
             .WithOpenApi();
+
+            app.Lifetime.ApplicationStarted.Register(() => Console.WriteLine("Application started. Press Ctrl+C to shut down."));
+            app.Lifetime.ApplicationStopping.Register(() => Console.WriteLine("Application is shutting down..."));
 
             app.Run();
         }
