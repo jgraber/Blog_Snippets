@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService", "WebService\We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryFiller", "MemoryFiller\MemoryFiller.csproj", "{BB44E5D5-F507-4997-B1EC-C48741049163}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationDb", "WebApplicationDb\WebApplicationDb.csproj", "{74DF260B-4F81-435B-A7A1-7BC1CF11616A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BB44E5D5-F507-4997-B1EC-C48741049163}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB44E5D5-F507-4997-B1EC-C48741049163}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB44E5D5-F507-4997-B1EC-C48741049163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74DF260B-4F81-435B-A7A1-7BC1CF11616A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74DF260B-4F81-435B-A7A1-7BC1CF11616A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74DF260B-4F81-435B-A7A1-7BC1CF11616A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74DF260B-4F81-435B-A7A1-7BC1CF11616A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

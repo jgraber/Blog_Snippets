@@ -12,6 +12,7 @@ namespace WebService
     {
         public static void Main(string[] args)
         {
+            HttpClient _client = new HttpClient();
             var builder = WebApplication.CreateBuilder(args);
             builder.Logging.ClearProviders();
 
@@ -79,6 +80,15 @@ namespace WebService
             })
             .WithName("GetWeatherForecast")
             .WithOpenApi();
+
+            app.MapGet("/store", async (HttpContext httpContext) =>
+                {
+                    var data = await _client.GetStringAsync("https://localhost:7132/products");
+                    await Task.Delay(200);
+                    return data;
+                })
+                .WithName("GetStore")
+                .WithOpenApi();
 
             app.Lifetime.ApplicationStarted.Register(() => Console.WriteLine("Application started. Press Ctrl+C to shut down."));
             app.Lifetime.ApplicationStopping.Register(() => Console.WriteLine("Application is shutting down..."));

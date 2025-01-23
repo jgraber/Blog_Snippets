@@ -73,6 +73,12 @@ namespace WebApp.Controllers
             return View();
         }
 
+        public async Task<IActionResult> ProductList()
+        {
+            var result = await _client.GetStringAsync("https://localhost:7256/store");
+            return View(result);
+        }
+
         public IActionResult DownTheRabbitHole()
         {
             Thread.Sleep(200);

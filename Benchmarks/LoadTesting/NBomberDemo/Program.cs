@@ -25,7 +25,7 @@ namespace MyLoadTest
                         during: TimeSpan.FromSeconds(20)),
                     Simulation.Inject(rate: 1000,
                         interval: TimeSpan.FromSeconds(1),
-                        during: TimeSpan.FromSeconds(120)),
+                        during: TimeSpan.FromSeconds(60)),
                     Simulation.RampingInject(rate: 0,
                         interval: TimeSpan.FromSeconds(1),
                         during: TimeSpan.FromSeconds(10))
@@ -46,14 +46,14 @@ namespace MyLoadTest
                         during: TimeSpan.FromSeconds(20)),
                     Simulation.Inject(rate: 1000,
                         interval: TimeSpan.FromSeconds(1),
-                        during: TimeSpan.FromSeconds(120)),
+                        during: TimeSpan.FromSeconds(60)),
                     Simulation.RampingInject(rate: 0,
                         interval: TimeSpan.FromSeconds(1),
                         during: TimeSpan.FromSeconds(10))
                 );
 
             NBomberRunner
-                .RegisterScenarios(asyncSlow)
+                .RegisterScenarios(slow)
                 .WithWorkerPlugins(new HttpMetricsPlugin(new[] { NBomber.Http.HttpVersion.Version1 }))
                 //.WithReportFormats(ReportFormat.Html)
                 //.WithReportFolder("Reports")
