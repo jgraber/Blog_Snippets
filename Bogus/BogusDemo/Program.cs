@@ -22,7 +22,7 @@ public class Program
             .RuleFor(u => u.FullName, (f, u) => $"{u.FirstName} {u.LastName} ({u.Email})")
             .RuleFor(u => u.DateOfBirth, f => f.Date.Past(30, new DateTime(2000, 1, 1)));
 
-        var users = faker.Generate(10); // Generate a list of 10 users
+        var users = faker.Generate(5); // Generate a list of 5 users
 
         foreach (var user in users)
         {
@@ -46,7 +46,7 @@ public class Program
 
         foreach (var order in orders)
         {
-            Console.WriteLine($@"{order.Id} - {order.ProductName} @ {order.Price} for {order.Customer}");
+            Console.WriteLine($@"{order.Id} - {order.ProductName} @ {order.Price} for {order.Customer.FullName}");
         }
 
         Console.WriteLine("=======================================================");
