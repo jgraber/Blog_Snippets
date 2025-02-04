@@ -66,4 +66,10 @@ public class Waste
         Keeper.Add(data);
         return data.Length % 2 == 0;
     }
+
+    public long WaitingNew(int miliSeconds)
+    {
+        Thread.Sleep(miliSeconds-50);
+        return DateTime.Now.Ticks;
+    }
 }
