@@ -4,8 +4,8 @@
     <title>My Blog Feed</title>
     <link>http://someuri/</link>
     <description>Basic example to produce a RSS feed</description>
-    <managingEditor>jg@jgraber.ch</managingEditor>
-    <lastBuildDate>Sat, 18 Nov 2023 16:01:46 +0100</lastBuildDate>
+    <managingEditor>info@improveandrepeat.com</managingEditor>
+    <lastBuildDate>Sat, 3  May 2025 16:01:46 +0100</lastBuildDate>
     <category>.Net</category>
     <image>
       <url>https://jgraber.ch/images/background.jpg</url>
@@ -19,8 +19,8 @@
       <category>AI</category>
       <title>#1 - Start</title>
       <description>This is the content for item one</description>
-      <pubDate>Sat, 18 Nov 2023 16:01:46 +0100</pubDate>
-      <a10:updated>2023-11-19T16:01:46+01:00</a10:updated>
+      <pubDate>Sat, 3  May 2025 16:01:46 +0100</pubDate>
+      <a10:updated>2025-05-03T16:01:46+01:00</a10:updated>
     </item>
     <item>
       <guid isPermaLink="false">ItemTwoID</guid>
@@ -29,8 +29,8 @@
       <category>Python</category>
       <title>#2 - More of it</title>
       <description>This is the content for item two</description>
-      <pubDate>Sat, 18 Nov 2023 16:01:46 +0100</pubDate>
-      <a10:updated>2023-11-19T16:01:46+01:00</a10:updated>
+      <pubDate>Sat, 3  May 2025 16:01:46 +0100</pubDate>
+      <a10:updated>2025-05-03T16:01:46+01:00</a10:updated>
     </item>
     <item>
       <guid isPermaLink="false">ItemThreeID</guid>
@@ -41,8 +41,8 @@
       <category>Work</category>
       <title>#3 - With a Category</title>
       <description>This is the content for item three</description>
-      <pubDate>Sat, 18 Nov 2023 16:01:46 +0100</pubDate>
-      <a10:updated>2023-11-19T16:01:46+01:00</a10:updated>
+      <pubDate>Sat, 3  May 2025 16:01:46 +0100</pubDate>
+      <a10:updated>2025-05-03T16:01:46+01:00</a10:updated>
     </item>
   </channel>
 </rss>
