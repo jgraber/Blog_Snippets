@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using FeedPublisher;
 using RSSProducer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,13 @@ app.MapGet("/feed.rss", () =>
     var mimeType = "application/rss+xml; charset=utf-8";
     var feed = File.ReadAllBytes("feedExample.txt");
     return Results.File(feed, contentType: mimeType);
+});
+
+app.MapGet("/feedXml.rss", () =>
+{
+    var mimeType = "application/rss+xml; charset=utf-8";
+    var bytes = FeedCreatorXml.CreateFeed().ToArray();
+    return Results.File(bytes, contentType: mimeType);
 });
 
 app.MapGet("/people", () =>
